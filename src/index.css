@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "cesium/Build/Cesium/Widgets/widgets.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.08 0 0);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.12 0 0);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.12 0 0);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.55 0.25 280);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.25 0 0);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.25 0 0);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: oklch(0.55 0.25 280);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.55 0.25 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.25 0.05 280);
+  --input: oklch(0.25 0.05 280);
+  --ring: oklch(0.55 0.25 280);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.12 0 0);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.55 0.25 280);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.25 0 0);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.25 0.05 280);
+  --sidebar-ring: oklch(0.55 0.25 280);
+}
+
+@layer base {
+  body {
+    @apply bg-black text-[#F5F3FF];
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+.cesium-viewer-custom .cesium-viewer-toolbar {
+  display: none !important;
+}
+
+.cesium-viewer-custom .cesium-viewer-bottom {
+  display: none !important;
+}
+
+.cesium-viewer-custom .cesium-infoBox {
+  background: #18132E !important;
+  border: 1px solid rgba(109,40,217,0.3) !important;
+}
+
+.cesium-viewer-custom .cesium-infoBox-title {
+  background: #18132E !important;
+  color: #F5F3FF !important;
+  border-bottom: 1px solid rgba(109,40,217,0.15) !important;
+}
+
+.cesium-viewer-custom .cesium-infoBox-body {
+  background: #18132E !important;
+  color: #F5F3FF !important;
+}
+
+/* Remover quadrado/container do Cesium viewer */
+.cesium-viewer-custom {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.cesium-viewer-custom canvas {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.cesium-viewer {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.cesium-widget {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.cesium-widget canvas {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}

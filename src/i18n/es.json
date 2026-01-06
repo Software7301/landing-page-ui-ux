@@ -1,0 +1,531 @@
+{
+  "header": {
+    "features": "Características",
+    "pricing": "Precios",
+    "docs": "Documentación",
+    "signIn": "Iniciar sesión",
+    "dashboard": "Dashboard",
+    "getStarted": "Comenzar"
+  },
+  "hero": {
+    "headline": "Gestión de infraestructura simplificada para equipos modernos",
+    "subheadline": "Una plataforma unificada para gestionar servidores, agentes, contenedores y dominios con claridad y control.",
+    "getStarted": "Comenzar",
+    "viewDashboard": "Ver panel"
+  },
+  "trust": {
+    "builtForDevs": "Hecho para desarrolladores",
+    "agentBased": "Infraestructura basada en agentes",
+    "railwayLike": "Experiencia estilo Railway"
+  },
+  "features": {
+    "title": "Todo lo que necesitas para gestionar tu infraestructura",
+    "subtitle": "Características poderosas diseñadas para la gestión moderna de servidores y flujos de trabajo de implementación.",
+    "workspace": {
+      "title": "Gestión basada en workspace",
+      "description": "Organiza tu infraestructura con workspaces aislados para diferentes proyectos y equipos."
+    },
+    "agents": {
+      "title": "Servidores controlados por agentes",
+      "description": "Despliega agentes ligeros que gestionan y monitorean tus servidores de forma autónoma."
+    },
+    "docker": {
+      "title": "Gestión de contenedores Docker",
+      "description": "Soporte completo para Docker con orquestación de contenedores y gestión del ciclo de vida."
+    },
+    "domain": {
+      "title": "Control de dominio y DNS",
+      "description": "Gestiona dominios, registros DNS y certificados SSL desde una única interfaz."
+    },
+    "dashboard": {
+      "title": "Panel unificado",
+      "description": "Monitorea todos tus servidores, contenedores y servicios desde un panel central."
+    },
+    "security": {
+      "title": "Seguro y escalable",
+      "description": "Seguridad de nivel empresarial con escalado automático y balanceo de carga."
+    }
+  },
+  "howItWorks": {
+    "title": "Cómo funciona",
+    "subtitle": "Comienza en minutos con nuestro proceso simple de tres pasos.",
+    "step1": {
+      "title": "Crear un workspace",
+      "description": "Configura tu primer workspace para organizar tus proyectos de infraestructura."
+    },
+    "step2": {
+      "title": "Instalar agentes",
+      "description": "Despliega agentes ligeros en tus servidores para habilitar la gestión remota."
+    },
+    "step3": {
+      "title": "Desplegar servicios",
+      "description": "Despliega contenedores Docker, aplicaciones y servicios con un clic."
+    },
+    "step4": {
+      "title": "Gestionar todo en un solo lugar",
+      "description": "Monitorea, escala y gestiona toda tu infraestructura desde el panel unificado."
+    }
+  },
+  "pricing": {
+    "title": "Precios simples y transparentes",
+    "subtitle": "Un plan. Todo lo que necesitas para gestionar tu infraestructura.",
+    "planName": "Starter",
+    "price": "$20",
+    "period": "/ mes",
+    "features": {
+      "unlimitedWorkspaces": "Workspaces ilimitados",
+      "multipleAgents": "Múltiples agentes",
+      "dockerSupport": "Soporte Docker",
+      "customDomains": "Dominios personalizados",
+      "fullDashboard": "Panel completo"
+    },
+    "cta": "Comenzar por $20"
+  },
+  "cta": {
+    "title": "¿Listo para controlar tu infraestructura?",
+    "subtitle": "Crea tu workspace ahora y comienza a gestionar tus servidores en minutos.",
+    "primary": "Crear workspace ahora",
+    "secondary": "Ver documentación",
+    "footnote": "No se requiere tarjeta de crédito. Prueba gratuita disponible."
+  },
+  "footer": {
+    "docs": "Documentación",
+    "github": "GitHub",
+    "terms": "Términos",
+    "privacy": "Privacidad",
+    "rights": "Todos los derechos reservados."
+  },
+  "register": {
+    "title": "Crear tu cuenta",
+    "subtitle": "Comienza a gestionar tu infraestructura",
+    "name": "Nombre",
+    "email": "Email",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "signIn": "Iniciar sesión",
+    "createAccount": "Crear cuenta",
+    "errors": {
+      "nameRequired": "El nombre es obligatorio",
+      "emailRequired": "El email es obligatorio",
+      "invalidEmail": "Formato de email inválido",
+      "passwordRequired": "La contraseña es obligatoria",
+      "passwordMinLength": "La contraseña debe tener al menos 8 caracteres",
+      "confirmPasswordRequired": "La confirmación de contraseña es obligatoria",
+      "passwordsDoNotMatch": "Las contraseñas no coinciden"
+    },
+    "info": {
+      "headline": "Saber cuándo tus",
+      "highlight": "agentes están vivos.",
+      "description": "CorsiHub es un hub central para registrar agentes, monitorear estado y asegurar confianza en servicios distribuidos."
+    },
+    "features": {
+      "workspace": "Agentes por workspace",
+      "workspaceDesc": "Organiza agentes por proyectos aislados",
+      "status": "Estado automático",
+      "statusDesc": "Online/offline detectado automáticamente",
+      "security": "Activación segura",
+      "securityDesc": "Token seguro para registro",
+      "heartbeat": "Heartbeat continuo",
+      "heartbeatDesc": "Monitoreo en tiempo real"
+    }
+  },
+  "login": {
+    "title": "Inicia sesión en tu cuenta",
+    "subtitle": "Accede a tu infraestructura",
+    "email": "Email",
+    "password": "Contraseña",
+    "rememberMe": "Recordarme",
+    "forgotPassword": "¿Olvidaste la contraseña?",
+    "dontHaveAccount": "¿No tienes una cuenta?",
+    "signUp": "Crear cuenta",
+    "signIn": "Iniciar sesión",
+    "errors": {
+      "emailRequired": "El email es obligatorio",
+      "invalidEmail": "Formato de email inválido",
+      "passwordRequired": "La contraseña es obligatoria"
+    },
+    "features": {
+      "title": "Gestión centralizada de infraestructura",
+      "description": "CorsiHub proporciona una plataforma unificada para gestionar agentes, monitorear el estado de la infraestructura y mantener servicios distribuidos.",
+      "infrastructure": {
+        "title": "Infraestructura bajo control",
+        "description": "Gestiona servidores, agentes y contenedores desde un único panel centralizado, con total visibilidad y control operacional."
+      },
+      "automation": {
+        "title": "Automatización inteligente",
+        "description": "Implementaciones, monitoreo y gestión de servicios realizados de forma automatizada, reduciendo fallos y aumentando la eficiencia."
+      },
+      "agents": {
+        "title": "Gestión por agentes",
+        "description": "Cada servidor conectado a través de agentes seguros, garantizando comunicación confiable y escalable entre su infraestructura."
+      },
+      "docker": {
+        "title": "Orquestación Docker integrada",
+        "description": "Crea, inicia, detén y monitorea contenedores Docker directamente desde el panel, sin dependencia de herramientas externas."
+      },
+      "domains": {
+        "title": "Dominios y servicios unificados",
+        "description": "Gestiona dominios, aplicaciones y alojamientos en un único workspace, simplificando operaciones complejas."
+      },
+      "teams": {
+        "title": "Pensado para equipos",
+        "description": "Workspaces organizados, permisos claros y gestión profesional para equipos técnicos y empresas en crecimiento."
+      }
+    }
+  },
+  "forgotPassword": {
+    "title": "¿Olvidaste tu contraseña?",
+    "description": "Ingresa tu email registrado y te enviaremos un código para restablecer tu contraseña.",
+    "email": "Email",
+    "submit": "Continuar",
+    "successTitle": "¡Código enviado!",
+    "successDescription": "Hemos enviado un código de restablecimiento a tu email. Por favor revisa tu bandeja de entrada.",
+    "rememberPassword": "¿Recuerdas tu contraseña?",
+    "signIn": "Iniciar sesión",
+    "backToLogin": "Volver al inicio de sesión"
+  },
+  "valueProps": {
+    "items": [
+      {
+        "title": "Basado en workspace",
+        "description": "Organiza tu infraestructura con workspaces aislados"
+      },
+      {
+        "title": "Controlado por agentes",
+        "description": "Agentes ligeros gestionan tus servidores de forma autónoma"
+      },
+      {
+        "title": "Monitorización en tiempo real",
+        "description": "Rastrea el estado y rendimiento de los servidores en tiempo real"
+      },
+      {
+        "title": "Seguro y escalable",
+        "description": "Seguridad de nivel empresarial con escalado automático"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Por qué elegir CorsiHub",
+    "subtitle": "Todo lo que necesitas para gestionar tu infraestructura eficientemente",
+    "items": [
+      {
+        "title": "Seguro por defecto",
+        "description": "Seguridad de nivel empresarial con comunicaciones cifradas y autenticación por token seguro"
+      },
+      {
+        "title": "Ultra rápido",
+        "description": "Optimizado para rendimiento con actualizaciones en tiempo real y latencia mínima"
+      },
+      {
+        "title": "Listo para la nube",
+        "description": "Despliega en cualquier lugar - nube, on-premise o infraestructura híbrida"
+      },
+      {
+        "title": "Amigable para desarrolladores",
+        "description": "API simple, documentación completa y panel intuitivo"
+      },
+      {
+        "title": "Enfoque code-first",
+        "description": "Gestiona todo a través de código con control de versiones e integración CI/CD"
+      },
+      {
+        "title": "Acceso al terminal",
+        "description": "Acceso completo al terminal de tus servidores para gestión avanzada"
+      }
+    ]
+  },
+  "target": {
+    "title": "Hecho para equipos modernos",
+    "subtitle": "Ya seas una startup o empresa, CorsiHub escala contigo",
+    "items": [
+      {
+        "title": "Startups",
+        "description": "Comienza rápidamente con configuración mínima",
+        "features": ["Despliegue rápido", "Costo-efectivo", "Escalable"]
+      },
+      {
+        "title": "Empresas",
+        "description": "Características de nivel empresarial para grandes equipos",
+        "features": ["Multi-tenant", "Seguridad avanzada", "Soporte 24/7"]
+      },
+      {
+        "title": "Desarrolladores",
+        "description": "Hecho por desarrolladores, para desarrolladores",
+        "features": ["API-first", "Herramientas CLI", "Documentación"]
+      },
+      {
+        "title": "Equipos DevOps",
+        "description": "Simplifica la gestión de tu infraestructura",
+        "features": ["Automatización", "Monitorización", "Integración CI/CD"]
+      }
+    ]
+  },
+  "featuresDashboard": {
+    "badge": "Dashboard",
+    "title": "Panel unificado para toda tu infraestructura",
+    "subtitle": "Monitorea y gestiona todos tus servidores, agentes y servicios desde un único panel intuitivo.",
+    "items": [
+      "Monitorización de estado de servidor en tiempo real",
+      "Métricas de salud y rendimiento de los agentes",
+      "Organización y gestión de workspaces",
+      "Acciones rápidas y operaciones en lote",
+      "Vistas y filtros personalizables"
+    ]
+  },
+  "featuresAgents": {
+    "badge": "Agentes",
+    "title": "Agentes ligeros para gestión de servidores",
+    "subtitle": "Despliega agentes en tus servidores para habilitar gestión remota, monitorización y automatización.",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Instalar agente",
+        "desc": "Despliega un agente ligero en tu servidor con un solo comando"
+      },
+      {
+        "step": "02",
+        "title": "Conectar al workspace",
+        "desc": "Vincula el agente a tu workspace usando un token seguro"
+      },
+      {
+        "step": "03",
+        "title": "Iniciar monitorización",
+        "desc": "Monitorea el estado, salud y rendimiento del servidor en tiempo real"
+      }
+    ]
+  },
+  "featuresMultiTenancy": {
+    "badge": "Multi-tenancy",
+    "title": "Workspaces aislados para equipos",
+    "subtitle": "Organiza tu infraestructura con workspaces aislados, perfecto para equipos, proyectos y entornos.",
+    "items": [
+      {
+        "icon": "lock",
+        "text": "Workspaces aislados con controles de acceso separados"
+      },
+      {
+        "icon": "sparkles",
+        "text": "Asignación de recursos y gestión de cuotas"
+      },
+      {
+        "icon": "network",
+        "text": "Colaboración en equipo y acceso basado en roles"
+      },
+      {
+        "icon": "users",
+        "text": "Gestión de usuarios y permisos"
+      },
+      {
+        "icon": "shield",
+        "text": "Políticas de seguridad por workspace"
+      },
+      {
+        "icon": "chart",
+        "text": "Análisis de uso e informes"
+      }
+    ]
+  },
+  "featureShowcase": {
+    "badge": "Showcase",
+    "title": "Ve CorsiHub en acción",
+    "subtitle": "Explora las características de nuestra plataforma y ve lo fácil que es gestionar tu infraestructura.",
+    "items": [
+      {
+        "title": "Vista General del Dashboard",
+        "query": "dashboard"
+      },
+      {
+        "title": "Gestión de Agentes",
+        "query": "agents"
+      },
+      {
+        "title": "Configuración del Workspace",
+        "query": "workspace"
+      }
+    ]
+  },
+  "pricing": {
+    "badge": "Precios",
+    "title": "Precios simples y transparentes",
+    "subtitle": "Un plan. Todo lo que necesitas para gestionar tu infraestructura.",
+    "plans": [
+      {
+        "name": "Starter",
+        "price": "$20",
+        "period": "/ mes",
+        "description": "Perfecto para equipos pequeños y proyectos",
+        "popular": true,
+        "features": [
+          "Workspaces ilimitados",
+          "Múltiples agentes",
+          "Soporte Docker",
+          "Dominios personalizados",
+          "Panel completo"
+        ]
+      }
+    ],
+    "popular": "Más Popular",
+    "ctaPrimary": "Comenzar por $20",
+    "ctaEnterprise": "Contactar Ventas",
+    "compare": "Comparar planos"
+  },
+  "footer": {
+    "columns": [
+      {
+        "title": "Producto",
+        "links": ["Características", "Precios", "Documentación", "Changelog"]
+      },
+      {
+        "title": "Empresa",
+        "links": ["Acerca de", "Blog", "Carreras", "Contacto"]
+      },
+      {
+        "title": "Recursos",
+        "links": ["Documentación", "Referencia de API", "Guías", "Soporte"]
+      },
+      {
+        "title": "Legal",
+        "links": ["Términos", "Privacidad", "Seguridad", "Cookies"]
+      }
+    ],
+    "bottom": {
+      "rights": "Todos los derechos reservados."
+    }
+  },
+  "dashboard": {
+    "title": "Overview",
+    "subtitle": "Resumen de su infraestructura",
+    "stats": {
+      "totalWorkspaces": "Total de Workspaces",
+      "totalWorkspacesDesc": "Creciendo este mes",
+      "activeAgents": "Agentes Activos",
+      "activeAgentsDesc": "8.2% por encima del período anterior",
+      "totalServers": "Total de Servidores",
+      "totalServersDesc": "Creciendo este mes",
+      "activeContainers": "Contenedores Activos",
+      "activeContainersDesc": "8.2% por encima del período anterior",
+      "cpuUsage": "Uso de CPU",
+      "cpuUsageDesc": "Eficiencia mejorada",
+      "ramUsage": "Uso de RAM",
+      "ramUsageDesc": "Uso estable",
+      "growthRate": "Tasa de Crecimiento",
+      "growthRateDesc": "Cumpliendo proyecciones",
+      "activeServers": "Servidores Activos",
+      "activeServersDesc": "2 servidores nuevos este mes"
+    },
+    "chart": {
+      "title": "Visitantes Totales",
+      "subtitle": "Total de los últimos 3 meses",
+      "last3Months": "Últimos 3 meses",
+      "last30Days": "Últimos 30 días",
+      "last7Days": "Últimos 7 días",
+      "resourceUsage": "Uso de Recursos",
+      "resourceUsageDesc": "Monitorización en tiempo real de CPU y RAM"
+    },
+    "workspaces": {
+      "title": "Workspaces",
+      "subtitle": "Gestione sus workspaces",
+      "create": "Crear Workspace",
+      "emptyTitle": "No se encontraron workspaces",
+      "emptyDesc": "Crea tu primer workspace para comenzar a gestionar tu infraestructura"
+    },
+    "servers": {
+      "title": "Servidores",
+      "subtitle": "Gestiona tus servidores y monitoreo",
+      "name": "Nombre",
+      "region": "Región",
+      "status": "Estado",
+      "agent": "Agente",
+      "resources": "Recursos",
+      "actions": "Acciones",
+      "viewDetails": "Ver Detalles",
+      "restart": "Reiniciar",
+      "stop": "Detener",
+      "delete": "Eliminar"
+    },
+    "agents": {
+      "title": "Agentes",
+      "subtitle": "Monitorea y gestiona tus agentes"
+    },
+    "containers": {
+      "title": "Contenedores",
+      "subtitle": "Gestiona tus contenedores Docker",
+      "name": "Nombre",
+      "image": "Imagen",
+      "status": "Estado",
+      "port": "Puerto",
+      "server": "Servidor",
+      "actions": "Acciones",
+      "start": "Iniciar",
+      "stop": "Detener",
+      "restart": "Reiniciar",
+      "logs": "Logs",
+      "remove": "Eliminar"
+    },
+    "domains": {
+      "title": "Dominios",
+      "subtitle": "Gestiona tus dominios y SSL",
+      "add": "Agregar Dominio"
+    },
+    "billing": {
+      "title": "Facturación",
+      "subtitle": "Gestiona tu plan y uso",
+      "planName": "Plan Starter",
+      "price": "$20",
+      "period": "/mes",
+      "currentUsage": "Uso Actual",
+      "ofLimit": "del límite",
+      "usageLimits": "Límites de Uso",
+      "workspaces": "Workspaces",
+      "servers": "Servidores",
+      "containers": "Contenedores",
+      "domains": "Dominios",
+      "bandwidth": "Ancho de Banda",
+      "unlimited": "Ilimitado",
+      "actions": "Acciones",
+      "upgradePlan": "Actualizar Plan",
+      "manageSubscription": "Gestionar Suscripción",
+      "selectWorkspace": "Selecciona un workspace para ver información de facturación"
+    },
+    "settings": {
+      "title": "Configuración",
+      "subtitle": "Configura tus preferencias"
+    },
+    "table": {
+      "title": "Resumen",
+      "header": "Encabezado",
+      "sectionType": "Tipo de Sección",
+      "status": "Estado",
+      "target": "Objetivo",
+      "limit": "Límite",
+      "reviewer": "Revisor",
+      "customizeColumns": "Personalizar Columnas",
+      "addSection": "+ Agregar Sección"
+    },
+    "header": {
+      "profile": "Perfil",
+      "settings": "Configuraciones",
+      "logout": "Cerrar sesión"
+    },
+    "passwordGate": {
+      "title": "Acceso al Dashboard",
+      "subtitle": "Ingrese la contraseña para continuar",
+      "password": "Contraseña",
+      "submit": "Entrar",
+      "invalidPassword": "Contraseña incorrecta"
+    }
+  },
+  "sidebar": {
+    "dashboard": "Overview",
+    "workspaces": "Workspaces",
+    "servers": "Servidores",
+    "agents": "Agentes",
+    "containers": "Contenedores",
+    "domains": "Dominios",
+    "metrics": "Métricas",
+    "billing": "Facturación",
+    "settings": "Configuraciones",
+    "addSection": "+ Agregar Sección"
+  }
+}
