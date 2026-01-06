@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
 import { t } from "@/i18n";
 import { TypedText } from "@/components/TypedText";
-import { CesiumMap } from "@/components/3d/CesiumMap";
 
 export default function Hero() {
   const { language } = useLanguage();
@@ -32,31 +31,6 @@ export default function Hero() {
       transition: {
         duration: 0.8,
         ease: [0.4, 0, 0.2, 1] as [number, number, number, number],
-      },
-    },
-  };
-
-  const mockupVariants = {
-    hidden: { opacity: 0, y: 40, scale: 0.98 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 1,
-        delay: 0.3,
-        ease: [0.4, 0, 0.2, 1] as [number, number, number, number],
-      },
-    },
-  };
-
-  const floatVariants = {
-    animate: {
-      y: [0, -10, 0],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut" as const,
       },
     },
   };
@@ -88,14 +62,14 @@ export default function Hero() {
         className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#6D28D9]/8 rounded-full blur-3xl pointer-events-none opacity-50"
       />
       
-      <div className="container mx-auto relative z-10 max-w-7xl">
+      <div className="container mx-auto relative z-10 max-w-4xl">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center"
+          className="flex flex-col items-center text-center"
         >
-          <motion.div variants={itemVariants} className="space-y-10">
+          <motion.div variants={itemVariants} className="space-y-10 w-full">
             <div className="space-y-6">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-[#E5E7EB] tracking-tight min-h-[1.2em]">
                 <TypedText 
@@ -107,7 +81,7 @@ export default function Hero() {
               
               <motion.p 
                 variants={itemVariants}
-                className="text-xl md:text-2xl text-[#9CA3AF] max-w-xl leading-relaxed font-normal"
+                className="text-xl md:text-2xl text-[#9CA3AF] max-w-2xl mx-auto leading-relaxed font-normal"
               >
                 {subheadline}
               </motion.p>
@@ -115,7 +89,7 @@ export default function Hero() {
 
             <motion.div 
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <motion.div
                 variants={buttonVariants}
@@ -144,21 +118,6 @@ export default function Hero() {
                   </Link>
                 </Button>
               </motion.div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div 
-            variants={mockupVariants}
-            initial="hidden"
-            animate="visible"
-            className="relative"
-          >
-            <motion.div 
-              className="h-[600px] w-full"
-              variants={floatVariants}
-              animate="animate"
-            >
-              <CesiumMap height="600px" />
             </motion.div>
           </motion.div>
         </motion.div>
