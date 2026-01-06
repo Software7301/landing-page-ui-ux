@@ -43,6 +43,33 @@
   }
 }
 
+.theme-purple {
+  --primary: #6D28D9;
+  --primary-foreground: #E5E7EB;
+  --accent: #8B5CF6;
+  --sidebar-primary: #6D28D9;
+  --ring: #6D28D9;
+  --border: rgba(109, 40, 217, 0.15);
+}
+
+.theme-green {
+  --primary: #4ADE80;
+  --primary-foreground: #E5E7EB;
+  --accent: #22C55E;
+  --sidebar-primary: #4ADE80;
+  --ring: #4ADE80;
+  --border: rgba(74, 222, 128, 0.15);
+}
+
+.theme-blue {
+  --primary: #2EE6D6;
+  --primary-foreground: #060B14;
+  --accent: #1CB8A8;
+  --sidebar-primary: #2EE6D6;
+  --ring: #2EE6D6;
+  --border: rgba(46, 230, 214, 0.15);
+}
+
 .cesium-viewer-custom .cesium-viewer-toolbar {
   display: none !important;
 }

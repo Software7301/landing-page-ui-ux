@@ -101,31 +101,31 @@ export default function Settings() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="space-y-6 max-w-4xl"
+      className="space-y-8 max-w-5xl"
     >
       <motion.div variants={itemVariants}>
         <div className="flex items-center gap-3 mb-2">
-          <SettingsIcon className="w-8 h-8 text-[#6D28D9]" />
-          <h1 className="text-3xl font-bold text-[#E5E7EB]">
+          <SettingsIcon className="w-8 h-8 text-[#2EE6D6]" />
+          <h1 className="text-3xl font-bold text-[#E6EDF3]">
             {t("dashboard.settings.title", language)}
           </h1>
         </div>
-        <p className="text-[#9CA3AF] ml-11">
+        <p className="text-[#9FB0C7] ml-11">
           {t("dashboard.settings.subtitle", language)}
         </p>
       </motion.div>
 
-      <motion.div variants={itemVariants} className="space-y-6">
-        <Card className="bg-[#141C2C] border-[rgba(109,40,217,0.15)] shadow-sm">
-          <CardHeader className="pb-4 border-b border-[rgba(109,40,217,0.1)]">
+      <motion.div variants={itemVariants} className="space-y-8">
+        <Card className="bg-[#0B1E36] border-[rgba(46,230,214,0.15)] shadow-xl hover:shadow-2xl hover:shadow-[#2EE6D6]/10 transition-all duration-300">
+          <CardHeader className="pb-5 border-b border-[rgba(46,230,214,0.1)]">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-[#6D28D9]/10 flex items-center justify-center border border-[rgba(109,40,217,0.15)]">
-                <Briefcase className="w-5 h-5 text-[#6D28D9]" />
+              <div className="w-12 h-12 rounded-lg bg-[#2EE6D6]/10 flex items-center justify-center border border-[rgba(46,230,214,0.15)] shadow-lg shadow-[#2EE6D6]/5">
+                <Briefcase className="w-6 h-6 text-[#2EE6D6]" />
               </div>
-              <CardTitle className="text-xl text-[#E5E7EB]">Workspace Settings</CardTitle>
+              <CardTitle className="text-xl font-bold text-[#E6EDF3]">Workspace Settings</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="space-y-4 pt-6">
+          <CardContent className="space-y-5 pt-6">
             <div className="space-y-2">
               <Label htmlFor="workspace-name" className="text-[#E5E7EB]">
                 Nome do Workspace
@@ -135,38 +135,38 @@ export default function Settings() {
                 type="text"
                 value={workspaceName}
                 onChange={(e) => setWorkspaceName(e.target.value)}
-                className="bg-[#0B0F17] border-[rgba(109,40,217,0.15)] text-[#E5E7EB] placeholder:text-[#9CA3AF] focus:border-[#6D28D9]"
+                className="bg-[#142B4F]/30 border-[rgba(46,230,214,0.15)] text-[#E6EDF3] placeholder:text-[#9FB0C7] focus:border-[#2EE6D6] hover:border-[rgba(46,230,214,0.25)] transition-colors"
                 placeholder="Nome do workspace"
               />
             </div>
             <div className="space-y-2">
-              <Label className="text-[#E5E7EB]">Membros</Label>
-              <div className="rounded-lg border border-[rgba(109,40,217,0.15)] bg-[#0B0F17] p-4">
-                <p className="text-sm text-[#9CA3AF]">Funcionalidade de membros em breve</p>
+              <Label className="text-[#E6EDF3]">Membros</Label>
+              <div className="rounded-lg border border-[rgba(46,230,214,0.15)] bg-[#142B4F]/30 p-4">
+                <p className="text-sm text-[#9FB0C7]">Funcionalidade de membros em breve</p>
               </div>
             </div>
             <div className="space-y-2">
-              <Label className="text-[#E5E7EB]">Permissões</Label>
-              <div className="rounded-lg border border-[rgba(109,40,217,0.15)] bg-[#0B0F17] p-4">
-                <p className="text-sm text-[#9CA3AF]">Funcionalidade de permissões em breve</p>
+              <Label className="text-[#E6EDF3]">Permissões</Label>
+              <div className="rounded-lg border border-[rgba(46,230,214,0.15)] bg-[#142B4F]/30 p-4">
+                <p className="text-sm text-[#9FB0C7]">Funcionalidade de permissões em breve</p>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-[#141C2C] border-[rgba(109,40,217,0.15)] shadow-sm">
-          <CardHeader className="pb-4 border-b border-[rgba(109,40,217,0.1)]">
+        <Card className="bg-[#0B1E36] border-[rgba(46,230,214,0.15)] shadow-xl hover:shadow-2xl hover:shadow-[#2EE6D6]/10 transition-all duration-300">
+          <CardHeader className="pb-5 border-b border-[rgba(46,230,214,0.1)]">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-[#6D28D9]/10 flex items-center justify-center border border-[rgba(109,40,217,0.15)]">
-                <User className="w-5 h-5 text-[#6D28D9]" />
+              <div className="w-12 h-12 rounded-lg bg-[#2EE6D6]/10 flex items-center justify-center border border-[rgba(46,230,214,0.15)] shadow-lg shadow-[#2EE6D6]/5">
+                <User className="w-6 h-6 text-[#2EE6D6]" />
               </div>
-              <CardTitle className="text-xl text-[#E5E7EB]">User Profile</CardTitle>
+              <CardTitle className="text-xl font-bold text-[#E6EDF3]">User Profile</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="space-y-4 pt-6">
+          <CardContent className="space-y-5 pt-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="user-name" className="text-[#E5E7EB]">
+                <Label htmlFor="user-name" className="text-[#E6EDF3]">
                   Nome *
                 </Label>
                 <Input
@@ -174,12 +174,12 @@ export default function Settings() {
                   type="text"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
-                  className="bg-[#0B0F17] border-[rgba(109,40,217,0.15)] text-[#E5E7EB] placeholder:text-[#9CA3AF] focus:border-[#6D28D9]"
+                  className="bg-[#142B4F]/30 border-[rgba(46,230,214,0.15)] text-[#E6EDF3] placeholder:text-[#9FB0C7] focus:border-[#2EE6D6] hover:border-[rgba(46,230,214,0.25)] transition-colors"
                   placeholder="Seu nome"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="user-email" className="text-[#E5E7EB]">
+                <Label htmlFor="user-email" className="text-[#E6EDF3]">
                   Email *
                 </Label>
                 <Input
@@ -187,7 +187,7 @@ export default function Settings() {
                   type="email"
                   value={userEmail}
                   onChange={(e) => setUserEmail(e.target.value)}
-                  className="bg-[#0B0F17] border-[rgba(109,40,217,0.15)] text-[#E5E7EB] placeholder:text-[#9CA3AF] focus:border-[#6D28D9]"
+                  className="bg-[#142B4F]/30 border-[rgba(46,230,214,0.15)] text-[#E6EDF3] placeholder:text-[#9FB0C7] focus:border-[#2EE6D6] hover:border-[rgba(46,230,214,0.25)] transition-colors"
                   placeholder="seu@email.com"
                 />
               </div>
@@ -195,22 +195,22 @@ export default function Settings() {
           </CardContent>
         </Card>
 
-        <Card className="bg-[#141C2C] border-[rgba(109,40,217,0.15)] shadow-sm">
-          <CardHeader className="pb-4 border-b border-[rgba(109,40,217,0.1)]">
+        <Card className="bg-[#0B1E36] border-[rgba(46,230,214,0.15)] shadow-xl hover:shadow-2xl hover:shadow-[#2EE6D6]/10 transition-all duration-300">
+          <CardHeader className="pb-5 border-b border-[rgba(46,230,214,0.1)]">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-[#6D28D9]/10 flex items-center justify-center border border-[rgba(109,40,217,0.15)]">
-                <Key className="w-5 h-5 text-[#6D28D9]" />
+              <div className="w-12 h-12 rounded-lg bg-[#2EE6D6]/10 flex items-center justify-center border border-[rgba(46,230,214,0.15)] shadow-lg shadow-[#2EE6D6]/5">
+                <Key className="w-6 h-6 text-[#2EE6D6]" />
               </div>
-              <CardTitle className="text-xl text-[#E5E7EB]">API Tokens</CardTitle>
+              <CardTitle className="text-xl font-bold text-[#E6EDF3]">API Tokens</CardTitle>
             </div>
           </CardHeader>
           <CardContent className="pt-6">
-            <div className="rounded-lg border border-[rgba(109,40,217,0.15)] bg-[#0B0F17] p-4">
-              <p className="text-sm text-[#9CA3AF] mb-4">Gerencie suas chaves de API para acesso programático.</p>
+            <div className="rounded-lg border border-[rgba(46,230,214,0.15)] bg-[#142B4F]/30 p-4">
+              <p className="text-sm text-[#9FB0C7] mb-4">Gerencie suas chaves de API para acesso programático.</p>
               <Button
                 variant="outline"
                 onClick={() => setTokensModalOpen(true)}
-                className="border-[rgba(109,40,217,0.15)] bg-[#141C2C] text-[#E5E7EB] hover:bg-[#1A2435] hover:border-[rgba(109,40,217,0.25)]"
+                className="border-[rgba(46,230,214,0.15)] bg-[#0B1E36] text-[#E6EDF3] hover:bg-[#142B4F] hover:border-[rgba(46,230,214,0.25)] transition-colors"
               >
                 Gerenciar Tokens
               </Button>
@@ -218,18 +218,18 @@ export default function Settings() {
           </CardContent>
         </Card>
 
-        <Card className="bg-[#141C2C] border-[rgba(109,40,217,0.15)] shadow-sm">
-          <CardHeader className="pb-4 border-b border-[rgba(109,40,217,0.1)]">
+        <Card className="bg-[#0B1E36] border-[rgba(46,230,214,0.15)] shadow-xl hover:shadow-2xl hover:shadow-[#2EE6D6]/10 transition-all duration-300">
+          <CardHeader className="pb-5 border-b border-[rgba(46,230,214,0.1)]">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-[#6D28D9]/10 flex items-center justify-center border border-[rgba(109,40,217,0.15)]">
-                <Globe className="w-5 h-5 text-[#6D28D9]" />
+              <div className="w-12 h-12 rounded-lg bg-[#2EE6D6]/10 flex items-center justify-center border border-[rgba(46,230,214,0.15)] shadow-lg shadow-[#2EE6D6]/5">
+                <Globe className="w-6 h-6 text-[#2EE6D6]" />
               </div>
-              <CardTitle className="text-xl text-[#E5E7EB]">Language & Theme</CardTitle>
+              <CardTitle className="text-xl font-bold text-[#E6EDF3]">Language & Theme</CardTitle>
             </div>
           </CardHeader>
           <CardContent className="space-y-6 pt-6">
             <div className="space-y-3">
-              <Label className="text-[#E5E7EB]">Idioma</Label>
+              <Label className="text-[#E6EDF3] font-medium">Idioma</Label>
               <div className="grid grid-cols-3 gap-3">
                 {languages.map((lang) => {
                   const langCode = lang.code as "pt" | "en" | "es";
@@ -242,8 +242,8 @@ export default function Settings() {
                       onClick={() => handleLanguageChange(langCode)}
                       className={`transition-all duration-200 ${
                         isSelected
-                          ? "bg-[#6D28D9] text-[#E5E7EB] hover:bg-[#8B5CF6] shadow-lg shadow-[#6D28D9]/20"
-                          : "border-[rgba(109,40,217,0.15)] bg-[#0B0F17] text-[#9CA3AF] hover:bg-[#141C2C] hover:border-[rgba(109,40,217,0.25)]"
+                          ? "bg-[#2EE6D6] text-[#060B14] hover:bg-[#1CB8A8] shadow-lg shadow-[#2EE6D6]/20 font-semibold"
+                          : "border-[rgba(46,230,214,0.15)] bg-[#142B4F]/30 text-[#9FB0C7] hover:bg-[#142B4F] hover:border-[rgba(46,230,214,0.25)]"
                       }`}
                     >
                       <span className="mr-2">{lang.flag}</span>
@@ -255,10 +255,11 @@ export default function Settings() {
             </div>
 
             <div className="space-y-3">
-              <Label className="text-[#E5E7EB]">Tema</Label>
+              <Label className="text-[#E6EDF3] font-medium">Tema</Label>
               <div className="grid grid-cols-3 gap-3">
                 {themes.map((theme) => {
                   const isSelected = selectedTheme.name === theme.name;
+                  const isBlue = theme.name === "blue";
                   return (
                     <Button
                       key={theme.name}
@@ -267,8 +268,10 @@ export default function Settings() {
                       onClick={() => handleThemeChange(theme.name)}
                       className={`transition-all duration-200 ${
                         isSelected
-                          ? "bg-[#6D28D9] text-[#E5E7EB] hover:bg-[#8B5CF6] shadow-lg shadow-[#6D28D9]/20"
-                          : "border-[rgba(109,40,217,0.15)] bg-[#0B0F17] text-[#9CA3AF] hover:bg-[#141C2C] hover:border-[rgba(109,40,217,0.25)]"
+                          ? isBlue
+                            ? "bg-[#2EE6D6] text-[#060B14] hover:bg-[#1CB8A8] shadow-lg shadow-[#2EE6D6]/20 font-semibold"
+                            : "bg-[#6D28D9] text-[#E5E7EB] hover:bg-[#8B5CF6] shadow-lg shadow-[#6D28D9]/20 font-semibold"
+                          : "border-[rgba(46,230,214,0.15)] bg-[#142B4F]/30 text-[#9FB0C7] hover:bg-[#142B4F] hover:border-[rgba(46,230,214,0.25)]"
                       }`}
                     >
                       {theme.emoji && <span className="mr-2">{theme.emoji}</span>}
@@ -283,12 +286,12 @@ export default function Settings() {
 
         <motion.div
           variants={itemVariants}
-          className="flex justify-end pt-4"
+          className="flex justify-end pt-6"
         >
           <Button
             onClick={handleSaveAll}
             disabled={isSaving}
-            className="bg-[#6D28D9] hover:bg-[#8B5CF6] text-[#E5E7EB] font-semibold px-8 h-12 shadow-lg shadow-[#6D28D9]/20 hover:shadow-xl hover:shadow-[#6D28D9]/30 transition-all duration-300"
+            className="bg-[#2EE6D6] hover:bg-[#1CB8A8] text-[#060B14] font-semibold px-8 h-12 shadow-lg shadow-[#2EE6D6]/20 hover:shadow-xl hover:shadow-[#2EE6D6]/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Save className="w-5 h-5 mr-2" />
             {isSaving ? "Salvando..." : "Salvar Configurações"}
