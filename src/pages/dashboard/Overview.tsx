@@ -7,7 +7,6 @@ import { FolderKanban, Bot, Activity, HardDrive, Plus } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useWorkspace } from "@/providers/workspace-provider";
 import { useServer } from "@/providers/server-provider";
-import { useContainer } from "@/providers/container-provider";
 import { t } from "@/i18n";
 import { Button } from "@/components/ui/button";
 
