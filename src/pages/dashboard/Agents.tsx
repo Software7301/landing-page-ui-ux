@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Bot, CheckCircle, XCircle, Server } from "lucide-react";
+import { Bot, CheckCircle, XCircle, Server, Plus } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { t } from "@/i18n";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { AgentManagementPanel } from "@/components/dashboard/AgentManagementPanel";
+import { CreateAgentModal } from "@/components/dashboard/CreateAgentModal";
 import { useAgent } from "@/providers/agent-provider";
 import { useWorkspace } from "@/providers/workspace-provider";
 
@@ -14,6 +16,7 @@ export default function Agents() {
   const { activeWorkspace } = useWorkspace();
   const [selectedAgent, setSelectedAgent] = useState<typeof agents[0] | null>(null);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   const handleAgentClick = (agent: typeof agents[0]) => {
     setSelectedAgent(agent);
@@ -40,13 +43,25 @@ export default function Agents() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
+        className="flex items-center justify-between"
       >
-        <h1 className="text-3xl font-bold text-[#E6EDF3] mb-2">
-          {t("dashboard.agents.title", language)}
-        </h1>
-        <p className="text-[#9FB0C7]">
-          {t("dashboard.agents.subtitle", language)}
-        </p>
+        <div>
+          <h1 className="text-3xl font-bold text-[#E6EDF3] mb-2">
+            {t("dashboard.agents.title", language)}
+          </h1>
+          <p className="text-[#9FB0C7]">
+            {t("dashboard.agents.subtitle", language)}
+          </p>
+        </div>
+        {activeWorkspace && (
+          <Button
+            onClick={() => setIsCreateModalOpen(true)}
+            className="bg-[#6D28D9] hover:bg-[#8B5CF6] text-[#E5E7EB] font-semibold shadow-lg shadow-[#6D28D9]/20 hover:shadow-xl hover:shadow-[#6D28D9]/30 transition-all duration-300"
+          >
+            <Plus className="w-4 h-4 mr-2" />
+            Create Agent
+          </Button>
+        )}
       </motion.div>
 
       {/* Agents List */}
@@ -55,10 +70,19 @@ export default function Agents() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.4 }}
-          className="text-center py-12 rounded-xl border border-[#1C2A3F] bg-[#0E1625]"
+          className="text-center py-12 rounded-xl border border-[rgba(109,40,217,0.15)] bg-[#141C2C]"
         >
-          <Bot className="w-16 h-16 text-[#9FB0C7] mx-auto mb-4 opacity-50" />
-          <p className="text-[#9FB0C7]">Nenhum agente encontrado para este workspace</p>
+          <Bot className="w-16 h-16 text-[#9CA3AF] mx-auto mb-4 opacity-50" />
+          <p className="text-[#9CA3AF] mb-4">Nenhum agente encontrado para este workspace</p>
+          {activeWorkspace && (
+            <Button
+              onClick={() => setIsCreateModalOpen(true)}
+              className="bg-[#6D28D9] hover:bg-[#8B5CF6] text-[#E5E7EB] font-semibold shadow-lg shadow-[#6D28D9]/20 hover:shadow-xl hover:shadow-[#6D28D9]/30 transition-all duration-300"
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Create Agent
+            </Button>
+          )}
         </motion.div>
       ) : (
         <motion.div
@@ -131,6 +155,12 @@ export default function Agents() {
         onClose={() => setIsPanelOpen(false)}
         agent={selectedAgent}
         onAgentUpdate={handleAgentUpdate}
+      />
+
+      {/* Create Agent Modal */}
+      <CreateAgentModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
       />
     </motion.div>
   );
