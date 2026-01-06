@@ -1,19 +1,16 @@
 import { motion } from "framer-motion";
-import { BarChart3, Server, Container, Globe, Cpu, HardDrive, Activity } from "lucide-react";
-import { useLanguage } from "@/hooks/useLanguage";
+import { Server, Container, Globe, Cpu, HardDrive, Activity } from "lucide-react";
 import { useWorkspace } from "@/providers/workspace-provider";
 import { useServer } from "@/providers/server-provider";
 import { useContainer } from "@/providers/container-provider";
 import { useDomain } from "@/providers/domain-provider";
-import { t } from "@/i18n";
 import { cn } from "@/lib/utils";
 
 export default function Metrics() {
-  const { language } = useLanguage();
   const { activeWorkspace } = useWorkspace();
-  const { servers, getServersByWorkspace } = useServer();
-  const { containers, getContainersByWorkspace } = useContainer();
-  const { domains, getDomainsByWorkspace } = useDomain();
+  const { getServersByWorkspace } = useServer();
+  const { getContainersByWorkspace } = useContainer();
+  const { getDomainsByWorkspace } = useDomain();
 
   if (!activeWorkspace) {
     return (

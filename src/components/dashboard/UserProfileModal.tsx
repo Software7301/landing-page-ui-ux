@@ -4,8 +4,6 @@ import { X, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useLanguage } from "@/hooks/useLanguage";
-import { t } from "@/i18n";
 
 interface UserProfileModalProps {
   isOpen: boolean;
@@ -30,7 +28,7 @@ const modalVariants = {
     y: 0,
     transition: {
       duration: 0.3,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   },
   exit: {
@@ -39,13 +37,12 @@ const modalVariants = {
     y: 20,
     transition: {
       duration: 0.2,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   },
 };
 
 export function UserProfileModal({ isOpen, onClose }: UserProfileModalProps) {
-  const { language } = useLanguage();
   const [name, setName] = useState("Max teste");
   const [email, setEmail] = useState("max@example.com");
   const [error, setError] = useState("");

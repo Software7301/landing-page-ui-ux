@@ -11,9 +11,9 @@ import { Button } from "@/components/ui/button";
 export default function Billing() {
   const { language } = useLanguage();
   const { activeWorkspace } = useWorkspace();
-  const { servers, getServersByWorkspace } = useServer();
-  const { containers, getContainersByWorkspace } = useContainer();
-  const { domains, getDomainsByWorkspace } = useDomain();
+  const { getServersByWorkspace } = useServer();
+  const { getContainersByWorkspace } = useContainer();
+  const { getDomainsByWorkspace } = useDomain();
 
   if (!activeWorkspace) {
     return (

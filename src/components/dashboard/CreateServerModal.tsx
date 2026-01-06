@@ -6,8 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useServer } from "@/providers/server-provider";
 import { useWorkspace } from "@/providers/workspace-provider";
-import { useLanguage } from "@/hooks/useLanguage";
-import { t } from "@/i18n";
 
 interface CreateServerModalProps {
   isOpen: boolean;
@@ -41,7 +39,7 @@ const modalVariants = {
     y: 0,
     transition: {
       duration: 0.3,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   },
   exit: {
@@ -50,7 +48,7 @@ const modalVariants = {
     y: 20,
     transition: {
       duration: 0.2,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   },
 };
@@ -58,7 +56,6 @@ const modalVariants = {
 export function CreateServerModal({ isOpen, onClose }: CreateServerModalProps) {
   const { createServer, startServer } = useServer();
   const { activeWorkspace } = useWorkspace();
-  const { language } = useLanguage();
   const [name, setName] = useState("");
   const [region, setRegion] = useState("us-east-1");
   const [error, setError] = useState("");

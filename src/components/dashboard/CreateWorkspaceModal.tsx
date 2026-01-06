@@ -9,8 +9,6 @@ import { useServer } from "@/providers/server-provider";
 import { useContainer } from "@/providers/container-provider";
 import { useDomain } from "@/providers/domain-provider";
 import { useAgent } from "@/providers/agent-provider";
-import { useLanguage } from "@/hooks/useLanguage";
-import { t } from "@/i18n";
 
 interface CreateWorkspaceModalProps {
   isOpen: boolean;
@@ -35,7 +33,7 @@ const modalVariants = {
     y: 0,
     transition: {
       duration: 0.3,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   },
   exit: {
@@ -44,7 +42,7 @@ const modalVariants = {
     y: 20,
     transition: {
       duration: 0.2,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   },
 };
@@ -55,7 +53,6 @@ export function CreateWorkspaceModal({ isOpen, onClose }: CreateWorkspaceModalPr
   const { createContainer, startContainer } = useContainer();
   const { createDomain } = useDomain();
   const { createAgent, startAgent } = useAgent();
-  const { language } = useLanguage();
   const [name, setName] = useState("");
   const [error, setError] = useState("");
 

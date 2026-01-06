@@ -26,13 +26,12 @@ export default function Overview() {
   const { language } = useLanguage();
   const { workspaces, activeWorkspace } = useWorkspace();
   const { servers, getServersByWorkspace } = useServer();
-  const { containers, getContainersByWorkspace } = useContainer();
+  const { containers } = useContainer();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const totalWorkspaces = workspaces.length;
   const activeServers = servers.filter(s => s.status === "online").length;
   const totalServers = servers.length;
-  const activeContainers = containers.filter(c => c.status === "running").length;
   
   const onlineServers = servers.filter(s => s.status === "online");
   const avgCpu = onlineServers.length > 0

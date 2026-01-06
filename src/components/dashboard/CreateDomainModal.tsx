@@ -7,8 +7,6 @@ import { Label } from "@/components/ui/label";
 import { useDomain } from "@/providers/domain-provider";
 import { useWorkspace } from "@/providers/workspace-provider";
 import { useContainer } from "@/providers/container-provider";
-import { useLanguage } from "@/hooks/useLanguage";
-import { t } from "@/i18n";
 
 interface CreateDomainModalProps {
   isOpen: boolean;
@@ -33,7 +31,7 @@ const modalVariants = {
     y: 0,
     transition: {
       duration: 0.3,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   },
   exit: {
@@ -42,7 +40,7 @@ const modalVariants = {
     y: 20,
     transition: {
       duration: 0.2,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   },
 };
@@ -51,7 +49,6 @@ export function CreateDomainModal({ isOpen, onClose }: CreateDomainModalProps) {
   const { createDomain } = useDomain();
   const { activeWorkspace } = useWorkspace();
   const { getContainersByWorkspace } = useContainer();
-  const { language } = useLanguage();
   const [domain, setDomain] = useState("");
   const [containerName, setContainerName] = useState("");
   const [dnsType, setDnsType] = useState<"A" | "CNAME">("A");

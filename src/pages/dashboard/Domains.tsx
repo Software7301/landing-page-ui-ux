@@ -29,7 +29,6 @@ export default function Domains() {
   const { language } = useLanguage();
   const { activeWorkspace } = useWorkspace();
   const { 
-    domains, 
     getDomainsByWorkspace, 
     deleteDomain, 
     renewSSL 

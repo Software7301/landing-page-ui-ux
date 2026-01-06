@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Bot, Server, Activity, Cpu, HardDrive, RefreshCw, Power, Trash2, Download, Settings, Clock } from "lucide-react";
-import { useLanguage } from "@/hooks/useLanguage";
-import { t } from "@/i18n";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useAgent, type Agent } from "@/providers/agent-provider";
@@ -25,7 +23,6 @@ interface AgentManagementPanelProps {
 }
 
 export function AgentManagementPanel({ isOpen, onClose, agent, onAgentUpdate }: AgentManagementPanelProps) {
-  const { language } = useLanguage();
   const { startAgent, stopAgent, restartAgent, updateAgentVersion, deleteAgent } = useAgent();
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);

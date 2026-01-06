@@ -29,7 +29,6 @@ export default function Containers() {
   const { language } = useLanguage();
   const { activeWorkspace } = useWorkspace();
   const { 
-    containers, 
     getContainersByWorkspace, 
     deleteContainer, 
     startContainer, 

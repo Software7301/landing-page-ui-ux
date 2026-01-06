@@ -30,7 +30,6 @@ export default function Servers() {
   const { language } = useLanguage();
   const { activeWorkspace } = useWorkspace();
   const { 
-    servers, 
     getServersByWorkspace, 
     deleteServer, 
     restartServer, 

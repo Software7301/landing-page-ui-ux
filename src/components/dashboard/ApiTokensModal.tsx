@@ -4,9 +4,6 @@ import { X, Key, Plus, Copy, Trash2, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useLanguage } from "@/hooks/useLanguage";
-import { t } from "@/i18n";
-import { cn } from "@/lib/utils";
 
 interface ApiToken {
   id: string;
@@ -39,7 +36,7 @@ const modalVariants = {
     y: 0,
     transition: {
       duration: 0.3,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   },
   exit: {
@@ -48,13 +45,12 @@ const modalVariants = {
     y: 20,
     transition: {
       duration: 0.2,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   },
 };
 
 export function ApiTokensModal({ isOpen, onClose }: ApiTokensModalProps) {
-  const { language } = useLanguage();
   const [tokens, setTokens] = useState<ApiToken[]>(() => {
     const stored = localStorage.getItem('apiTokens');
     if (stored) {
