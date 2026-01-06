@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { DashboardSidebar } from "./DashboardSidebar";
 import { DashboardHeader } from "./DashboardHeader";
@@ -7,8 +8,11 @@ import { ServerProvider } from "@/providers/server-provider";
 import { ContainerProvider } from "@/providers/container-provider";
 import { DomainProvider } from "@/providers/domain-provider";
 import { AgentProvider } from "@/providers/agent-provider";
+import { CommandPalette } from "@/components/CommandPalette";
 
 export function DashboardLayout() {
+  const [commandOpen, setCommandOpen] = useState(false);
+
   return (
     <DashboardPasswordGate>
       <WorkspaceProvider>
@@ -24,6 +28,7 @@ export function DashboardLayout() {
                       <Outlet />
                     </main>
                   </div>
+                  <CommandPalette open={commandOpen} onOpenChange={setCommandOpen} />
                 </div>
               </AgentProvider>
             </DomainProvider>
