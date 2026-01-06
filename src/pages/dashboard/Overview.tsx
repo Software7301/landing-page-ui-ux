@@ -26,7 +26,6 @@ export default function Overview() {
   const { language } = useLanguage();
   const { workspaces, activeWorkspace } = useWorkspace();
   const { servers, getServersByWorkspace } = useServer();
-  const { containers } = useContainer();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const totalWorkspaces = workspaces.length;

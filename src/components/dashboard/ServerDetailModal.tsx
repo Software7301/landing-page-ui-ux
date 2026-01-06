@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Server, MapPin, Activity, Cpu, HardDrive, Globe, Monitor } from "lucide-react";
 import type { Server as ServerType } from "@/providers/server-provider";
+import { useLanguage } from "@/hooks/useLanguage";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
