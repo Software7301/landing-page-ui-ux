@@ -71,7 +71,7 @@ export default function Agents() {
             }}
           >
             <Plus className="w-4 h-4 mr-2" />
-            Create Agent
+            {t("dashboard.agents.create", language)}
           </Button>
         )}
       </motion.div>
@@ -90,7 +90,7 @@ export default function Agents() {
         >
           <Bot className="w-16 h-16 mx-auto mb-4 opacity-50 transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }} />
           <p className="mb-4 transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
-            Nenhum agente encontrado para este workspace
+            {t("dashboard.agents.emptyTitle", language)}
           </p>
           {activeWorkspace && (
             <Button
@@ -180,7 +180,7 @@ export default function Agents() {
             <div className="space-y-2">
               <div className="flex items-center justify-between text-sm">
                 <span className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
-                  Status:
+                  {t("dashboard.agents.status", language)}:
                 </span>
                 <span
                   className="px-2 py-1 rounded-md text-xs font-medium backdrop-blur-sm border transition-colors duration-300"
@@ -194,12 +194,14 @@ export default function Agents() {
                     borderColor: "var(--color-error)30",
                   }}
                 >
-                  {agent.status === "online" ? "Online" : "Offline"}
+                  {agent.status === "online" 
+                    ? t("dashboard.agents.statusOnline", language) 
+                    : t("dashboard.agents.statusOffline", language)}
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">
                 <span className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
-                  Last Heartbeat:
+                  {t("dashboard.agents.lastHeartbeat", language)}:
                 </span>
                 <span className="transition-colors duration-300" style={{ color: "var(--color-text)" }}>
                   {agent.lastHeartbeat}
@@ -208,7 +210,7 @@ export default function Agents() {
               <div className="flex items-center justify-between text-sm">
                 <span className="flex items-center gap-1 transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
                   <Server className="w-4 h-4" />
-                  Server:
+                  {t("dashboard.agents.server", language)}:
                 </span>
                 <span className="transition-colors duration-300" style={{ color: "var(--color-text)" }}>
                   {agent.serverName}

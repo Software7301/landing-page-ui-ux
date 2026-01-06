@@ -444,7 +444,9 @@
       "subtitle": "Manage your workspaces",
       "create": "Create Workspace",
       "emptyTitle": "No workspaces found",
-      "emptyDesc": "Create your first workspace to start managing your infrastructure"
+      "emptyDesc": "Create your first workspace to start managing your infrastructure",
+      "statusActive": "Active",
+      "statusInactive": "Inactive"
     },
     "servers": {
       "title": "Servers",
@@ -458,11 +460,30 @@
       "viewDetails": "View Details",
       "restart": "Restart",
       "stop": "Stop",
-      "delete": "Delete"
+      "delete": "Delete",
+      "create": "Create Server",
+      "selectWorkspace": "Select a workspace to manage servers",
+      "emptyTitle": "No servers found",
+      "emptyDesc": "Create your first server to start managing your infrastructure.",
+      "deleteTitle": "Delete Server",
+      "deleteDescription": "Are you sure you want to delete the server \"{{name}}\"? This action cannot be undone.",
+      "deleteButton": "Delete",
+      "start": "Start",
+      "statusOnline": "Online",
+      "statusOffline": "Offline",
+      "agentConnected": "Connected",
+      "agentDisconnected": "Disconnected"
     },
     "agents": {
       "title": "Agents",
-      "subtitle": "Monitor and manage your agents"
+      "subtitle": "Monitor and manage your agents",
+      "create": "Create Agent",
+      "emptyTitle": "No agents found for this workspace",
+      "status": "Status",
+      "lastHeartbeat": "Last Heartbeat",
+      "server": "Server",
+      "statusOnline": "Online",
+      "statusOffline": "Offline"
     },
     "containers": {
       "title": "Containers",
@@ -477,12 +498,33 @@
       "stop": "Stop",
       "restart": "Restart",
       "logs": "Logs",
-      "remove": "Remove"
+      "remove": "Remove",
+      "create": "Create Container",
+      "selectWorkspace": "Select a workspace to manage containers",
+      "emptyTitle": "No containers found",
+      "emptyDesc": "Create your first container to start managing your Docker applications.",
+      "removeTitle": "Remove Container",
+      "removeDescription": "Are you sure you want to remove the container \"{{name}}\"? This action cannot be undone.",
+      "removeButton": "Remove",
+      "cancel": "Cancel",
+      "statusRunning": "Running",
+      "statusRestarting": "Restarting",
+      "statusStopped": "Stopped"
     },
     "domains": {
       "title": "Domains",
       "subtitle": "Manage your domains and SSL",
-      "add": "Add Domain"
+      "add": "Add Domain",
+      "selectWorkspace": "Select a workspace to manage domains",
+      "emptyTitle": "No domains found",
+      "emptyDesc": "Add your first domain to start managing SSL and DNS.",
+      "removeTitle": "Remove Domain",
+      "removeDescription": "Are you sure you want to remove the domain \"{{domain}}\"? This action cannot be undone.",
+      "removeButton": "Remove",
+      "renewSSL": "Renew SSL",
+      "sslStatusActive": "Active",
+      "sslStatusPending": "Pending",
+      "sslStatusExpired": "Expired"
     },
     "billing": {
       "title": "Billing",
@@ -506,7 +548,53 @@
     },
     "settings": {
       "title": "Settings",
-      "subtitle": "Configure your preferences"
+      "subtitle": "Configure your preferences",
+      "workspaceSettings": "Workspace Settings",
+      "workspaceName": "Workspace Name",
+      "workspaceNamePlaceholder": "Workspace name",
+      "members": "Members",
+      "membersDescription": "Invite members to collaborate on this workspace",
+      "membersDescription2": "Coming soon you will be able to manage permissions and access.",
+      "permissions": "Permissions",
+      "permissionsDescription": "Control permissions and access",
+      "permissionsDescription2": "Coming soon you will be able to define detailed permissions for each member.",
+      "userProfile": "User Profile",
+      "firstName": "First Name",
+      "firstNamePlaceholder": "Your first name",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Your last name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "apiTokens": "API Tokens",
+      "apiTokensDescription": "Manage your API keys for programmatic access.",
+      "manageTokens": "Manage Tokens",
+      "saveSettings": "Save Settings",
+      "saving": "Saving...",
+      "saveSuccess": "Settings saved successfully!"
+    },
+    "container": {
+      "create": {
+        "title": "Create Container",
+        "nameLabel": "Container Name",
+        "namePlaceholder": "e.g., my-app",
+        "imageLabel": "Docker Image",
+        "imagePlaceholder": "e.g., nginx:latest",
+        "portLabel": "Port",
+        "portPlaceholder": "e.g., 8080",
+        "serverLabel": "Server",
+        "serverPlaceholder": "Select a server",
+        "noWorkspaceSelected": "No workspace selected",
+        "noServersAvailable": "No servers available",
+        "serverNotFound": "Server not found",
+        "success": "Container {{name}} created successfully",
+        "error": "Error creating container",
+        "cancelButton": "Cancel",
+        "creatingButton": "Creating...",
+        "createButton": "Create Container"
+      }
+    },
+    "containers": {
+      "create": "Create Container"
     },
     "table": {
       "title": "Overview",

@@ -92,7 +92,7 @@ export default function Containers() {
         className="flex flex-col items-center justify-center min-h-[400px] space-y-4"
       >
         <h2 className="text-2xl font-bold transition-colors duration-300" style={{ color: "var(--color-text)" }}>
-          Selecione um workspace para gerenciar containers
+          {t("dashboard.containers.selectWorkspace", language)}
         </h2>
       </motion.div>
     );
@@ -235,7 +235,11 @@ export default function Containers() {
                           borderColor: "var(--color-error)30",
                         }}
                       >
-                        {container.status === "running" ? "Running" : container.status === "restarting" ? "Restarting" : "Stopped"}
+                        {container.status === "running" 
+                          ? t("dashboard.containers.statusRunning", language) 
+                          : container.status === "restarting" 
+                          ? t("dashboard.containers.statusRestarting", language) 
+                          : t("dashboard.containers.statusStopped", language)}
                       </span>
                     </td>
                     <td className="px-6 py-4 text-sm transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
@@ -429,10 +433,10 @@ export default function Containers() {
         >
           <AlertDialogHeader>
             <AlertDialogTitle className="transition-colors duration-300" style={{ color: "var(--color-text)" }}>
-              Remover Container
+              {t("dashboard.containers.removeTitle", language)}
             </AlertDialogTitle>
             <AlertDialogDescription className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
-              Tem certeza que deseja remover o container "{containerToDelete?.name}"? Esta ação não pode ser desfeita.
+              {t("dashboard.containers.removeDescription", language, { name: containerToDelete?.name || "" })}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -451,7 +455,7 @@ export default function Containers() {
                 e.currentTarget.style.backgroundColor = "transparent";
               }}
             >
-              Cancelar
+              {t("dashboard.containers.cancel", language)}
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteConfirm}
@@ -467,7 +471,7 @@ export default function Containers() {
                 e.currentTarget.style.backgroundColor = "var(--color-error)";
               }}
             >
-              Remover
+              {t("dashboard.containers.removeButton", language)}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

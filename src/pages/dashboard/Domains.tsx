@@ -72,7 +72,7 @@ export default function Domains() {
         className="flex flex-col items-center justify-center min-h-[400px] space-y-4"
       >
         <h2 className="text-2xl font-bold transition-colors duration-300" style={{ color: "var(--color-text)" }}>
-          Selecione um workspace para gerenciar domínios
+          {t("dashboard.domains.selectWorkspace", language)}
         </h2>
       </motion.div>
     );
@@ -224,7 +224,7 @@ export default function Domains() {
                           }}
                         >
                           <RefreshCw className="mr-2 h-4 w-4" />
-                          Renovar SSL
+                          {t("dashboard.domains.renewSSL", language)}
                         </DropdownMenuItem>
                       )}
                       <DropdownMenuItem 
@@ -239,7 +239,7 @@ export default function Domains() {
                         }}
                       >
                         <Trash2 className="mr-2 h-4 w-4" />
-                        Remover
+                        {t("dashboard.domains.removeButton", language)}
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
@@ -267,10 +267,10 @@ export default function Domains() {
                     }}
                   >
                     {domain.sslStatus === "active"
-                      ? "Active"
+                      ? t("dashboard.domains.sslStatusActive", language)
                       : domain.sslStatus === "pending"
-                      ? "Pending"
-                      : "Expired"}
+                      ? t("dashboard.domains.sslStatusPending", language)
+                      : t("dashboard.domains.sslStatusExpired", language)}
                   </span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
@@ -316,10 +316,10 @@ export default function Domains() {
               <Globe className="w-8 h-8 transition-colors duration-300" style={{ color: "var(--color-primary)" }} />
             </div>
             <h3 className="text-xl font-semibold mb-2 transition-colors duration-300" style={{ color: "var(--color-text)" }}>
-              Nenhum domínio encontrado
+              {t("dashboard.domains.emptyTitle", language)}
             </h3>
             <p className="mb-6 transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
-              Adicione seu primeiro domínio para começar a gerenciar SSL e DNS.
+              {t("dashboard.domains.emptyDesc", language)}
             </p>
             <Button
               onClick={() => setIsCreateModalOpen(true)}
@@ -336,7 +336,7 @@ export default function Domains() {
               }}
             >
               <Plus className="w-4 h-4 mr-2" />
-              Adicionar Domínio
+              {t("dashboard.domains.add", language)}
             </Button>
           </div>
         </motion.div>
@@ -358,10 +358,10 @@ export default function Domains() {
         >
           <AlertDialogHeader>
             <AlertDialogTitle className="transition-colors duration-300" style={{ color: "var(--color-text)" }}>
-              Remover Domínio
+              {t("dashboard.domains.removeTitle", language)}
             </AlertDialogTitle>
             <AlertDialogDescription className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
-              Tem certeza que deseja remover o domínio "{domainToDelete?.domain}"? Esta ação não pode ser desfeita.
+              {t("dashboard.domains.removeDescription", language, { domain: domainToDelete?.domain || "" })}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -380,7 +380,7 @@ export default function Domains() {
                 e.currentTarget.style.backgroundColor = "transparent";
               }}
             >
-              Cancelar
+              {t("dashboard.containers.cancel", language)}
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteConfirm}
@@ -396,7 +396,7 @@ export default function Domains() {
                 e.currentTarget.style.backgroundColor = "var(--color-error)";
               }}
             >
-              Remover
+              {t("dashboard.domains.removeButton", language)}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

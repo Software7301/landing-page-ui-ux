@@ -433,7 +433,9 @@
       "subtitle": "Gerencie seus workspaces",
       "create": "Criar Workspace",
       "emptyTitle": "Nenhum workspace encontrado",
-      "emptyDesc": "Crie seu primeiro workspace para começar a gerenciar sua infraestrutura"
+      "emptyDesc": "Crie seu primeiro workspace para começar a gerenciar sua infraestrutura",
+      "statusActive": "Ativo",
+      "statusInactive": "Inativo"
     },
     "servers": {
       "title": "Servidores",
@@ -447,11 +449,30 @@
       "viewDetails": "Ver Detalhes",
       "restart": "Reiniciar",
       "stop": "Parar",
-      "delete": "Deletar"
+      "delete": "Deletar",
+      "create": "Criar Servidor",
+      "selectWorkspace": "Selecione um workspace para gerenciar servidores",
+      "emptyTitle": "Nenhum servidor encontrado",
+      "emptyDesc": "Crie seu primeiro servidor para começar a gerenciar sua infraestrutura.",
+      "deleteTitle": "Deletar Servidor",
+      "deleteDescription": "Tem certeza que deseja deletar o servidor \"{{name}}\"? Esta ação não pode ser desfeita.",
+      "deleteButton": "Deletar",
+      "start": "Iniciar",
+      "statusOnline": "Online",
+      "statusOffline": "Offline",
+      "agentConnected": "Conectado",
+      "agentDisconnected": "Desconectado"
     },
     "agents": {
       "title": "Agentes",
-      "subtitle": "Monitore e gerencie seus agentes"
+      "subtitle": "Monitore e gerencie seus agentes",
+      "create": "Criar Agente",
+      "emptyTitle": "Nenhum agente encontrado para este workspace",
+      "status": "Status",
+      "lastHeartbeat": "Último Heartbeat",
+      "server": "Servidor",
+      "statusOnline": "Online",
+      "statusOffline": "Offline"
     },
     "containers": {
       "title": "Containers",
@@ -466,12 +487,33 @@
       "stop": "Parar",
       "restart": "Reiniciar",
       "logs": "Logs",
-      "remove": "Remover"
+      "remove": "Remover",
+      "create": "Criar Container",
+      "selectWorkspace": "Selecione um workspace para gerenciar containers",
+      "emptyTitle": "Nenhum container encontrado",
+      "emptyDesc": "Crie seu primeiro container para começar a gerenciar suas aplicações Docker.",
+      "removeTitle": "Remover Container",
+      "removeDescription": "Tem certeza que deseja remover o container \"{{name}}\"? Esta ação não pode ser desfeita.",
+      "removeButton": "Remover",
+      "cancel": "Cancelar",
+      "statusRunning": "Rodando",
+      "statusRestarting": "Reiniciando",
+      "statusStopped": "Parado"
     },
     "domains": {
       "title": "Domínios",
       "subtitle": "Gerencie seus domínios e SSL",
-      "add": "Adicionar Domínio"
+      "add": "Adicionar Domínio",
+      "selectWorkspace": "Selecione um workspace para gerenciar domínios",
+      "emptyTitle": "Nenhum domínio encontrado",
+      "emptyDesc": "Adicione seu primeiro domínio para começar a gerenciar SSL e DNS.",
+      "removeTitle": "Remover Domínio",
+      "removeDescription": "Tem certeza que deseja remover o domínio \"{{domain}}\"? Esta ação não pode ser desfeita.",
+      "removeButton": "Remover",
+      "renewSSL": "Renovar SSL",
+      "sslStatusActive": "Ativo",
+      "sslStatusPending": "Pendente",
+      "sslStatusExpired": "Expirado"
     },
     "billing": {
       "title": "Faturamento",
@@ -495,7 +537,53 @@
     },
     "settings": {
       "title": "Configurações",
-      "subtitle": "Configure suas preferências"
+      "subtitle": "Configure suas preferências",
+      "workspaceSettings": "Configurações do Workspace",
+      "workspaceName": "Nome do Workspace",
+      "workspaceNamePlaceholder": "Nome do workspace",
+      "members": "Membros",
+      "membersDescription": "Convide membros para colaborar neste workspace",
+      "membersDescription2": "Em breve você poderá gerenciar permissões e acessos.",
+      "permissions": "Permissões",
+      "permissionsDescription": "Controle de permissões e acessos",
+      "permissionsDescription2": "Em breve você poderá definir permissões detalhadas para cada membro.",
+      "userProfile": "Perfil do Usuário",
+      "firstName": "Nome",
+      "firstNamePlaceholder": "Seu nome",
+      "lastName": "Sobrenome",
+      "lastNamePlaceholder": "Seu sobrenome",
+      "email": "Email",
+      "emailPlaceholder": "seu@email.com",
+      "apiTokens": "Tokens de API",
+      "apiTokensDescription": "Gerencie suas chaves de API para acesso programático.",
+      "manageTokens": "Gerenciar Tokens",
+      "saveSettings": "Salvar Configurações",
+      "saving": "Salvando...",
+      "saveSuccess": "Configurações salvas com sucesso!"
+    },
+    "container": {
+      "create": {
+        "title": "Criar Container",
+        "nameLabel": "Nome do Container",
+        "namePlaceholder": "ex: minha-app",
+        "imageLabel": "Imagem Docker",
+        "imagePlaceholder": "ex: nginx:latest",
+        "portLabel": "Porta",
+        "portPlaceholder": "ex: 8080",
+        "serverLabel": "Servidor",
+        "serverPlaceholder": "Selecione um servidor",
+        "noWorkspaceSelected": "Nenhum workspace selecionado",
+        "noServersAvailable": "Nenhum servidor disponível",
+        "serverNotFound": "Servidor não encontrado",
+        "success": "Container {{name}} criado com sucesso",
+        "error": "Erro ao criar container",
+        "cancelButton": "Cancelar",
+        "creatingButton": "Criando...",
+        "createButton": "Criar Container"
+      }
+    },
+    "containers": {
+      "create": "Criar Container"
     },
     "table": {
       "title": "Visão Geral",

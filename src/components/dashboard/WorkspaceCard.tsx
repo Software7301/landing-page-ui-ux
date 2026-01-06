@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { FolderKanban, Server, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/hooks/useLanguage";
+import { t } from "@/i18n";
 
 interface WorkspaceCardProps {
   id: string;
@@ -18,6 +20,8 @@ export function WorkspaceCard({
   serversCount,
   delay = 0,
 }: WorkspaceCardProps) {
+  const { language } = useLanguage();
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -97,12 +101,14 @@ export function WorkspaceCard({
                     borderColor: "var(--color-border)",
                   }}
                 >
-                  {status === "active" ? "Active" : "Inactive"}
+                  {status === "active" 
+                    ? t("dashboard.workspaces.statusActive", language) 
+                    : t("dashboard.workspaces.statusInactive", language)}
                 </span>
               </div>
               <div className="flex items-center gap-2 text-sm transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
                 <Server className="w-4 h-4" />
-                <span>{serversCount} servidor{serversCount !== 1 ? "es" : ""}</span>
+                <span>{serversCount} {serversCount !== 1 ? t("dashboard.servers.title", language) : t("dashboard.servers.title", language)}</span>
               </div>
             </div>
           </div>

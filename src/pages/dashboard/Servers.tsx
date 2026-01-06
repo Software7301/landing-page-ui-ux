@@ -92,7 +92,7 @@ export default function Servers() {
         className="flex flex-col items-center justify-center min-h-[400px] space-y-4"
       >
         <h2 className="text-2xl font-bold transition-colors duration-300" style={{ color: "var(--color-text)" }}>
-          Selecione um workspace para gerenciar servidores
+          {t("dashboard.servers.selectWorkspace", language)}
         </h2>
       </motion.div>
     );
@@ -211,7 +211,9 @@ export default function Servers() {
                           borderColor: "var(--color-error)30",
                         }}
                       >
-                        {server.status === "online" ? "Online" : "Offline"}
+                        {server.status === "online" 
+                          ? t("dashboard.servers.statusOnline", language) 
+                          : t("dashboard.servers.statusOffline", language)}
                       </span>
                     </td>
                     <td className="px-6 py-4">
@@ -227,7 +229,9 @@ export default function Servers() {
                           borderColor: "var(--color-border)",
                         }}
                       >
-                        {server.agentConnected ? "Connected" : "Disconnected"}
+                        {server.agentConnected 
+                          ? t("dashboard.servers.agentConnected", language) 
+                          : t("dashboard.servers.agentDisconnected", language)}
                       </span>
                     </td>
                     <td className="px-6 py-4 text-sm transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
@@ -320,7 +324,7 @@ export default function Servers() {
                               }}
                             >
                               <Play className="mr-2 h-4 w-4" />
-                              Iniciar
+                              {t("dashboard.servers.start", language)}
                             </DropdownMenuItem>
                           )}
                           <DropdownMenuItem 
@@ -368,10 +372,10 @@ export default function Servers() {
               <Server className="w-8 h-8 transition-colors duration-300" style={{ color: "var(--color-primary)" }} />
             </div>
             <h3 className="text-xl font-semibold mb-2 transition-colors duration-300" style={{ color: "var(--color-text)" }}>
-              Nenhum servidor encontrado
+              {t("dashboard.servers.emptyTitle", language)}
             </h3>
             <p className="mb-6 transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
-              Crie seu primeiro servidor para começar a gerenciar sua infraestrutura.
+              {t("dashboard.servers.emptyDesc", language)}
             </p>
             <Button
               onClick={() => setIsCreateModalOpen(true)}
@@ -388,7 +392,7 @@ export default function Servers() {
               }}
             >
               <Plus className="w-4 h-4 mr-2" />
-              Criar Servidor
+              {t("dashboard.servers.create", language)}
             </Button>
           </div>
         </motion.div>
@@ -415,10 +419,10 @@ export default function Servers() {
         >
           <AlertDialogHeader>
             <AlertDialogTitle className="transition-colors duration-300" style={{ color: "var(--color-text)" }}>
-              Deletar Servidor
+              {t("dashboard.servers.deleteTitle", language)}
             </AlertDialogTitle>
             <AlertDialogDescription className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
-              Tem certeza que deseja deletar o servidor "{serverToDelete?.name}"? Esta ação não pode ser desfeita.
+              {t("dashboard.servers.deleteDescription", language, { name: serverToDelete?.name || "" })}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -437,7 +441,7 @@ export default function Servers() {
                 e.currentTarget.style.backgroundColor = "transparent";
               }}
             >
-              Cancelar
+              {t("dashboard.containers.cancel", language)}
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteConfirm}
@@ -453,7 +457,7 @@ export default function Servers() {
                 e.currentTarget.style.backgroundColor = "var(--color-error)";
               }}
             >
-              Deletar
+              {t("dashboard.servers.deleteButton", language)}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
