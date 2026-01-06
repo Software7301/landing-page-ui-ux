@@ -4,7 +4,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { t } from "@/i18n";
 import { Globe, Server, Zap, Shield } from "lucide-react";
 
-const GlobalMap = lazy(() => import("@/components/GlobalMap").then(module => ({ default: module.GlobalMap })));
+const CesiumMap = lazy(() => import("@/components/3d/CesiumMap").then(module => ({ default: module.CesiumMap })));
 
 const stats = [
   { icon: Globe, value: "15+", label: "Regions" },
@@ -145,19 +145,30 @@ export default function Infrastructure() {
             viewport={{ once: true, margin: "-50px" }}
             className="relative"
           >
-            <div className="relative w-full h-full min-h-[500px] rounded-lg bg-gradient-to-br from-[#1E293B] via-[#0F172A] to-[#1E293B] border border-[rgba(109,40,217,0.2)] p-8 overflow-hidden shadow-2xl shadow-[#6D28D9]/10">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#6D28D9]/10 via-transparent to-[#22D3EE]/10 pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-radial from-[#8B5CF6]/5 via-transparent to-transparent pointer-events-none" style={{ background: 'radial-gradient(circle at 30% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 50%)' }} />
+            <motion.div
+              className="h-[600px] w-full rounded-lg overflow-hidden"
+              variants={{
+                animate: {
+                  y: [0, -10, 0],
+                  transition: {
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut" as const,
+                  },
+                },
+              }}
+              animate="animate"
+            >
               <Suspense
                 fallback={
-                  <div className="w-full h-full flex items-center justify-center">
+                  <div className="w-full h-full min-h-[600px] bg-[#0B0F17] flex items-center justify-center">
                     <div className="w-8 h-8 border-2 border-[#6D28D9] border-t-transparent rounded-full animate-spin" />
                   </div>
                 }
               >
-                <GlobalMap />
+                <CesiumMap height="600px" />
               </Suspense>
-            </div>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

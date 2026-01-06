@@ -22,11 +22,12 @@ interface CesiumMapProps {
 }
 
 const defaultNetworkNodes: NetworkNode[] = [
-  { id: '1', ip: '192.168.1.100', location: 'São Paulo, BR', coordinates: [-46.6333, -23.5505], status: 'online' },
-  { id: '2', ip: '10.0.0.45', location: 'New York, US', coordinates: [-74.0060, 40.7128], status: 'online' },
-  { id: '3', ip: '172.16.0.12', location: 'London, UK', coordinates: [-0.1276, 51.5074], status: 'online' },
-  { id: '4', ip: '203.0.113.78', location: 'Tokyo, JP', coordinates: [139.6503, 35.6762], status: 'online' },
-  { id: '5', ip: '198.51.100.34', location: 'Sydney, AU', coordinates: [151.2093, -33.8688], status: 'online' },
+  { id: '1', ip: '10.0.0.45', location: 'US East', coordinates: [-74.0060, 40.7128], status: 'online' },
+  { id: '2', ip: '10.0.0.46', location: 'US West', coordinates: [-122.4194, 37.7749], status: 'online' },
+  { id: '3', ip: '172.16.0.12', location: 'EU Central', coordinates: [8.6821, 50.1109], status: 'online' },
+  { id: '4', ip: '172.16.0.13', location: 'EU West', coordinates: [-0.1276, 51.5074], status: 'online' },
+  { id: '5', ip: '203.0.113.78', location: 'Asia Pacific', coordinates: [139.6503, 35.6762], status: 'online' },
+  { id: '6', ip: '192.168.1.100', location: 'South America', coordinates: [-46.6333, -23.5505], status: 'online' },
 ];
 
 interface TooltipState {
@@ -61,8 +62,7 @@ function ViewerConfig({
     viewer.scene.screenSpaceCameraController.enableTilt = false;
     viewer.scene.screenSpaceCameraController.enableLook = false;
 
-    // Configurar globo com cores grafite
-    viewer.scene.globe.enableLighting = false;
+    viewer.scene.globe.enableLighting = true;
     viewer.scene.globe.showWaterEffect = false;
     
     const canvas = document.createElement('canvas');
@@ -71,18 +71,24 @@ function ViewerConfig({
     const ctx = canvas.getContext('2d');
     
     if (ctx) {
-      ctx.fillStyle = '#1a1a1a';
+      const gradient = ctx.createLinearGradient(0, 0, 512, 256);
+      gradient.addColorStop(0, '#1E293B');
+      gradient.addColorStop(0.5, '#0F172A');
+      gradient.addColorStop(1, '#1E293B');
+      ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, 512, 256);
-      ctx.fillStyle = '#2a2a2a';
       
+      ctx.fillStyle = '#334155';
       ctx.beginPath();
       ctx.ellipse(128, 128, 60, 100, 0, 0, Math.PI * 2);
       ctx.fill();
       
+      ctx.fillStyle = '#475569';
       ctx.beginPath();
       ctx.ellipse(320, 128, 100, 80, 0, 0, Math.PI * 2);
       ctx.fill();
       
+      ctx.fillStyle = '#334155';
       ctx.beginPath();
       ctx.ellipse(420, 180, 40, 30, 0, 0, Math.PI * 2);
       ctx.fill();
@@ -97,14 +103,15 @@ function ViewerConfig({
     
     viewer.scene.globe.imageryLayers.removeAll();
     viewer.scene.globe.imageryLayers.addImageryProvider(imageryProvider);
-    viewer.scene.globe.baseColor = Cesium.Color.WHITE.withAlpha(0);
+    viewer.scene.globe.baseColor = Cesium.Color.fromCssColorString('#64748B').withAlpha(0.3);
     
     if (viewer.scene.skyBox) viewer.scene.skyBox.show = false;
-    if (viewer.scene.sun) viewer.scene.sun.show = false;
+    if (viewer.scene.sun) viewer.scene.sun.show = true;
     if (viewer.scene.moon) viewer.scene.moon.show = false;
-    if (viewer.scene.skyAtmosphere) viewer.scene.skyAtmosphere.show = false;
+    if (viewer.scene.skyAtmosphere) viewer.scene.skyAtmosphere.show = true;
     
-    viewer.scene.backgroundColor = Cesium.Color.fromCssColorString('#0B0B0F');
+    viewer.scene.backgroundColor = Cesium.Color.fromCssColorString('#0B0F17');
+    viewer.scene.globe.atmosphereLightIntensity = 2.0;
 
     viewer.camera.flyTo({
       destination: Cesium.Cartesian3.fromDegrees(0, 0, 28000000),
@@ -195,14 +202,14 @@ export function CesiumMap({ networkNodes = defaultNetworkNodes, height = '100%' 
 
   if (!mounted) {
     return (
-      <div className="w-full h-full bg-[#0B0B0F] flex items-center justify-center" style={{ height }}>
+      <div className="w-full h-full bg-[#0B0F17] flex items-center justify-center" style={{ height }}>
         <div className="text-[#9CA3AF] text-sm">Loading globe...</div>
       </div>
     );
   }
 
   return (
-    <div ref={containerRef} className="w-full h-full relative bg-gradient-to-b from-transparent via-[#1a0d2e]/10 to-transparent" style={{ height }}>
+    <div ref={containerRef} className="w-full h-full relative bg-gradient-to-b from-[#0B0F17] via-[#101827] to-[#0B0F17]" style={{ height }}>
       <Viewer
         full
         className="cesium-viewer-custom"
@@ -229,12 +236,13 @@ export function CesiumMap({ networkNodes = defaultNetworkNodes, height = '100%' 
             id={node.id}
             position={Cesium.Cartesian3.fromDegrees(node.coordinates[0], node.coordinates[1], 0)}
             point={{
-              pixelSize: 10,
-              color: Cesium.Color.fromCssColorString('#7C3AED'),
-              outlineColor: Cesium.Color.fromCssColorString('#7C3AED').withAlpha(0.5),
-              outlineWidth: 1,
+              pixelSize: 12,
+              color: Cesium.Color.fromCssColorString('#6D28D9'),
+              outlineColor: Cesium.Color.fromCssColorString('#8B5CF6').withAlpha(0.8),
+              outlineWidth: 2,
               heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-              scaleByDistance: new Cesium.NearFarScalar(1.5e7, 1.0, 2.8e7, 0.5),
+              scaleByDistance: new Cesium.NearFarScalar(1.5e7, 1.2, 2.8e7, 0.6),
+              disableDepthTestDistance: Number.POSITIVE_INFINITY,
             }}
           />
         ))}
