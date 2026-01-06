@@ -214,17 +214,42 @@ export function ApiTokensModal({ isOpen, onClose }: ApiTokensModalProps) {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="rounded-lg border border-[#3EF3A4]/30 bg-[#3EF3A4]/10 p-4 space-y-3"
+                    className="rounded-lg border p-4 space-y-3 transition-colors duration-300"
+                    style={{
+                      borderColor: "var(--color-success)50",
+                      backgroundColor: "var(--color-success)10",
+                    }}
                   >
-                    <p className="text-sm font-medium text-[#3EF3A4]">Token criado com sucesso! Copie agora, pois não será exibido novamente.</p>
+                    <p className="text-sm font-medium transition-colors duration-300" style={{ color: "var(--color-success)" }}>
+                      Token criado com sucesso! Copie agora, pois não será exibido novamente.
+                    </p>
                     <div className="flex items-center gap-2">
-                      <code className="flex-1 px-3 py-2 bg-[#0E1625] border border-[#1C2A3F] rounded text-sm text-[#E6EDF3] font-mono">
+                      <code 
+                        className="flex-1 px-3 py-2 border rounded text-sm font-mono transition-colors duration-300"
+                        style={{
+                          backgroundColor: "var(--color-input-bg)",
+                          borderColor: "var(--color-border)",
+                          color: "var(--color-text)",
+                        }}
+                      >
                         {newToken}
                       </code>
                       <Button
                         onClick={() => handleCopyToken(newToken)}
                         variant="outline"
-                        className="border-[#1C2A3F] text-[#9FB0C7] hover:text-[#E6EDF3] hover:bg-[#142B4F]/50"
+                        className="transition-colors duration-300"
+                        style={{
+                          borderColor: "var(--color-border)",
+                          color: "var(--color-text-secondary)",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "var(--color-text)";
+                          e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "var(--color-text-secondary)";
+                          e.currentTarget.style.backgroundColor = "transparent";
+                        }}
                       >
                         <Copy className="w-4 h-4" />
                       </Button>
