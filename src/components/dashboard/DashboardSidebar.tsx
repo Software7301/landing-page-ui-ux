@@ -9,7 +9,8 @@ import {
   CreditCard, 
   Settings,
   Network,
-  BarChart3
+  BarChart3,
+  Truck
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
@@ -127,6 +128,31 @@ export function DashboardSidebar() {
               })}
             </AnimatePresence>
           </nav>
+
+          {/* User Avatar */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.3 }}
+            className="p-4 border-t border-[#1C2A3F]"
+          >
+            <div className="flex items-center gap-3 p-3 rounded-lg bg-[#142B4F]/30 hover:bg-[#142B4F]/50 transition-colors cursor-pointer group">
+              <div className="w-12 h-12 rounded-full bg-[#0B1E36] flex items-center justify-center border-2 border-[#2EE6D6]/30 group-hover:border-[#2EE6D6] transition-colors flex-shrink-0">
+                <Truck className="w-6 h-6 text-[#2EE6D6]" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-semibold text-[#E6EDF3] truncate">
+                  Max Takahashi
+                </p>
+                <p className="text-xs text-[#2EE6D6] truncate">
+                  Outro
+                </p>
+                <p className="text-xs text-[#9FB0C7] truncate">
+                  autopiernovacapitalrp@gmail.com
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </motion.aside>
     </>
