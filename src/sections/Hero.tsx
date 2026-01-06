@@ -18,46 +18,43 @@ export default function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
+        staggerChildren: 0.1,
+        delayChildren: 0.15,
       },
     },
   };
 
   const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+      },
+    },
+  };
+
+  const mockupVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.95 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1] as const,
+        duration: 0.9,
+        delay: 0.3,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
       },
     },
   };
 
-  const mockupVariants = {
-    hidden: { opacity: 0, y: 60, scale: 0.9, rotateY: -15 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      rotateY: 0,
-      transition: {
-        duration: 1,
-        delay: 0.4,
-        ease: [0.16, 1, 0.3, 1] as const,
-      },
-    },
-  };
-
-  // Animação de flutuação contínua para o globo
   const floatVariants = {
     animate: {
-      y: [0, -15, 0],
+      y: [0, -12, 0],
       transition: {
-        duration: 4,
+        duration: 5,
         repeat: Infinity,
         ease: "easeInOut" as const,
       },
@@ -67,17 +64,17 @@ export default function Hero() {
   const buttonVariants = {
     rest: { scale: 1, y: 0 },
     hover: { 
-      scale: 1.05, 
+      scale: 1.03, 
       y: -2,
       transition: {
         duration: 0.3,
-        ease: [0.16, 1, 0.3, 1] as const,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
       }
     },
     tap: { 
-      scale: 0.95,
+      scale: 0.98,
       transition: {
-        duration: 0.1,
+        duration: 0.15,
       }
     },
   };
@@ -85,23 +82,22 @@ export default function Hero() {
   return (
     <section 
       id="hero" 
-      className="min-h-screen flex items-center pt-32 pb-24 px-4 relative overflow-hidden bg-gradient-to-b from-[#0B0B0F] via-[#1a0d2e]/20 to-[#0B0B0F]"
+      className="min-h-screen flex items-center pt-32 pb-24 md:pt-40 md:pb-32 px-6 md:px-8 relative overflow-hidden bg-gradient-to-b from-[#0A0A0F] via-[#0F0F15] to-[#0A0A0F]"
     >
-      {/* Glow muito sutil para profundidade */}
       <div 
-        className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[400px] h-[400px] bg-[#7C3AED]/5 rounded-full blur-3xl"
+        className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#7C3AED]/5 rounded-full blur-3xl pointer-events-none"
       />
       
-      <div className="container mx-auto relative z-10">
+      <div className="container mx-auto relative z-10 max-w-7xl">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="grid lg:grid-cols-2 gap-16 items-center"
+          className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center"
         >
           <motion.div variants={itemVariants} className="space-y-8">
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight text-[#F5F3FF] tracking-tight min-h-[1.2em]">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-[#F8F9FA] tracking-tight min-h-[1.2em]">
                 <TypedText 
                   text={headline}
                   speed={45}
@@ -111,7 +107,7 @@ export default function Hero() {
               
               <motion.p 
                 variants={itemVariants}
-                className="text-xl text-[#C4B5FD] max-w-xl leading-relaxed"
+                className="text-xl md:text-2xl text-[#E4E7EB] max-w-xl leading-relaxed"
               >
                 {subheadline}
               </motion.p>
@@ -130,16 +126,12 @@ export default function Hero() {
                 <Button 
                   size="lg" 
                   asChild 
-                  className="bg-[#5B21B6] hover:bg-[#6D28D9] hover:shadow-xl hover:shadow-[#5B21B6]/40 text-[#F5F3FF] text-base px-8 h-12 font-medium transition-all duration-300 ease-out group/btn relative overflow-hidden"
+                  className="bg-[#7C3AED] hover:bg-[#8B5CF6] hover:shadow-xl hover:shadow-[#7C3AED]/20 text-[#F8F9FA] text-base px-10 h-14 font-semibold transition-all duration-300 ease-out group/btn relative overflow-hidden"
                 >
-                  <Link to="/register" className="relative z-10 flex items-center">
-                    <motion.span
-                      className="absolute inset-0 bg-gradient-to-r from-[#6D28D9] to-[#7C3AED] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"
-                      initial={false}
-                    />
+                  <Link to="/register" className="relative z-10 flex items-center gap-2">
                     <span className="relative z-10">{t('hero.getStarted', language)}</span>
                     <motion.span
-                      className="relative z-10 ml-2"
+                      className="relative z-10"
                       animate={{ x: [0, 4, 0] }}
                       transition={{
                         duration: 1.5,

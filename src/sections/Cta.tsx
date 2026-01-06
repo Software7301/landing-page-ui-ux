@@ -20,41 +20,40 @@ export default function Cta() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, x: -15 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.4,
-        ease: [0.22, 1, 0.36, 1] as const,
+        duration: 0.5,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
       },
     },
   };
 
   return (
-    <section className="py-24 px-4 relative overflow-hidden bg-gradient-to-b from-black via-[#1a0d2e]/30 to-black">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#5B21B6]/10 rounded-full blur-3xl" />
+    <section className="py-24 px-6 md:px-8 relative overflow-hidden bg-gradient-to-b from-[#0A0A0F] via-[#0F0F15] to-[#0A0A0F]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#7C3AED]/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="container mx-auto relative z-10">
-        <div className="max-w-4xl mx-auto">
+      <div className="container mx-auto relative z-10 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-semibold mb-4 text-balance text-[#F5F3FF]">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance text-[#F8F9FA]">
               {t("cta.title", language)}
             </h2>
-            <p className="text-lg text-[#C4B5FD] max-w-2xl mx-auto">
+            <p className="text-lg text-[#E4E7EB] max-w-2xl mx-auto">
               {t("cta.subtitle", language)}
             </p>
           </motion.div>
@@ -63,9 +62,9 @@ export default function Cta() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] as const }}
-            whileHover={{ y: -4, scale: 1.01 }}
-            className="bg-[#0A0A0A] border border-[rgba(91,33,182,0.2)] hover:border-[#5B21B6] rounded-lg p-8 mb-8 hover:shadow-lg hover:shadow-[#5B21B6]/20 transition-all duration-300"
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+            whileHover={{ y: -2 }}
+            className="bg-[#0F0F15] border border-[rgba(124,58,237,0.12)] hover:border-[rgba(124,58,237,0.25)] rounded-lg p-8 mb-8 transition-all duration-300"
           >
             <motion.div
               variants={containerVariants}
@@ -78,17 +77,17 @@ export default function Cta() {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  whileHover={{ x: 4, scale: 1.02 }}
+                  whileHover={{ x: 3 }}
                   className="flex items-center gap-3 group/item cursor-pointer"
                 >
                   <motion.div
-                    whileHover={{ scale: 1.2, rotate: 5 }}
+                    whileHover={{ scale: 1.15, rotate: 5 }}
                     transition={{ duration: 0.2 }}
-                    className="w-5 h-5 rounded-full bg-[#5B21B6]/30 group-hover/item:bg-[#5B21B6]/50 flex items-center justify-center shrink-0 transition-all duration-300"
+                    className="w-5 h-5 rounded-full bg-[#7C3AED]/20 group-hover/item:bg-[#7C3AED]/30 flex items-center justify-center shrink-0 transition-all duration-300"
                   >
-                    <Check className="w-3.5 h-3.5 text-[#6D28D9] group-hover/item:text-[#7C3AED] transition-all duration-300" />
+                    <Check className="w-3.5 h-3.5 text-[#7C3AED] group-hover/item:text-[#8B5CF6] transition-all duration-300" />
                   </motion.div>
-                  <span className="text-[#C4B5FD] text-sm group-hover/item:text-[#E9D5FF] transition-colors duration-300">
+                  <span className="text-[#E4E7EB] text-sm group-hover/item:text-[#F8F9FA] transition-colors duration-300">
                     {feature}
                   </span>
                 </motion.div>
@@ -100,33 +99,29 @@ export default function Cta() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] as const }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
             className="flex justify-center"
           >
             <motion.div 
-              whileHover={{ scale: 1.08, y: -4 }} 
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.05, y: -2 }} 
+              whileTap={{ scale: 0.98 }}
               transition={{
                 duration: 0.3,
-                ease: [0.16, 1, 0.3, 1] as const,
+                ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
               }}
             >
               <Button
                 size="lg"
-                className="bg-[#5B21B6] hover:bg-[#6D28D9] hover:shadow-xl hover:shadow-[#5B21B6]/40 text-[#F5F3FF] text-base px-8 h-12 font-medium transition-all duration-300 ease-out relative overflow-hidden group/btn"
+                className="bg-[#7C3AED] hover:bg-[#8B5CF6] hover:shadow-2xl hover:shadow-[#7C3AED]/30 text-[#F8F9FA] text-lg px-10 h-14 font-semibold transition-all duration-300 ease-out relative overflow-hidden group/btn"
                 asChild
               >
-                <Link to="/register" className="relative z-10 flex items-center">
-                  <motion.span
-                    className="absolute inset-0 bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#6D28D9] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"
-                    initial={false}
-                  />
+                <Link to="/register" className="relative z-10 flex items-center gap-2">
                   <span className="relative z-10">{t("cta.button", language)}</span>
                   <motion.span
-                    className="relative z-10 ml-2"
-                    animate={{ x: [0, 5, 0] }}
+                    className="relative z-10"
+                    animate={{ x: [0, 4, 0] }}
                     transition={{
-                      duration: 2,
+                      duration: 1.5,
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}

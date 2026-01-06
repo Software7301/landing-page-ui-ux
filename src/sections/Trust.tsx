@@ -25,21 +25,21 @@ const itemVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: {
-      duration: 0.7,
-      ease: [0.16, 1, 0.3, 1] as const,
-    },
+      transition: {
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+      },
   },
 };
 
 const iconVariants = {
   rest: { scale: 1, rotate: 0 },
   hover: { 
-    scale: 1.15, 
-    rotate: [0, -10, 10, -10, 0] as number[],
+    scale: 1.1, 
+    rotate: 5,
     transition: {
-      duration: 0.5,
-      ease: "easeInOut" as const,
+      duration: 0.3,
+      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
     }
   },
 };
@@ -48,7 +48,7 @@ export default function Trust() {
   const { language } = useLanguage();
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-black via-[#1a0d2e]/20 to-black">
+    <section className="py-20 px-6 md:px-8 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F15] to-[#0A0A0F]">
       <div className="container mx-auto">
         <motion.div
           variants={containerVariants}
@@ -63,18 +63,18 @@ export default function Trust() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ y: -8, scale: 1.03 }}
+                whileHover={{ y: -4, scale: 1.02 }}
                 className="flex flex-col items-center gap-4 group cursor-pointer"
               >
                 <motion.div 
-                  className="w-12 h-12 rounded-lg bg-[#0A0A0A] group-hover:bg-[#5B21B6]/20 flex items-center justify-center border border-[rgba(91,33,182,0.2)] group-hover:border-[#5B21B6] transition-all duration-300 group-hover:shadow-xl group-hover:shadow-[#5B21B6]/40"
+                  className="w-12 h-12 rounded-lg bg-[#0A0A0F] group-hover:bg-[#7C3AED]/10 flex items-center justify-center border border-[rgba(124,58,237,0.12)] group-hover:border-[rgba(124,58,237,0.25)] transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#7C3AED]/20"
                   whileHover={{
-                    scale: 1.15,
-                    boxShadow: "0 10px 30px rgba(91, 33, 182, 0.4)",
+                    scale: 1.1,
+                    boxShadow: "0 8px 20px rgba(124, 58, 237, 0.2)",
                   }}
                   transition={{
                     duration: 0.3,
-                    ease: [0.16, 1, 0.3, 1] as const,
+                    ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
                   }}
                 >
                   <motion.div
@@ -82,12 +82,12 @@ export default function Trust() {
                     initial="rest"
                     whileHover="hover"
                   >
-                    <Icon className="w-6 h-6 text-[#6D28D9] group-hover:text-[#7C3AED]" />
+                    <Icon className="w-6 h-6 text-[#7C3AED] group-hover:text-[#8B5CF6]" />
                   </motion.div>
                 </motion.div>
                 <motion.p 
-                  className="text-base text-[#F5F3FF] font-medium transition-colors duration-300"
-                  whileHover={{ color: "#F5F3FF" }}
+                  className="text-base text-[#F8F9FA] font-medium transition-colors duration-300"
+                  whileHover={{ color: "#F8F9FA" }}
                 >
                   {t(`trust.${item.key}`, language)}
                 </motion.p>

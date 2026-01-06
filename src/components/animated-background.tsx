@@ -4,7 +4,7 @@ export function AnimatedBackground() {
       <div 
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(135deg, #0E0A1A 0%, #141026 50%, #0E0A1A 100%)',
+          background: 'linear-gradient(135deg, #0A0A0F 0%, #0F0F15 50%, #0A0A0F 100%)',
           backgroundSize: '200% 200%',
           animation: 'gradient 20s ease infinite'
         }}

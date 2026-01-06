@@ -1,82 +1,166 @@
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
-import { useI18n } from "@/i18n/index";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useLanguage } from "@/hooks/useLanguage";
+import { t } from "@/i18n";
+import { TypedText } from "@/components/TypedText";
+import { CesiumMap } from "@/components/3d/CesiumMap";
 
 export default function Hero() {
-  const { t } = useI18n();
+  const { language } = useLanguage();
+  const headline = t('hero.headline', language);
+  const subheadline = t('hero.subheadline', language);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+      },
+    },
+  };
+
+  const mockupVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.9,
+        delay: 0.3,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+      },
+    },
+  };
+
+  const floatVariants = {
+    animate: {
+      y: [0, -12, 0],
+      transition: {
+        duration: 5,
+        repeat: Infinity,
+        ease: "easeInOut" as const,
+      },
+    },
+  };
+
+  const buttonVariants = {
+    rest: { scale: 1, y: 0 },
+    hover: { 
+      scale: 1.03, 
+      y: -2,
+      transition: {
+        duration: 0.3,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+      }
+    },
+    tap: { 
+      scale: 0.98,
+      transition: {
+        duration: 0.15,
+      }
+    },
+  };
 
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden"
+    <section 
+      id="hero" 
+      className="min-h-screen flex items-center pt-32 pb-24 md:pt-40 md:pb-32 px-6 md:px-8 relative overflow-hidden bg-gradient-to-b from-[#0A0A0F] via-[#0F0F15] to-[#0A0A0F]"
     >
-      {/* Subtle gradient background - Railway style */}
-      <div className="absolute inset-0 bg-gradient-to-b from-violet-950/20 via-black to-black" />
+      <div 
+        className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#7C3AED]/5 rounded-full blur-3xl pointer-events-none"
+      />
       
-      {/* Single subtle glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-violet-600/10 rounded-full blur-3xl" />
-
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
-        
-        {/* Badge - Clean and minimal */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full border border-zinc-800 bg-zinc-900/50 backdrop-blur-sm">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span>
-          </span>
-          <span className="text-sm text-zinc-400">{t("hero.badge")}</span>
-        </div>
-
-        {/* Title - Large, clean, high contrast */}
-        <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-6 leading-[1.1]">
-          <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
-            {t("hero.title")}
-          </span>
-        </h1>
-
-        {/* Subtitle - Larger, more breathing room */}
-        <p className="text-xl md:text-2xl text-zinc-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-          {t("hero.subtitle")}
-        </p>
-
-        {/* Buttons - Clean Railway style */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
-          <Button
-            size="lg"
-            className="group h-12 px-8 text-base font-medium bg-violet-600 hover:bg-violet-500 text-white border-0 shadow-lg shadow-violet-600/20"
-          >
-            {t("hero.ctaPrimary")}
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
-
-          <Button
-            size="lg"
-            variant="outline"
-            className="group h-12 px-8 text-base font-medium bg-transparent border-zinc-800 hover:bg-zinc-900 hover:border-zinc-700 text-white"
-          >
-            <Play className="mr-2 w-4 h-4" />
-            {t("hero.ctaSecondary")}
-          </Button>
-        </div>
-
-        {/* Dashboard Preview - Clean with subtle shadow */}
-        <div className="relative max-w-5xl mx-auto">
-          {/* Glow effect */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-violet-600/20 via-purple-600/20 to-violet-600/20 rounded-2xl blur-2xl opacity-50" />
-          
-          {/* Image container */}
-          <div className="relative rounded-xl overflow-hidden border border-zinc-800/50 bg-zinc-950/50 backdrop-blur-sm">
-            <div className="aspect-video bg-gradient-to-br from-zinc-900 to-zinc-950 flex items-center justify-center p-8">
-              <div className="w-full h-full bg-zinc-900 rounded-lg border border-zinc-800 flex items-center justify-center">
-                <span className="text-zinc-600 text-lg">Dashboard Preview</span>
-              </div>
+      <div className="container mx-auto relative z-10 max-w-7xl">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center"
+        >
+          <motion.div variants={itemVariants} className="space-y-8">
+            <div className="space-y-6">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-[#F8F9FA] tracking-tight min-h-[1.2em]">
+                <TypedText 
+                  text={headline}
+                  speed={45}
+                  startDelay={600}
+                />
+              </h1>
+              
+              <motion.p 
+                variants={itemVariants}
+                className="text-xl md:text-2xl text-[#E4E7EB] max-w-xl leading-relaxed"
+              >
+                {subheadline}
+              </motion.p>
             </div>
-          </div>
 
-          {/* Bottom fade */}
-          <div className="absolute -bottom-32 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
-        </div>
+            <motion.div 
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <motion.div
+                variants={buttonVariants}
+                initial="rest"
+                whileHover="hover"
+                whileTap="tap"
+              >
+                <Button 
+                  size="lg" 
+                  asChild 
+                  className="bg-[#7C3AED] hover:bg-[#8B5CF6] hover:shadow-xl hover:shadow-[#7C3AED]/20 text-[#F8F9FA] text-base px-10 h-14 font-semibold transition-all duration-300 ease-out group/btn relative overflow-hidden"
+                >
+                  <Link to="/register" className="relative z-10 flex items-center gap-2">
+                    <span className="relative z-10">{t('hero.getStarted', language)}</span>
+                    <motion.span
+                      className="relative z-10"
+                      animate={{ x: [0, 4, 0] }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      <ArrowRight className="w-5 h-5" />
+                    </motion.span>
+                  </Link>
+                </Button>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          <motion.div 
+            variants={mockupVariants}
+            initial="hidden"
+            animate="visible"
+            className="relative"
+          >
+            <motion.div 
+              className="h-[600px] w-full"
+              variants={floatVariants}
+              animate="animate"
+            >
+              <CesiumMap height="600px" />
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
