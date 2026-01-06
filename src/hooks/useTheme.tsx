@@ -28,6 +28,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.classList.add(theme.className);
   }, [theme]);
 
+  useEffect(() => {
+    THEMES.forEach(t => document.documentElement.classList.remove(t.className));
+    document.documentElement.classList.add(initial.className);
+  }, []);
+
   return (
     <ThemeContext.Provider value={{ theme, setTheme, themes: THEMES }}>
       {children}
