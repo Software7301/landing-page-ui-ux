@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Container, Play, Square, RotateCw, Trash2, FileText, MoreVertical } from "lucide-react";
+import { Container, Play, Square, RotateCw, Trash2, FileText, MoreVertical, Plus } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useWorkspace } from "@/providers/workspace-provider";
 import { useContainer, type Container as ContainerType } from "@/providers/container-provider";
@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ContainerLogsModal } from "@/components/dashboard/ContainerLogsModal";
+import { CreateContainerModal } from "@/components/dashboard/CreateContainerModal";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -40,6 +41,7 @@ export default function Containers() {
   const [isLogsModalOpen, setIsLogsModalOpen] = useState(false);
   const [containerToDelete, setContainerToDelete] = useState<ContainerType | null>(null);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   const workspaceContainers = activeWorkspace 
     ? getContainersByWorkspace(activeWorkspace.id)
@@ -108,13 +110,33 @@ export default function Containers() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
+        className="flex items-center justify-between"
       >
-        <h1 className="text-3xl font-bold mb-2 transition-colors duration-300" style={{ color: "var(--color-text)" }}>
-          {t("dashboard.containers.title", language)}
-        </h1>
-        <p className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
-          {t("dashboard.containers.subtitle", language)}
-        </p>
+        <div>
+          <h1 className="text-3xl font-bold mb-2 transition-colors duration-300" style={{ color: "var(--color-text)" }}>
+            {t("dashboard.containers.title", language)}
+          </h1>
+          <p className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
+            {t("dashboard.containers.subtitle", language)}
+          </p>
+        </div>
+        <Button
+          onClick={() => setIsCreateModalOpen(true)}
+          className="transition-all duration-300 font-semibold"
+          style={{
+            background: `linear-gradient(135deg, var(--color-primary), var(--color-accent))`,
+            color: "var(--color-primary-foreground)",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.boxShadow = `0 0 20px var(--color-primary)50`;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.boxShadow = "none";
+          }}
+        >
+          <Plus className="w-4 h-4 mr-2" />
+          {t("dashboard.containers.create", language) || "Create Container"}
+        </Button>
       </motion.div>
 
       {/* Containers List */}
@@ -362,14 +384,35 @@ export default function Containers() {
             <h3 className="text-xl font-semibold mb-2 transition-colors duration-300" style={{ color: "var(--color-text)" }}>
               Nenhum container encontrado
             </h3>
-            <p className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
+            <p className="mb-6 transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
               Crie seu primeiro container para começar a gerenciar suas aplicações Docker.
             </p>
+            <Button
+              onClick={() => setIsCreateModalOpen(true)}
+              className="transition-all duration-300 font-semibold"
+              style={{
+                background: `linear-gradient(135deg, var(--color-primary), var(--color-accent))`,
+                color: "var(--color-primary-foreground)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = `0 0 20px var(--color-primary)50`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              {t("dashboard.containers.create", language) || "Create Container"}
+            </Button>
           </div>
         </motion.div>
       )}
 
       {/* Modals and Dialogs */}
+      <CreateContainerModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+      />
       <ContainerLogsModal
         isOpen={isLogsModalOpen}
         onClose={() => setIsLogsModalOpen(false)}
