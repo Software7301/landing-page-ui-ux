@@ -29,11 +29,11 @@ const cardVariants = {
 const iconContainerVariants = {
   rest: { scale: 1, rotate: 0 },
   hover: { 
-    scale: 1.1, 
-    rotate: 5,
+    scale: 1.08, 
+    rotate: 3,
     transition: {
       duration: 0.3,
-      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+      ease: [0.4, 0, 0.2, 1] as [number, number, number, number],
     }
   },
 };
@@ -47,36 +47,36 @@ export function FeatureCard({ icon: Icon, title, description, index = 0, childre
       viewport={{ once: true, margin: '-50px' }}
       variants={cardVariants}
       whileHover={{
-        y: -4,
-        scale: 1.02,
+        y: -2,
+        scale: 1.01,
         transition: { 
           duration: 0.3,
-          ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+          ease: [0.4, 0, 0.2, 1] as [number, number, number, number],
         },
       }}
-      className="bg-[#0F0F15] border border-[rgba(124,58,237,0.12)] hover:border-[rgba(124,58,237,0.25)] hover:bg-[#14141F] rounded-lg p-8 cursor-pointer group relative overflow-hidden transition-all duration-300"
+      className="bg-[#141C2C] border border-[rgba(109,40,217,0.15)] hover:border-[rgba(109,40,217,0.25)] hover:bg-[#1A2435] rounded-lg p-8 cursor-pointer group relative overflow-hidden transition-all duration-300 shadow-sm shadow-black/20 hover:shadow-md hover:shadow-black/30"
     >
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-[#7C3AED]/0 to-[#7C3AED]/0 group-hover:from-[#7C3AED]/5 group-hover:to-[#7C3AED]/10 rounded-lg transition-all duration-300"
+        className="absolute inset-0 bg-gradient-to-br from-[#6D28D9]/0 to-[#6D28D9]/0 group-hover:from-[#6D28D9]/5 group-hover:to-[#6D28D9]/10 rounded-lg transition-all duration-300"
         initial={false}
       />
       <div className="relative z-10">
         <motion.div 
-          className="w-12 h-12 rounded-lg bg-[#0A0A0F] group-hover:bg-[#7C3AED]/10 flex items-center justify-center mb-4 border border-[rgba(124,58,237,0.12)] group-hover:border-[rgba(124,58,237,0.25)] transition-all duration-300"
+          className="w-12 h-12 rounded-lg bg-[#0B0F17] group-hover:bg-[#6D28D9]/10 flex items-center justify-center mb-4 border border-[rgba(109,40,217,0.15)] group-hover:border-[rgba(109,40,217,0.25)] transition-all duration-300"
           variants={iconContainerVariants}
           initial="rest"
           whileHover="hover"
         >
-          <Icon className="w-6 h-6 text-[#7C3AED] group-hover:text-[#8B5CF6] transition-colors duration-300" />
+          <Icon className="w-6 h-6 text-[#6D28D9] group-hover:text-[#8B5CF6] transition-colors duration-300" />
         </motion.div>
         <motion.h3 
-          className="text-xl font-semibold mb-2 text-[#F8F9FA] transition-colors duration-300"
+          className="text-xl font-semibold mb-2 text-[#E5E7EB] transition-colors duration-300"
           whileHover={{ x: 2 }}
           transition={{ duration: 0.2 }}
         >
           {title}
         </motion.h3>
-        <p className="text-[#E4E7EB] text-sm leading-relaxed group-hover:text-[#F8F9FA] transition-colors duration-300">
+        <p className="text-[#9CA3AF] text-sm leading-relaxed group-hover:text-[#E5E7EB] transition-colors duration-300">
           {description}
         </p>
         {children}

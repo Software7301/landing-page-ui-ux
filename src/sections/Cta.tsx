@@ -39,8 +39,8 @@ export default function Cta() {
   };
 
   return (
-    <section className="py-24 px-6 md:px-8 relative overflow-hidden bg-gradient-to-b from-[#0A0A0F] via-[#0F0F15] to-[#0A0A0F]">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#7C3AED]/5 rounded-full blur-3xl pointer-events-none" />
+    <section className="py-24 px-6 md:px-8 relative overflow-hidden bg-gradient-to-b from-[#0B0F17] via-[#101827] to-[#0B0F17]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#6D28D9]/8 rounded-full blur-3xl pointer-events-none opacity-50" />
 
       <div className="container mx-auto relative z-10 max-w-4xl">
           <motion.div
@@ -50,10 +50,10 @@ export default function Cta() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance text-[#F8F9FA]">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance text-[#E5E7EB]">
               {t("cta.title", language)}
             </h2>
-            <p className="text-lg text-[#E4E7EB] max-w-2xl mx-auto">
+            <p className="text-lg text-[#9CA3AF] max-w-2xl mx-auto">
               {t("cta.subtitle", language)}
             </p>
           </motion.div>
@@ -63,8 +63,8 @@ export default function Cta() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-            whileHover={{ y: -2 }}
-            className="bg-[#0F0F15] border border-[rgba(124,58,237,0.12)] hover:border-[rgba(124,58,237,0.25)] rounded-lg p-8 mb-8 transition-all duration-300"
+            whileHover={{ y: -1 }}
+            className="bg-[#141C2C] border border-[rgba(109,40,217,0.15)] hover:border-[rgba(109,40,217,0.25)] rounded-lg p-8 mb-8 transition-all duration-300 shadow-sm shadow-black/20"
           >
             <motion.div
               variants={containerVariants}
@@ -83,11 +83,11 @@ export default function Cta() {
                   <motion.div
                     whileHover={{ scale: 1.15, rotate: 5 }}
                     transition={{ duration: 0.2 }}
-                    className="w-5 h-5 rounded-full bg-[#7C3AED]/20 group-hover/item:bg-[#7C3AED]/30 flex items-center justify-center shrink-0 transition-all duration-300"
+                    className="w-5 h-5 rounded-full bg-[#6D28D9]/20 group-hover/item:bg-[#6D28D9]/30 flex items-center justify-center shrink-0 transition-all duration-300"
                   >
-                    <Check className="w-3.5 h-3.5 text-[#7C3AED] group-hover/item:text-[#8B5CF6] transition-all duration-300" />
+                    <Check className="w-3.5 h-3.5 text-[#6D28D9] group-hover/item:text-[#8B5CF6] transition-all duration-300" />
                   </motion.div>
-                  <span className="text-[#E4E7EB] text-sm group-hover/item:text-[#F8F9FA] transition-colors duration-300">
+                  <span className="text-[#9CA3AF] text-sm group-hover/item:text-[#E5E7EB] transition-colors duration-300">
                     {feature}
                   </span>
                 </motion.div>
@@ -112,7 +112,7 @@ export default function Cta() {
             >
               <Button
                 size="lg"
-                className="bg-[#7C3AED] hover:bg-[#8B5CF6] hover:shadow-2xl hover:shadow-[#7C3AED]/30 text-[#F8F9FA] text-lg px-10 h-14 font-semibold transition-all duration-300 ease-out relative overflow-hidden group/btn"
+                className="bg-[#6D28D9] hover:bg-[#8B5CF6] hover:shadow-xl hover:shadow-[#6D28D9]/25 text-[#E5E7EB] text-lg px-10 h-14 font-semibold transition-all duration-300 ease-in-out relative overflow-hidden group/btn"
                 asChild
               >
                 <Link to="/register" className="relative z-10 flex items-center gap-2">
@@ -132,7 +132,6 @@ export default function Cta() {
               </Button>
             </motion.div>
           </motion.div>
-        </div>
       </div>
     </section>
   );

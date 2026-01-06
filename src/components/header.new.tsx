@@ -48,8 +48,8 @@ export default function Header() {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b border-[rgba(124,58,237,0.15)] bg-[#0A0A0F]/98 backdrop-blur-xl shadow-sm shadow-[rgba(124,58,237,0.05)]"
-          : "border-b border-[rgba(124,58,237,0.12)] bg-[#0A0A0F]/95 backdrop-blur-xl"
+          ? "border-b border-[rgba(109,40,217,0.2)] bg-[#0B0F17]/98 backdrop-blur-xl shadow-sm shadow-black/20"
+          : "border-b border-[rgba(109,40,217,0.15)] bg-[#0B0F17]/95 backdrop-blur-xl"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -58,10 +58,10 @@ export default function Header() {
           to="/"
           className="flex items-center gap-2.5 group transition-transform duration-200 hover:scale-105"
         >
-          <div className="w-8 h-8 rounded-lg bg-[#7C3AED] flex items-center justify-center group-hover:bg-[#8B5CF6] transition-all duration-200 shadow-sm shadow-[#7C3AED]/20">
-            <Network className="w-4 h-4 text-[#F8F9FA]" />
+          <div className="w-8 h-8 rounded-lg bg-[#6D28D9] flex items-center justify-center group-hover:bg-[#8B5CF6] transition-all duration-200 shadow-sm shadow-[#6D28D9]/20">
+            <Network className="w-4 h-4 text-[#E5E7EB]" />
           </div>
-          <span className="text-lg font-semibold text-[#F8F9FA] tracking-tight">
+          <span className="text-lg font-semibold text-[#E5E7EB] tracking-tight">
             CorsiHub
           </span>
         </Link>
@@ -76,13 +76,13 @@ export default function Header() {
                 href={link.href}
                   className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   isActive
-                    ? "text-[#F8F9FA] bg-[#0F0F15] border border-[rgba(124,58,237,0.4)]"
-                    : "text-[#9CA3AF] hover:text-[#E4E7EB] hover:bg-[#0F0F15] hover:border hover:border-[rgba(124,58,237,0.25)]"
+                    ? "text-[#E5E7EB] bg-[#141C2C] border border-[rgba(109,40,217,0.3)]"
+                    : "text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-[#141C2C] hover:border hover:border-[rgba(109,40,217,0.2)]"
                 }`}
               >
                 {t(`header.${link.key}`, language)}
                 {isActive && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#7C3AED]"></span>
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#6D28D9]"></span>
                 )}
               </a>
             );
@@ -97,7 +97,7 @@ export default function Header() {
             <Button
               variant="ghost"
               size="sm"
-              className="text-sm text-[#9CA3AF] hover:text-[#E4E7EB] hover:bg-[#0F0F15] hover:border hover:border-[rgba(124,58,237,0.25)] font-medium px-4 transition-all duration-200"
+              className="text-sm text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-[#141C2C] hover:border hover:border-[rgba(109,40,217,0.2)] font-medium px-4 transition-all duration-200"
               asChild
             >
               <Link to="/dashboard">{t("header.dashboard", language)}</Link>
@@ -105,7 +105,7 @@ export default function Header() {
 
             <Button
               size="sm"
-              className="text-sm bg-[#7C3AED] hover:bg-[#8B5CF6] text-[#F8F9FA] font-medium px-5 transition-all duration-200 shadow-sm shadow-[#7C3AED]/20 hover:shadow-md hover:shadow-[#7C3AED]/30"
+              className="text-sm bg-[#6D28D9] hover:bg-[#8B5CF6] text-[#E5E7EB] font-medium px-5 transition-all duration-200 shadow-sm shadow-[#6D28D9]/20 hover:shadow-md hover:shadow-[#6D28D9]/30"
               asChild
             >
               <Link to="/login">{t("header.signIn", language)}</Link>

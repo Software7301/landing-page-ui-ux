@@ -10,7 +10,7 @@ import HowItWorks from '@/sections/HowItWorks'
 
 export default function Landing() {
   return (
-    <main className="min-h-screen text-[#F8F9FA] relative bg-[#0A0A0F]">
+    <main className="min-h-screen text-[#E5E7EB] relative bg-[#0B0F17]">
       <AnimatedBackground />
       <div className="relative z-10">
         <Header />

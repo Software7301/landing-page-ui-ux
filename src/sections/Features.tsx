@@ -46,7 +46,7 @@ export default function Features() {
   const { language } = useLanguage();
 
   return (
-    <section id="features" className="py-24 px-6 md:px-8 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F15] to-[#0A0A0F]">
+    <section id="features" className="py-24 px-6 md:px-8 bg-gradient-to-b from-[#0B0F17] via-[#101827] to-[#0B0F17]">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -55,10 +55,10 @@ export default function Features() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#F8F9FA]">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#E5E7EB]">
             {t('features.title', language)}
           </h2>
-          <p className="text-lg text-[#E4E7EB] max-w-2xl mx-auto">
+          <p className="text-lg text-[#9CA3AF] max-w-2xl mx-auto">
             {t('features.subtitle', language)}
           </p>
         </motion.div>
