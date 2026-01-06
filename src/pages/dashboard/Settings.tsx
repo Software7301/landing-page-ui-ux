@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useWorkspace } from "@/providers/workspace-provider";
 import { useTheme } from "@/hooks/useTheme";
 import { ApiTokensModal } from "@/components/dashboard/ApiTokensModal";
+import { toast } from "sonner";
 
 export default function Settings() {
   const { language, setLanguage } = useLanguage();
@@ -38,6 +39,21 @@ export default function Settings() {
     setSelectedTheme(theme);
   }, [theme]);
 
+  const handleLanguageChange = (langCode: "pt" | "en" | "es") => {
+    setSelectedLanguage(langCode);
+    setLanguage(langCode);
+    toast.success(`Language changed to ${languages.find(l => l.code === langCode)?.label}`);
+  };
+
+  const handleThemeChange = (themeName: string) => {
+    const themeObj = themes.find(t => t.name === themeName);
+    if (themeObj) {
+      setSelectedTheme(themeObj);
+      setTheme(themeName);
+      toast.success(`Theme changed to ${themeObj.label}`);
+    }
+  };
+
   const handleSaveAll = async () => {
     setIsSaving(true);
 
@@ -47,6 +63,7 @@ export default function Settings() {
 
     setTimeout(() => {
       setIsSaving(false);
+      toast.success("Settings saved successfully!");
     }, 500);
   };
 
@@ -214,49 +231,51 @@ export default function Settings() {
             <div className="space-y-3">
               <Label className="text-[#E5E7EB]">Idioma</Label>
               <div className="grid grid-cols-3 gap-3">
-                {languages.map((lang) => (
-                  <Button
-                    key={lang.code}
-                    type="button"
-                    variant={selectedLanguage === lang.code ? "default" : "outline"}
-                    onClick={() => {
-                      setSelectedLanguage(lang.code);
-                      setLanguage(lang.code as "pt" | "en" | "es");
-                    }}
-                    className={`${
-                      selectedLanguage === lang.code
-                        ? "bg-[#6D28D9] text-[#E5E7EB] hover:bg-[#8B5CF6]"
-                        : "border-[rgba(109,40,217,0.15)] bg-[#0B0F17] text-[#9CA3AF] hover:bg-[#141C2C] hover:border-[rgba(109,40,217,0.25)]"
-                    }`}
-                  >
-                    <span className="mr-2">{lang.flag}</span>
-                    {lang.label}
-                  </Button>
-                ))}
+                {languages.map((lang) => {
+                  const langCode = lang.code as "pt" | "en" | "es";
+                  const isSelected = selectedLanguage === langCode;
+                  return (
+                    <Button
+                      key={lang.code}
+                      type="button"
+                      variant={isSelected ? "default" : "outline"}
+                      onClick={() => handleLanguageChange(langCode)}
+                      className={`transition-all duration-200 ${
+                        isSelected
+                          ? "bg-[#6D28D9] text-[#E5E7EB] hover:bg-[#8B5CF6] shadow-lg shadow-[#6D28D9]/20"
+                          : "border-[rgba(109,40,217,0.15)] bg-[#0B0F17] text-[#9CA3AF] hover:bg-[#141C2C] hover:border-[rgba(109,40,217,0.25)]"
+                      }`}
+                    >
+                      <span className="mr-2">{lang.flag}</span>
+                      {lang.label}
+                    </Button>
+                  );
+                })}
               </div>
             </div>
 
             <div className="space-y-3">
               <Label className="text-[#E5E7EB]">Tema</Label>
-              <div className="grid grid-cols-2 gap-3">
-                {themes.map((t) => (
-                  <Button
-                    key={t.name}
-                    type="button"
-                    variant={selectedTheme.name === t.name ? "default" : "outline"}
-                    onClick={() => {
-                      setSelectedTheme(t);
-                      setTheme(t);
-                    }}
-                    className={`${
-                      selectedTheme.name === t.name
-                        ? "bg-[#6D28D9] text-[#E5E7EB] hover:bg-[#8B5CF6]"
-                        : "border-[rgba(109,40,217,0.15)] bg-[#0B0F17] text-[#9CA3AF] hover:bg-[#141C2C] hover:border-[rgba(109,40,217,0.25)]"
-                    }`}
-                  >
-                    {t.name}
-                  </Button>
-                ))}
+              <div className="grid grid-cols-3 gap-3">
+                {themes.map((theme) => {
+                  const isSelected = selectedTheme.name === theme.name;
+                  return (
+                    <Button
+                      key={theme.name}
+                      type="button"
+                      variant={isSelected ? "default" : "outline"}
+                      onClick={() => handleThemeChange(theme.name)}
+                      className={`transition-all duration-200 ${
+                        isSelected
+                          ? "bg-[#6D28D9] text-[#E5E7EB] hover:bg-[#8B5CF6] shadow-lg shadow-[#6D28D9]/20"
+                          : "border-[rgba(109,40,217,0.15)] bg-[#0B0F17] text-[#9CA3AF] hover:bg-[#141C2C] hover:border-[rgba(109,40,217,0.25)]"
+                      }`}
+                    >
+                      {theme.emoji && <span className="mr-2">{theme.emoji}</span>}
+                      {theme.label}
+                    </Button>
+                  );
+                })}
               </div>
             </div>
           </CardContent>
