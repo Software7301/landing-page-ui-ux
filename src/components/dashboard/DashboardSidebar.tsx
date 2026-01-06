@@ -14,7 +14,6 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useWorkspace } from "@/providers/workspace-provider";
-import { useThemeColors } from "@/lib/theme-colors";
 import { t } from "@/i18n";
 import { cn } from "@/lib/utils";
 
@@ -56,7 +55,6 @@ export function DashboardSidebar() {
   const location = useLocation();
   const { language } = useLanguage();
   const { hasWorkspaces } = useWorkspace();
-  const colors = useThemeColors();
 
   const navItems = allNavItems.filter(
     (item) => !item.requiresWorkspace || hasWorkspaces
