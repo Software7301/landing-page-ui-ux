@@ -145,8 +145,9 @@ export default function Infrastructure() {
             viewport={{ once: true, margin: "-50px" }}
             className="relative"
           >
-            <div className="relative w-full h-full min-h-[500px] rounded-lg bg-[#141C2C] border border-[rgba(109,40,217,0.15)] p-8 overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#6D28D9]/5 via-transparent to-[#22D3EE]/5 pointer-events-none" />
+            <div className="relative w-full h-full min-h-[500px] rounded-lg bg-gradient-to-br from-[#1E293B] via-[#0F172A] to-[#1E293B] border border-[rgba(109,40,217,0.2)] p-8 overflow-hidden shadow-2xl shadow-[#6D28D9]/10">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#6D28D9]/10 via-transparent to-[#22D3EE]/10 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-radial from-[#8B5CF6]/5 via-transparent to-transparent pointer-events-none" style={{ background: 'radial-gradient(circle at 30% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 50%)' }} />
               <Suspense
                 fallback={
                   <div className="w-full h-full flex items-center justify-center">

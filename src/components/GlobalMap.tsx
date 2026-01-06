@@ -87,8 +87,8 @@ export function GlobalMap() {
 
   const pulseVariants = {
     animate: {
-      scale: [1, 1.2, 1],
-      opacity: [0.5, 0.8, 0.5],
+      scale: [1, 1.3, 1],
+      opacity: [0.6, 1, 0.6],
       transition: {
         duration: 2.5,
         repeat: Infinity,
@@ -97,115 +97,165 @@ export function GlobalMap() {
     },
   };
 
+  const floatVariants = {
+    animate: {
+      y: [0, -8, 0],
+      transition: {
+        duration: 4,
+        repeat: Infinity,
+        ease: "easeInOut" as const,
+      },
+    },
+  };
+
   return (
     <div className="relative w-full h-full min-h-[500px] flex items-center justify-center">
-      <motion.svg
-        width="100%"
-        height="100%"
-        viewBox="0 0 700 500"
-        className="w-full h-full"
-        variants={containerVariants}
-        initial="hidden"
-        animate={isLoaded ? "visible" : "hidden"}
+      <motion.div
+        variants={floatVariants}
+        animate="animate"
+        className="relative w-full h-full"
       >
-        <defs>
-          <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#6D28D9" stopOpacity="0.25" />
-            <stop offset="50%" stopColor="#6D28D9" stopOpacity="0.15" />
-            <stop offset="100%" stopColor="#6D28D9" stopOpacity="0.05" />
-          </linearGradient>
-          <linearGradient id="cyanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#22D3EE" stopOpacity="0.25" />
-            <stop offset="50%" stopColor="#22D3EE" stopOpacity="0.15" />
-            <stop offset="100%" stopColor="#22D3EE" stopOpacity="0.05" />
-          </linearGradient>
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
+        <motion.svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 700 500"
+          className="w-full h-full"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isLoaded ? "visible" : "hidden"}
+        >
+          <defs>
+            <radialGradient id="sphereGradient" cx="50%" cy="30%" r="70%">
+              <stop offset="0%" stopColor="#1E293B" stopOpacity="0.4" />
+              <stop offset="50%" stopColor="#0F172A" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#020617" stopOpacity="0.8" />
+            </radialGradient>
+            
+            <linearGradient id="purpleGradient3D" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.5" />
+              <stop offset="30%" stopColor="#6D28D9" stopOpacity="0.4" />
+              <stop offset="70%" stopColor="#6D28D9" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#4C1D95" stopOpacity="0.2" />
+            </linearGradient>
+            
+            <linearGradient id="cyanGradient3D" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#67E8F9" stopOpacity="0.5" />
+              <stop offset="30%" stopColor="#22D3EE" stopOpacity="0.4" />
+              <stop offset="70%" stopColor="#22D3EE" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#0891B2" stopOpacity="0.2" />
+            </linearGradient>
 
-        {regions.map((region, index) => {
-          const isHovered = hoveredRegion === region.id;
-          const fillColor = region.color === "purple" ? "#6D28D9" : "#22D3EE";
-          const gradientId = region.color === "purple" ? "purpleGradient" : "cyanGradient";
+            <filter id="glow3D">
+              <feGaussianBlur stdDeviation="5" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
 
-          return (
-            <g key={region.id}>
-              <motion.path
-                d={region.path}
-                fill={`url(#${gradientId})`}
-                stroke={fillColor}
-                strokeWidth={isHovered ? 2.5 : 1.5}
-                strokeOpacity={isHovered ? 0.9 : 0.5}
-                variants={regionVariants}
-                custom={index}
-                whileHover={{ scale: 1.05 }}
-                onMouseEnter={() => setHoveredRegion(region.id)}
-                onMouseLeave={() => setHoveredRegion(null)}
-                className="cursor-pointer transition-all duration-300"
-                style={{ filter: isHovered ? "url(#glow)" : "none" }}
-              />
-              <motion.circle
-                cx={region.position.x}
-                cy={region.position.y}
-                r={isHovered ? 5 : 3}
-                fill={fillColor}
-                opacity={isHovered ? 0.9 : 0.6}
-                variants={pulseVariants}
-                animate={isHovered ? "animate" : undefined}
-                transition={{ delay: index * 0.2 }}
-                style={{ filter: "url(#glow)" }}
-              />
-              <text
-                x={region.position.x}
-                y={region.position.y + 20}
-                fill={fillColor}
-                fontSize="11"
-                fontWeight="600"
-                textAnchor="middle"
-                opacity={isHovered ? 1 : 0.7}
-                className="pointer-events-none transition-opacity duration-300"
-              >
-                {region.name}
-              </text>
-            </g>
-          );
-        })}
+            <filter id="shadow3D">
+              <feDropShadow dx="0" dy="4" stdDeviation="8" floodOpacity="0.3" />
+            </filter>
+          </defs>
 
-        <motion.circle
-          cx="220"
-          cy="200"
-          r="2"
-          fill="#6D28D9"
-          opacity="0.4"
-          variants={pulseVariants}
-          animate="animate"
-        />
-        <motion.circle
-          cx="460"
-          cy="140"
-          r="2"
-          fill="#22D3EE"
-          opacity="0.4"
-          variants={pulseVariants}
-          animate="animate"
-          transition={{ delay: 1 }}
-        />
-        <motion.circle
-          cx="560"
-          cy="240"
-          r="2"
-          fill="#6D28D9"
-          opacity="0.4"
-          variants={pulseVariants}
-          animate="animate"
-          transition={{ delay: 0.5 }}
-        />
-      </motion.svg>
+          <ellipse
+            cx="350"
+            cy="250"
+            rx="320"
+            ry="200"
+            fill="url(#sphereGradient)"
+            opacity="0.6"
+          />
+
+          {regions.map((region, index) => {
+            const isHovered = hoveredRegion === region.id;
+            const fillColor = region.color === "purple" ? "#8B5CF6" : "#22D3EE";
+            const gradientId = region.color === "purple" ? "purpleGradient3D" : "cyanGradient3D";
+
+            return (
+              <g key={region.id}>
+                <motion.path
+                  d={region.path}
+                  fill={`url(#${gradientId})`}
+                  stroke={fillColor}
+                  strokeWidth={isHovered ? 3 : 2}
+                  strokeOpacity={isHovered ? 1 : 0.7}
+                  variants={regionVariants}
+                  custom={index}
+                  whileHover={{ scale: 1.08, y: -2 }}
+                  onMouseEnter={() => setHoveredRegion(region.id)}
+                  onMouseLeave={() => setHoveredRegion(null)}
+                  className="cursor-pointer transition-all duration-300"
+                  style={{ 
+                    filter: isHovered ? "url(#glow3D) url(#shadow3D)" : "url(#shadow3D)",
+                    transformOrigin: `${region.position.x}px ${region.position.y}px`
+                  }}
+                />
+                <motion.circle
+                  cx={region.position.x}
+                  cy={region.position.y}
+                  r={isHovered ? 6 : 4}
+                  fill={fillColor}
+                  opacity={isHovered ? 1 : 0.8}
+                  variants={pulseVariants}
+                  animate={isHovered ? "animate" : "animate"}
+                  transition={{ delay: index * 0.2 }}
+                  style={{ filter: "url(#glow3D)" }}
+                />
+                <motion.text
+                  x={region.position.x}
+                  y={region.position.y + 22}
+                  fill={fillColor}
+                  fontSize="12"
+                  fontWeight="700"
+                  textAnchor="middle"
+                  opacity={isHovered ? 1 : 0.85}
+                  className="pointer-events-none transition-opacity duration-300"
+                  style={{ 
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.5))",
+                    textShadow: `0 0 8px ${fillColor}`
+                  }}
+                >
+                  {region.name}
+                </motion.text>
+              </g>
+            );
+          })}
+
+          <motion.circle
+            cx="220"
+            cy="200"
+            r="3"
+            fill="#8B5CF6"
+            opacity="0.7"
+            variants={pulseVariants}
+            animate="animate"
+            style={{ filter: "url(#glow3D)" }}
+          />
+          <motion.circle
+            cx="460"
+            cy="140"
+            r="3"
+            fill="#22D3EE"
+            opacity="0.7"
+            variants={pulseVariants}
+            animate="animate"
+            transition={{ delay: 1 }}
+            style={{ filter: "url(#glow3D)" }}
+          />
+          <motion.circle
+            cx="560"
+            cy="240"
+            r="3"
+            fill="#8B5CF6"
+            opacity="0.7"
+            variants={pulseVariants}
+            animate="animate"
+            transition={{ delay: 0.5 }}
+            style={{ filter: "url(#glow3D)" }}
+          />
+        </motion.svg>
+      </motion.div>
     </div>
   );
 }
