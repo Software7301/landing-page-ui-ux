@@ -15,9 +15,15 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
         backgroundColor: "var(--color-input-bg)",
         borderColor: "var(--color-input-border)",
         color: "var(--color-text)",
-        "--tw-ring-color": "var(--color-primary)",
-        "--tw-shadow-color": "var(--color-primary)",
       } as React.CSSProperties}
+      onFocus={(e) => {
+        e.target.style.borderColor = "var(--color-primary)";
+        e.target.style.boxShadow = `0 0 0 3px var(--color-primary)30`;
+      }}
+      onBlur={(e) => {
+        e.target.style.borderColor = "var(--color-input-border)";
+        e.target.style.boxShadow = "none";
+      }}
       {...props}
     />
   )
