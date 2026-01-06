@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.tsx'
 import { LanguageProvider } from './hooks/useLanguage'
 import { ThemeProvider } from './hooks/useTheme'
+import { UserProvider } from './providers/user-provider'
 import { Toaster } from 'sonner'
 import '@/lib/i18n'
 
@@ -11,30 +12,32 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider>
       <LanguageProvider>
-        <App />
-        <Toaster
-          position="top-right"
-          theme="dark"
-          toastOptions={{
-            style: {
-              background: '#141C2C',
-              border: '1px solid rgba(109, 40, 217, 0.15)',
-              color: '#E5E7EB',
-            },
-            success: {
-              iconTheme: {
-                primary: '#4ADE80',
-                secondary: '#E5E7EB',
+        <UserProvider>
+          <App />
+          <Toaster
+            position="top-right"
+            theme="dark"
+            toastOptions={{
+              style: {
+                background: 'var(--color-card)',
+                border: '1px solid var(--color-border)',
+                color: 'var(--color-text)',
               },
-            },
-            error: {
-              iconTheme: {
-                primary: '#F87171',
-                secondary: '#E5E7EB',
+              success: {
+                iconTheme: {
+                  primary: 'var(--color-success)',
+                  secondary: 'var(--color-text)',
+                },
               },
-            },
-          }}
-        />
+              error: {
+                iconTheme: {
+                  primary: 'var(--color-error)',
+                  secondary: 'var(--color-text)',
+                },
+              },
+            }}
+          />
+        </UserProvider>
       </LanguageProvider>
     </ThemeProvider>
   </StrictMode>,

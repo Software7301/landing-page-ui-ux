@@ -9,20 +9,18 @@ import { ContainerProvider } from "@/providers/container-provider";
 import { DomainProvider } from "@/providers/domain-provider";
 import { AgentProvider } from "@/providers/agent-provider";
 import { CommandPalette } from "@/components/CommandPalette";
-import { useThemeColors } from "@/lib/theme-colors";
 
 function DashboardContent() {
   const [commandOpen, setCommandOpen] = useState(false);
-  const colors = useThemeColors();
 
   return (
-    <div className="min-h-screen transition-colors duration-300" style={{ backgroundColor: colors.sidebarBg }}>
+    <div className="min-h-screen transition-colors duration-300" style={{ backgroundColor: "var(--color-sidebar)" }}>
       <DashboardSidebar />
       <div className="ml-64">
         <DashboardHeader />
         <main 
           className="p-8 min-h-screen transition-colors duration-300"
-          style={{ backgroundColor: `${colors.cardBg}80` }}
+          style={{ backgroundColor: "var(--color-bg-secondary)" }}
         >
           <Outlet />
         </main>

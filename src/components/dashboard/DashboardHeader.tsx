@@ -9,13 +9,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useWorkspace } from "@/providers/workspace-provider";
-import { useThemeColors } from "@/lib/theme-colors";
+import { useUser } from "@/providers/user-provider";
+import { useNavigate } from "react-router-dom";
 import { t } from "@/i18n";
 
 export function DashboardHeader() {
   const { language } = useLanguage();
   const { workspaces, activeWorkspace, setActiveWorkspace } = useWorkspace();
-  const colors = useThemeColors();
+  const { user } = useUser();
+  const navigate = useNavigate();
 
   return (
     <motion.header
@@ -24,8 +26,8 @@ export function DashboardHeader() {
       transition={{ duration: 0.3 }}
       className="sticky top-0 z-30 h-16 border-b backdrop-blur-xl transition-colors duration-300"
       style={{
-        backgroundColor: `${colors.sidebarBg}F5`,
-        borderColor: colors.sidebarBorder,
+        backgroundColor: "var(--color-sidebar)F5",
+        borderColor: "var(--color-border)",
       }}
     >
       <div className="flex h-full items-center justify-end px-8 gap-3">
@@ -35,15 +37,15 @@ export function DashboardHeader() {
             <DropdownMenuTrigger 
               className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors border"
               style={{
-                color: colors.sidebarTextMuted,
-                borderColor: colors.sidebarBorder,
+                color: "var(--color-text-secondary)",
+                borderColor: "var(--color-border)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = colors.sidebarText;
-                e.currentTarget.style.backgroundColor = `${colors.primary}10`;
+                e.currentTarget.style.color = "var(--color-text)";
+                e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = colors.sidebarTextMuted;
+                e.currentTarget.style.color = "var(--color-text-secondary)";
                 e.currentTarget.style.backgroundColor = "transparent";
               }}
             >
@@ -54,8 +56,8 @@ export function DashboardHeader() {
               className="w-56 transition-colors duration-300" 
               align="end"
               style={{
-                backgroundColor: `${colors.primary}20`,
-                borderColor: colors.sidebarBorder,
+                backgroundColor: "var(--color-card)",
+                borderColor: "var(--color-border)",
               }}
             >
               {workspaces.map((workspace) => (
@@ -64,14 +66,14 @@ export function DashboardHeader() {
                   onClick={() => setActiveWorkspace(workspace)}
                   className="cursor-pointer transition-colors duration-200"
                   style={{
-                    color: colors.sidebarText,
-                    backgroundColor: activeWorkspace.id === workspace.id ? `${colors.primary}30` : "transparent",
+                    color: "var(--color-text)",
+                    backgroundColor: activeWorkspace.id === workspace.id ? "var(--color-sidebar-active)" : "transparent",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = `${colors.primary}20`;
+                    e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = activeWorkspace.id === workspace.id ? `${colors.primary}30` : "transparent";
+                    e.currentTarget.style.backgroundColor = activeWorkspace.id === workspace.id ? "var(--color-sidebar-active)" : "transparent";
                   }}
                 >
                   {workspace.name}
@@ -88,24 +90,24 @@ export function DashboardHeader() {
             <DropdownMenuTrigger 
               className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
               style={{
-                color: colors.sidebarTextMuted,
+                color: "var(--color-text-secondary)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = colors.sidebarText;
-                e.currentTarget.style.backgroundColor = `${colors.primary}10`;
+                e.currentTarget.style.color = "var(--color-text)";
+                e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = colors.sidebarTextMuted;
+                e.currentTarget.style.color = "var(--color-text-secondary)";
                 e.currentTarget.style.backgroundColor = "transparent";
               }}
             >
               <div 
                 className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
                 style={{
-                  background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.accent} 100%)`,
+                  background: `linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%)`,
                 }}
               >
-                <User className="w-4 h-4" style={{ color: colors.primaryForeground }} />
+                <User className="w-4 h-4" style={{ color: "var(--color-primary-foreground)" }} />
               </div>
               <ChevronDown className="w-4 h-4" />
             </DropdownMenuTrigger>
@@ -113,40 +115,29 @@ export function DashboardHeader() {
               className="w-56 transition-colors duration-300" 
               align="end"
               style={{
-                backgroundColor: `${colors.primary}20`,
-                borderColor: colors.sidebarBorder,
+                backgroundColor: "var(--color-card)",
+                borderColor: "var(--color-border)",
               }}
             >
               <div 
                 className="px-3 py-2 border-b transition-colors duration-300"
                 style={{
-                  borderColor: colors.sidebarBorder,
+                  borderColor: "var(--color-border)",
                 }}
               >
-                <p className="text-sm font-medium transition-colors duration-300" style={{ color: colors.sidebarText }}>
-                  John Doe
+                <p className="text-sm font-medium transition-colors duration-300" style={{ color: "var(--color-text)" }}>
+                  {user ? `${user.firstName} ${user.lastName}` : "User"}
                 </p>
-                <p className="text-xs transition-colors duration-300" style={{ color: colors.sidebarTextMuted }}>
-                  john@example.com
+                <p className="text-xs transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
+                  {user?.email || "user@example.com"}
                 </p>
               </div>
               <DropdownMenuItem 
                 className="cursor-pointer transition-colors duration-200"
-                style={{ color: colors.sidebarText }}
+                style={{ color: "var(--color-text)" }}
+                onClick={() => navigate("/dashboard/settings")}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = `${colors.primary}30`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "transparent";
-                }}
-              >
-                {t("dashboard.header.profile", language)}
-              </DropdownMenuItem>
-              <DropdownMenuItem 
-                className="cursor-pointer transition-colors duration-200"
-                style={{ color: colors.sidebarText }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = `${colors.primary}30`;
+                  e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
@@ -156,9 +147,9 @@ export function DashboardHeader() {
               </DropdownMenuItem>
               <DropdownMenuItem 
                 className="cursor-pointer transition-colors duration-200"
-                style={{ color: colors.sidebarText }}
+                style={{ color: "var(--color-text)" }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = `${colors.primary}30`;
+                  e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
