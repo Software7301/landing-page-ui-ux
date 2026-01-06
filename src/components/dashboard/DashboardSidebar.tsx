@@ -15,6 +15,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useWorkspace } from "@/providers/workspace-provider";
+import { useThemeColors } from "@/lib/theme-colors";
 import { t } from "@/i18n";
 import { cn } from "@/lib/utils";
 
@@ -56,6 +57,7 @@ export function DashboardSidebar() {
   const location = useLocation();
   const { language } = useLanguage();
   const { hasWorkspaces } = useWorkspace();
+  const colors = useThemeColors();
 
   const navItems = allNavItems.filter(
     (item) => !item.requiresWorkspace || hasWorkspaces
@@ -67,7 +69,11 @@ export function DashboardSidebar() {
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed left-0 top-0 h-screen w-64 border-r border-[#1C2A3F] bg-[#0B1E36] z-40"
+        className="fixed left-0 top-0 h-screen w-64 border-r z-40 transition-colors duration-300"
+        style={{
+          backgroundColor: colors.sidebarBg,
+          borderColor: colors.sidebarBorder,
+        }}
       >
         <div className="flex flex-col h-full">
           {/* Logo */}
@@ -75,13 +81,22 @@ export function DashboardSidebar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.3 }}
-            className="p-6 border-b border-[#1C2A3F]"
+            className="p-6 border-b transition-colors duration-300"
+            style={{ borderColor: colors.sidebarBorder }}
           >
             <Link to="/" className="flex items-center gap-2.5 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2EE6D6] to-[#1CB8A8] flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(46,230,214,0.4)] transition-all duration-300">
-                <Network className="w-4 h-4 text-[#060B14]" />
+              <div 
+                className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300"
+                style={{
+                  background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.accent} 100%)`,
+                  boxShadow: `0 0 20px ${colors.primary}40`,
+                }}
+              >
+                <Network className="w-4 h-4" style={{ color: colors.primaryForeground }} />
               </div>
-              <span className="text-lg font-semibold text-[#E6EDF3]">CorsiHub</span>
+              <span className="text-lg font-semibold transition-colors duration-300" style={{ color: colors.sidebarText }}>
+                CorsiHub
+              </span>
             </Link>
           </motion.div>
 
@@ -108,18 +123,32 @@ export function DashboardSidebar() {
                       to={item.path}
                       className={cn(
                         "relative flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 group",
-                        isActive
-                          ? "bg-gradient-to-r from-[#142B4F]/50 to-[#0E1625]/50 text-[#E6EDF3] border border-[#2EE6D6]/30 shadow-[0_0_15px_rgba(46,230,214,0.1)]"
-                          : "text-[#9FB0C7] hover:text-[#E6EDF3] hover:bg-[#142B4F]/30"
+                        isActive ? "border" : ""
                       )}
+                      style={{
+                        backgroundColor: isActive ? `${colors.primary}15` : "transparent",
+                        color: isActive ? colors.sidebarText : colors.sidebarTextMuted,
+                        borderColor: isActive ? colors.sidebarActive : "transparent",
+                        boxShadow: isActive ? `0 0 15px ${colors.primary}20` : "none",
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!isActive) {
+                          e.currentTarget.style.backgroundColor = `${colors.primary}10`;
+                          e.currentTarget.style.color = colors.sidebarText;
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!isActive) {
+                          e.currentTarget.style.backgroundColor = "transparent";
+                          e.currentTarget.style.color = colors.sidebarTextMuted;
+                        }
+                      }}
                     >
                       <Icon
-                        className={cn(
-                          "w-5 h-5 transition-colors",
-                          isActive
-                            ? "text-[#2EE6D6]"
-                            : "text-[#9FB0C7] group-hover:text-[#2EE6D6]"
-                        )}
+                        className="w-5 h-5 transition-colors duration-200"
+                        style={{
+                          color: isActive ? colors.primary : colors.sidebarTextMuted,
+                        }}
                       />
                       <span>{t(item.i18nKey, language)}</span>
                     </Link>
@@ -134,20 +163,44 @@ export function DashboardSidebar() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.3 }}
-            className="p-4 border-t border-[#1C2A3F]"
+            className="p-4 border-t transition-colors duration-300"
+            style={{ borderColor: colors.sidebarBorder }}
           >
-            <div className="flex items-center gap-3 p-3 rounded-lg bg-[#142B4F]/30 hover:bg-[#142B4F]/50 transition-colors cursor-pointer group">
-              <div className="w-12 h-12 rounded-full bg-[#0B1E36] flex items-center justify-center border-2 border-[#2EE6D6]/30 group-hover:border-[#2EE6D6] transition-colors flex-shrink-0">
-                <Truck className="w-6 h-6 text-[#2EE6D6]" />
+            <div 
+              className="flex items-center gap-3 p-3 rounded-lg transition-colors cursor-pointer group"
+              style={{
+                backgroundColor: `${colors.primary}10`,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = `${colors.primary}20`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = `${colors.primary}10`;
+              }}
+            >
+              <div 
+                className="w-12 h-12 rounded-full flex items-center justify-center border-2 transition-colors flex-shrink-0"
+                style={{
+                  backgroundColor: colors.sidebarBg,
+                  borderColor: `${colors.primary}50`,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = colors.primary;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = `${colors.primary}50`;
+                }}
+              >
+                <Truck className="w-6 h-6 transition-colors duration-200" style={{ color: colors.primary }} />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-[#E6EDF3] truncate">
+                <p className="text-sm font-semibold truncate transition-colors duration-200" style={{ color: colors.sidebarText }}>
                   Max Takahashi
                 </p>
-                <p className="text-xs text-[#2EE6D6] truncate">
+                <p className="text-xs truncate transition-colors duration-200" style={{ color: colors.primary }}>
                   Outro
                 </p>
-                <p className="text-xs text-[#9FB0C7] truncate">
+                <p className="text-xs truncate transition-colors duration-200" style={{ color: colors.sidebarTextMuted }}>
                   autopiernovacapitalrp@gmail.com
                 </p>
               </div>
