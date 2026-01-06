@@ -66,6 +66,11 @@
       "description": "Monitorea, escala y gestiona toda tu infraestructura desde el panel unificado."
     }
   },
+  "infrastructure": {
+    "badge": "Presencia Global",
+    "title": "Infraestructura & Presencia Global",
+    "subtitle": "Despliega tu infraestructura en más de 15 regiones alrededor del mundo con confiabilidad enterprise, baja latencia y soporte 24/7."
+  },
   "pricing": {
     "title": "Precios simples y transparentes",
     "subtitle": "Un plan. Todo lo que necesitas para gestionar tu infraestructura.",

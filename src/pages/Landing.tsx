@@ -7,6 +7,7 @@ import Cta from '@/sections/Cta'
 import Trust from '@/sections/Trust'
 import Features from '@/sections/Features'
 import HowItWorks from '@/sections/HowItWorks'
+import Infrastructure from '@/sections/Infrastructure'
 
 export default function Landing() {
   return (
@@ -17,6 +18,7 @@ export default function Landing() {
         <Hero />
         <Trust />
         <Features />
+        <Infrastructure />
         <HowItWorks />
         <Pricing />
         <Cta />

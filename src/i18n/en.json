@@ -66,6 +66,11 @@
       "description": "Monitor, scale, and manage all your infrastructure from the unified dashboard."
     }
   },
+  "infrastructure": {
+    "badge": "Global Presence",
+    "title": "Infrastructure & Global Presence",
+    "subtitle": "Deploy your infrastructure across 15+ regions worldwide with enterprise-grade reliability, low latency, and 24/7 support."
+  },
   "pricing": {
     "title": "Simple, transparent pricing",
     "subtitle": "One plan. Everything you need to manage your infrastructure.",

@@ -66,6 +66,11 @@
       "description": "Monitore, dimensione e gerencie toda sua infraestrutura a partir do painel unificado."
     }
   },
+  "infrastructure": {
+    "badge": "Presença Global",
+    "title": "Infraestrutura & Presença Global",
+    "subtitle": "Implante sua infraestrutura em mais de 15 regiões ao redor do mundo com confiabilidade enterprise, baixa latência e suporte 24/7."
+  },
   "pricing": {
     "title": "Preços simples e transparentes",
     "subtitle": "Um plano. Tudo que você precisa para gerenciar sua infraestrutura.",
