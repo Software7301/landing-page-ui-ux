@@ -37,32 +37,71 @@ export function StatsCard({
         scale: 1.02,
         transition: { duration: 0.2 } 
       }}
-      className="relative rounded-xl border border-[#1C2A3F] bg-gradient-to-b from-[#0E1625] to-[#142B4F] p-6 hover:border-[#2EE6D6]/30 hover:shadow-[0_0_20px_rgba(46,230,214,0.1)] transition-all duration-300 overflow-hidden group"
+      className="relative rounded-xl border p-6 transition-all duration-300 overflow-hidden group"
+      style={{
+        borderColor: "var(--color-border)",
+        background: `linear-gradient(to bottom, var(--color-input-bg), var(--color-card))`,
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = "var(--color-primary)50";
+        e.currentTarget.style.boxShadow = `0 0 20px var(--color-primary)20`;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = "var(--color-border)";
+        e.currentTarget.style.boxShadow = "none";
+      }}
     >
-      {/* Glow effect on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2EE6D6]/0 to-[#2EE6D6]/0 group-hover:from-[#2EE6D6]/5 group-hover:to-transparent transition-all duration-300 rounded-xl pointer-events-none" />
+      <div 
+        className="absolute inset-0 transition-all duration-300 rounded-xl pointer-events-none"
+        style={{
+          background: `linear-gradient(to bottom right, transparent, transparent)`,
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = `linear-gradient(to bottom right, var(--color-primary)10, transparent)`;
+        }}
+      />
       
       <div className="relative flex items-start justify-between">
         <div className="flex-1">
-          <p className="text-sm font-medium text-[#9FB0C7] mb-2">{title}</p>
+          <p className="text-sm font-medium mb-2 transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
+            {title}
+          </p>
           <div className="flex items-baseline gap-3 mb-2">
-            <h3 className="text-3xl font-semibold text-[#E6EDF3]">{value}</h3>
+            <h3 className="text-3xl font-semibold transition-colors duration-300" style={{ color: "var(--color-text)" }}>
+              {value}
+            </h3>
             <span
-              className={cn(
-                "text-sm font-medium",
-                changeType === "positive" && "text-[#3EF3A4]",
-                changeType === "negative" && "text-[#F26D6D]",
-                changeType === "neutral" && "text-[#9FB0C7]"
-              )}
+              className="text-sm font-medium transition-colors duration-300"
+              style={{
+                color: changeType === "positive" ? "var(--color-success)" : 
+                       changeType === "negative" ? "var(--color-error)" : 
+                       "var(--color-text-secondary)"
+              }}
             >
               {change}
             </span>
           </div>
-          <p className="text-sm text-[#9FB0C7]">{description}</p>
+          <p className="text-sm transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
+            {description}
+          </p>
         </div>
         {Icon && (
-          <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#2EE6D6]/20 to-[#1CB8A8]/10 flex items-center justify-center border border-[#2EE6D6]/20 group-hover:border-[#2EE6D6]/40 group-hover:shadow-[0_0_15px_rgba(46,230,214,0.3)] transition-all duration-300">
-            <Icon className="w-6 h-6 text-[#2EE6D6]" />
+          <div 
+            className="w-12 h-12 rounded-lg flex items-center justify-center border transition-all duration-300"
+            style={{
+              background: `linear-gradient(135deg, var(--color-primary)20, var(--color-accent)10)`,
+              borderColor: "var(--color-primary)30",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "var(--color-primary)60";
+              e.currentTarget.style.boxShadow = `0 0 15px var(--color-primary)40`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "var(--color-primary)30";
+              e.currentTarget.style.boxShadow = "none";
+            }}
+          >
+            <Icon className="w-6 h-6 transition-colors duration-300" style={{ color: "var(--color-primary)" }} />
           </div>
         )}
       </div>

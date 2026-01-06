@@ -35,39 +35,89 @@ export function WorkspaceCard({
     >
       <Link
         to={`/dashboard/workspaces/${id}`}
-        className="relative block rounded-xl border border-[#1C2A3F] bg-gradient-to-b from-[#0E1625] to-[#142B4F] p-6 hover:border-[#2EE6D6]/30 hover:shadow-[0_0_20px_rgba(46,230,214,0.1)] transition-all duration-300 group overflow-hidden"
+        className="relative block rounded-xl border p-6 transition-all duration-300 group overflow-hidden"
+        style={{
+          borderColor: "var(--color-border)",
+          background: `linear-gradient(to bottom, var(--color-input-bg), var(--color-card))`,
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = "var(--color-primary)50";
+          e.currentTarget.style.boxShadow = `0 0 20px var(--color-primary)20`;
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = "var(--color-border)";
+          e.currentTarget.style.boxShadow = "none";
+        }}
       >
-        {/* Glow effect on hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#2EE6D6]/0 to-[#2EE6D6]/0 group-hover:from-[#2EE6D6]/5 group-hover:to-transparent transition-all duration-300 rounded-xl pointer-events-none" />
+        <div 
+          className="absolute inset-0 transition-all duration-300 rounded-xl pointer-events-none"
+          style={{
+            background: `linear-gradient(to bottom right, transparent, transparent)`,
+          }}
+        />
         
         <div className="relative flex items-start justify-between">
           <div className="flex items-start gap-4 flex-1">
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#2EE6D6]/20 to-[#1CB8A8]/10 flex items-center justify-center border border-[#2EE6D6]/20 group-hover:border-[#2EE6D6]/40 group-hover:shadow-[0_0_15px_rgba(46,230,214,0.3)] transition-all duration-300">
-              <FolderKanban className="w-6 h-6 text-[#2EE6D6]" />
+            <div 
+              className="w-12 h-12 rounded-lg flex items-center justify-center border transition-all duration-300"
+              style={{
+                background: `linear-gradient(135deg, var(--color-primary)20, var(--color-accent)10)`,
+                borderColor: "var(--color-primary)30",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "var(--color-primary)60";
+                e.currentTarget.style.boxShadow = `0 0 15px var(--color-primary)40`;
+              }}
+            >
+              <FolderKanban className="w-6 h-6 transition-colors duration-300" style={{ color: "var(--color-primary)" }} />
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-2">
-                <h3 className="text-lg font-semibold text-[#E6EDF3] group-hover:text-[#2EE6D6] transition-colors">
+                <h3 
+                  className="text-lg font-semibold transition-colors duration-300"
+                  style={{ color: "var(--color-text)" }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "var(--color-primary)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "var(--color-text)";
+                  }}
+                >
                   {name}
                 </h3>
                 <span
-                  className={cn(
-                    "px-2 py-1 rounded-md text-xs font-medium backdrop-blur-sm",
-                    status === "active"
-                      ? "bg-[#3EF3A4]/20 text-[#3EF3A4] border border-[#3EF3A4]/30"
-                      : "bg-[#9FB0C7]/20 text-[#9FB0C7] border border-[#1C2A3F]"
-                  )}
+                  className="px-2 py-1 rounded-md text-xs font-medium backdrop-blur-sm border transition-colors duration-300"
+                  style={status === "active" ? {
+                    backgroundColor: "var(--color-success)20",
+                    color: "var(--color-success)",
+                    borderColor: "var(--color-success)30",
+                  } : {
+                    backgroundColor: "var(--color-text-secondary)20",
+                    color: "var(--color-text-secondary)",
+                    borderColor: "var(--color-border)",
+                  }}
                 >
                   {status === "active" ? "Active" : "Inactive"}
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-[#9FB0C7]">
+              <div className="flex items-center gap-2 text-sm transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
                 <Server className="w-4 h-4" />
                 <span>{serversCount} servidor{serversCount !== 1 ? "es" : ""}</span>
               </div>
             </div>
           </div>
-          <ChevronRight className="w-5 h-5 text-[#9FB0C7] group-hover:text-[#2EE6D6] group-hover:translate-x-1 transition-all" />
+          <ChevronRight 
+            className="w-5 h-5 transition-all duration-300" 
+            style={{ color: "var(--color-text-secondary)" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = "var(--color-primary)";
+              e.currentTarget.style.transform = "translateX(4px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = "var(--color-text-secondary)";
+              e.currentTarget.style.transform = "translateX(0)";
+            }}
+          />
         </div>
       </Link>
     </motion.div>
