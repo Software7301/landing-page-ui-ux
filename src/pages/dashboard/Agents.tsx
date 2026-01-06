@@ -46,17 +46,29 @@ export default function Agents() {
         className="flex items-center justify-between"
       >
         <div>
-          <h1 className="text-3xl font-bold text-[#E6EDF3] mb-2">
+          <h1 className="text-3xl font-bold mb-2 transition-colors duration-300" style={{ color: "var(--color-text)" }}>
             {t("dashboard.agents.title", language)}
           </h1>
-          <p className="text-[#9FB0C7]">
+          <p className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
             {t("dashboard.agents.subtitle", language)}
           </p>
         </div>
         {activeWorkspace && (
           <Button
             onClick={() => setIsCreateModalOpen(true)}
-            className="bg-[#6D28D9] hover:bg-[#8B5CF6] text-[#E5E7EB] font-semibold shadow-lg shadow-[#6D28D9]/20 hover:shadow-xl hover:shadow-[#6D28D9]/30 transition-all duration-300"
+            className="font-semibold transition-all duration-300"
+            style={{
+              backgroundColor: "var(--color-primary)",
+              color: "var(--color-primary-foreground)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "var(--color-primary-hover)";
+              e.currentTarget.style.boxShadow = `0 10px 15px var(--color-primary)40`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "var(--color-primary)";
+              e.currentTarget.style.boxShadow = `0 4px 6px var(--color-primary)30`;
+            }}
           >
             <Plus className="w-4 h-4 mr-2" />
             Create Agent
@@ -70,14 +82,32 @@ export default function Agents() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.4 }}
-          className="text-center py-12 rounded-xl border border-[rgba(109,40,217,0.15)] bg-[#141C2C]"
+          className="text-center py-12 rounded-xl border transition-colors duration-300"
+          style={{
+            borderColor: "var(--color-border)",
+            backgroundColor: "var(--color-card)",
+          }}
         >
-          <Bot className="w-16 h-16 text-[#9CA3AF] mx-auto mb-4 opacity-50" />
-          <p className="text-[#9CA3AF] mb-4">Nenhum agente encontrado para este workspace</p>
+          <Bot className="w-16 h-16 mx-auto mb-4 opacity-50 transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }} />
+          <p className="mb-4 transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
+            Nenhum agente encontrado para este workspace
+          </p>
           {activeWorkspace && (
             <Button
               onClick={() => setIsCreateModalOpen(true)}
-              className="bg-[#6D28D9] hover:bg-[#8B5CF6] text-[#E5E7EB] font-semibold shadow-lg shadow-[#6D28D9]/20 hover:shadow-xl hover:shadow-[#6D28D9]/30 transition-all duration-300"
+              className="font-semibold transition-all duration-300"
+              style={{
+                backgroundColor: "var(--color-primary)",
+                color: "var(--color-primary-foreground)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--color-primary-hover)";
+                e.currentTarget.style.boxShadow = `0 10px 15px var(--color-primary)40`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--color-primary)";
+                e.currentTarget.style.boxShadow = `0 4px 6px var(--color-primary)30`;
+              }}
             >
               <Plus className="w-4 h-4 mr-2" />
               Create Agent
@@ -98,50 +128,91 @@ export default function Agents() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 + index * 0.1, duration: 0.3 }}
             onClick={() => handleAgentClick(agent)}
-            className="rounded-xl border border-[#1C2A3F] bg-gradient-to-b from-[#0E1625] to-[#142B4F] p-6 hover:border-[#2EE6D6]/30 hover:shadow-[0_0_20px_rgba(46,230,214,0.1)] transition-all duration-300 group cursor-pointer"
+            className="rounded-xl border p-6 transition-all duration-300 group cursor-pointer"
+            style={{
+              borderColor: "var(--color-border)",
+              background: `linear-gradient(to bottom, var(--color-input-bg), var(--color-card))`,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "var(--color-primary)50";
+              e.currentTarget.style.boxShadow = `0 0 20px var(--color-primary)20`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "var(--color-border)";
+              e.currentTarget.style.boxShadow = "none";
+            }}
           >
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#2EE6D6]/20 to-[#1CB8A8]/10 flex items-center justify-center border border-[#2EE6D6]/20">
-                  <Bot className="w-6 h-6 text-[#2EE6D6]" />
+                <div 
+                  className="w-12 h-12 rounded-lg flex items-center justify-center border transition-colors duration-300"
+                  style={{
+                    background: `linear-gradient(135deg, var(--color-primary)20, var(--color-accent)10)`,
+                    borderColor: "var(--color-primary)30",
+                  }}
+                >
+                  <Bot className="w-6 h-6 transition-colors duration-300" style={{ color: "var(--color-primary)" }} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-[#E6EDF3] group-hover:text-[#2EE6D6] transition-colors">
+                  <h3 
+                    className="text-lg font-semibold transition-colors duration-300"
+                    style={{ color: "var(--color-text)" }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = "var(--color-primary)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = "var(--color-text)";
+                    }}
+                  >
                     {agent.name}
                   </h3>
-                  <p className="text-sm text-[#9FB0C7]">v{agent.version}</p>
+                  <p className="text-sm transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
+                    v{agent.version}
+                  </p>
                 </div>
               </div>
               {agent.status === "online" ? (
-                <CheckCircle className="w-5 h-5 text-[#3EF3A4]" />
+                <CheckCircle className="w-5 h-5 transition-colors duration-300" style={{ color: "var(--color-success)" }} />
               ) : (
-                <XCircle className="w-5 h-5 text-[#F26D6D]" />
+                <XCircle className="w-5 h-5 transition-colors duration-300" style={{ color: "var(--color-error)" }} />
               )}
             </div>
             <div className="space-y-2">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-[#9FB0C7]">Status:</span>
+                <span className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
+                  Status:
+                </span>
                 <span
-                  className={cn(
-                    "px-2 py-1 rounded-md text-xs font-medium backdrop-blur-sm",
-                    agent.status === "online"
-                      ? "bg-[#3EF3A4]/20 text-[#3EF3A4] border border-[#3EF3A4]/30"
-                      : "bg-[#F26D6D]/20 text-[#F26D6D] border border-[#F26D6D]/30"
-                  )}
+                  className="px-2 py-1 rounded-md text-xs font-medium backdrop-blur-sm border transition-colors duration-300"
+                  style={agent.status === "online" ? {
+                    backgroundColor: "var(--color-success)20",
+                    color: "var(--color-success)",
+                    borderColor: "var(--color-success)30",
+                  } : {
+                    backgroundColor: "var(--color-error)20",
+                    color: "var(--color-error)",
+                    borderColor: "var(--color-error)30",
+                  }}
                 >
                   {agent.status === "online" ? "Online" : "Offline"}
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-[#9FB0C7]">Last Heartbeat:</span>
-                <span className="text-[#E6EDF3]">{agent.lastHeartbeat}</span>
+                <span className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
+                  Last Heartbeat:
+                </span>
+                <span className="transition-colors duration-300" style={{ color: "var(--color-text)" }}>
+                  {agent.lastHeartbeat}
+                </span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-[#9FB0C7] flex items-center gap-1">
+                <span className="flex items-center gap-1 transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
                   <Server className="w-4 h-4" />
                   Server:
                 </span>
-                <span className="text-[#E6EDF3]">{agent.serverName}</span>
+                <span className="transition-colors duration-300" style={{ color: "var(--color-text)" }}>
+                  {agent.serverName}
+                </span>
               </div>
             </div>
           </motion.div>

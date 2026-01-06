@@ -89,7 +89,7 @@ export default function Containers() {
         transition={{ duration: 0.4 }}
         className="flex flex-col items-center justify-center min-h-[400px] space-y-4"
       >
-        <h2 className="text-2xl font-bold text-[#E6EDF3]">
+        <h2 className="text-2xl font-bold transition-colors duration-300" style={{ color: "var(--color-text)" }}>
           Selecione um workspace para gerenciar containers
         </h2>
       </motion.div>
@@ -109,10 +109,10 @@ export default function Containers() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <h1 className="text-3xl font-bold text-[#E6EDF3] mb-2">
+        <h1 className="text-3xl font-bold mb-2 transition-colors duration-300" style={{ color: "var(--color-text)" }}>
           {t("dashboard.containers.title", language)}
         </h1>
-        <p className="text-[#9FB0C7]">
+        <p className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
           {t("dashboard.containers.subtitle", language)}
         </p>
       </motion.div>
@@ -123,28 +123,38 @@ export default function Containers() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.4 }}
-          className="rounded-xl border border-[#1C2A3F] bg-gradient-to-b from-[#0E1625] to-[#142B4F] overflow-hidden"
+          className="rounded-xl border overflow-hidden transition-colors duration-300"
+          style={{
+            borderColor: "var(--color-border)",
+            background: `linear-gradient(to bottom, var(--color-input-bg), var(--color-card))`,
+          }}
         >
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-[#1C2A3F] bg-[#0E1625]/50">
-                  <th className="px-6 py-4 text-left text-sm font-medium text-[#9FB0C7]">
+                <tr 
+                  className="border-b transition-colors duration-300"
+                  style={{
+                    borderColor: "var(--color-border)",
+                    backgroundColor: "var(--color-input-bg)80",
+                  }}
+                >
+                  <th className="px-6 py-4 text-left text-sm font-medium transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
                     {t("dashboard.containers.name", language)}
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-medium text-[#9FB0C7]">
+                  <th className="px-6 py-4 text-left text-sm font-medium transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
                     {t("dashboard.containers.image", language)}
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-medium text-[#9FB0C7]">
+                  <th className="px-6 py-4 text-left text-sm font-medium transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
                     {t("dashboard.containers.status", language)}
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-medium text-[#9FB0C7]">
+                  <th className="px-6 py-4 text-left text-sm font-medium transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
                     {t("dashboard.containers.port", language)}
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-medium text-[#9FB0C7]">
+                  <th className="px-6 py-4 text-left text-sm font-medium transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
                     {t("dashboard.containers.server", language)}
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-medium text-[#9FB0C7]">
+                  <th className="px-6 py-4 text-left text-sm font-medium transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
                     {t("dashboard.containers.actions", language)}
                   </th>
                 </tr>
@@ -156,51 +166,102 @@ export default function Containers() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 + index * 0.1, duration: 0.3 }}
-                    className="border-b border-[#1C2A3F] hover:bg-[#142B4F]/30 transition-colors"
+                    className="border-b transition-colors duration-300"
+                    style={{
+                      borderColor: "var(--color-border)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = "transparent";
+                    }}
                   >
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#2EE6D6]/20 to-[#1CB8A8]/10 flex items-center justify-center border border-[#2EE6D6]/20">
-                          <Container className="w-5 h-5 text-[#2EE6D6]" />
+                        <div 
+                          className="w-10 h-10 rounded-lg flex items-center justify-center border transition-colors duration-300"
+                          style={{
+                            background: `linear-gradient(135deg, var(--color-primary)20, var(--color-accent)10)`,
+                            borderColor: "var(--color-primary)30",
+                          }}
+                        >
+                          <Container className="w-5 h-5 transition-colors duration-300" style={{ color: "var(--color-primary)" }} />
                         </div>
-                        <span className="text-sm font-medium text-[#E6EDF3]">{container.name}</span>
+                        <span className="text-sm font-medium transition-colors duration-300" style={{ color: "var(--color-text)" }}>
+                          {container.name}
+                        </span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-sm text-[#9FB0C7]">{container.image}</td>
+                    <td className="px-6 py-4 text-sm transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
+                      {container.image}
+                    </td>
                     <td className="px-6 py-4">
                       <span
-                        className={cn(
-                          "px-2 py-1 rounded-md text-xs font-medium backdrop-blur-sm",
-                          container.status === "running"
-                            ? "bg-[#3EF3A4]/20 text-[#3EF3A4] border border-[#3EF3A4]/30"
-                            : container.status === "restarting"
-                            ? "bg-[#F5A623]/20 text-[#F5A623] border border-[#F5A623]/30"
-                            : "bg-[#F26D6D]/20 text-[#F26D6D] border border-[#F26D6D]/30"
-                        )}
+                        className="px-2 py-1 rounded-md text-xs font-medium backdrop-blur-sm border transition-colors duration-300"
+                        style={container.status === "running" ? {
+                          backgroundColor: "var(--color-success)20",
+                          color: "var(--color-success)",
+                          borderColor: "var(--color-success)30",
+                        } : container.status === "restarting" ? {
+                          backgroundColor: "var(--color-warning)20",
+                          color: "var(--color-warning)",
+                          borderColor: "var(--color-warning)30",
+                        } : {
+                          backgroundColor: "var(--color-error)20",
+                          color: "var(--color-error)",
+                          borderColor: "var(--color-error)30",
+                        }}
                       >
                         {container.status === "running" ? "Running" : container.status === "restarting" ? "Restarting" : "Stopped"}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-sm text-[#9FB0C7]">{container.port}</td>
-                    <td className="px-6 py-4 text-sm text-[#9FB0C7]">{container.serverName}</td>
+                    <td className="px-6 py-4 text-sm transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
+                      {container.port}
+                    </td>
+                    <td className="px-6 py-4 text-sm transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
+                      {container.serverName}
+                    </td>
                     <td className="px-6 py-4">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button
                             variant="ghost"
-                            className="h-8 w-8 p-0 text-[#9FB0C7] hover:text-[#E6EDF3] hover:bg-[#142B4F]/50"
+                            className="h-8 w-8 p-0 transition-colors duration-300"
+                            style={{
+                              color: "var(--color-text-secondary)",
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.color = "var(--color-text)";
+                              e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.color = "var(--color-text-secondary)";
+                              e.currentTarget.style.backgroundColor = "transparent";
+                            }}
                           >
                             <MoreVertical className="h-4 w-4" />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent
                           align="end"
-                          className="bg-[#142B4F] border-[#1C2A3F] w-48"
+                          className="w-48 transition-colors duration-300"
+                          style={{
+                            backgroundColor: "var(--color-card)",
+                            borderColor: "var(--color-border)",
+                          }}
                         >
                           {container.status === "stopped" ? (
                             <DropdownMenuItem 
                               onClick={() => handleStart(container)}
-                              className="text-[#E6EDF3] hover:bg-[#0E1625] cursor-pointer"
+                              className="cursor-pointer transition-colors duration-300"
+                              style={{ color: "var(--color-text)" }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.backgroundColor = "transparent";
+                              }}
                             >
                               <Play className="mr-2 h-4 w-4" />
                               {t("dashboard.containers.start", language)}
@@ -209,15 +270,31 @@ export default function Containers() {
                             <>
                               <DropdownMenuItem 
                                 onClick={() => handleStop(container)}
-                                className="text-[#E6EDF3] hover:bg-[#0E1625] cursor-pointer"
+                                className="cursor-pointer transition-colors duration-300"
+                                style={{ color: "var(--color-text)" }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.backgroundColor = "transparent";
+                                }}
                               >
                                 <Square className="mr-2 h-4 w-4" />
                                 {t("dashboard.containers.stop", language)}
                               </DropdownMenuItem>
                               <DropdownMenuItem 
                                 onClick={() => handleRestart(container)}
-                                className="text-[#E6EDF3] hover:bg-[#0E1625] cursor-pointer"
+                                className="cursor-pointer transition-colors duration-300"
+                                style={{ color: "var(--color-text)" }}
                                 disabled={container.status === "restarting"}
+                                onMouseEnter={(e) => {
+                                  if (!e.currentTarget.disabled) {
+                                    e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
+                                  }
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.backgroundColor = "transparent";
+                                }}
                               >
                                 <RotateCw className="mr-2 h-4 w-4" />
                                 {t("dashboard.containers.restart", language)}
@@ -226,14 +303,28 @@ export default function Containers() {
                           )}
                           <DropdownMenuItem 
                             onClick={() => handleLogs(container)}
-                            className="text-[#E6EDF3] hover:bg-[#0E1625] cursor-pointer"
+                            className="cursor-pointer transition-colors duration-300"
+                            style={{ color: "var(--color-text)" }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.backgroundColor = "transparent";
+                            }}
                           >
                             <FileText className="mr-2 h-4 w-4" />
                             {t("dashboard.containers.logs", language)}
                           </DropdownMenuItem>
                           <DropdownMenuItem 
                             onClick={() => handleDeleteClick(container)}
-                            className="text-[#F26D6D] hover:bg-[#0E1625] cursor-pointer"
+                            className="cursor-pointer transition-colors duration-300"
+                            style={{ color: "var(--color-error)" }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor = "var(--color-error)10";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.backgroundColor = "transparent";
+                            }}
                           >
                             <Trash2 className="mr-2 h-4 w-4" />
                             {t("dashboard.containers.remove", language)}
@@ -252,16 +343,26 @@ export default function Containers() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.4 }}
-          className="rounded-xl border border-[#1C2A3F] bg-gradient-to-b from-[#0E1625] to-[#142B4F] p-12 text-center"
+          className="rounded-xl border p-12 text-center transition-colors duration-300"
+          style={{
+            borderColor: "var(--color-border)",
+            background: `linear-gradient(to bottom, var(--color-input-bg), var(--color-card))`,
+          }}
         >
           <div className="max-w-md mx-auto">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#2EE6D6]/20 to-[#1CB8A8]/10 flex items-center justify-center mx-auto mb-4 border border-[#2EE6D6]/20">
-              <Container className="w-8 h-8 text-[#2EE6D6]" />
+            <div 
+              className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border transition-colors duration-300"
+              style={{
+                background: `linear-gradient(135deg, var(--color-primary)20, var(--color-accent)10)`,
+                borderColor: "var(--color-primary)30",
+              }}
+            >
+              <Container className="w-8 h-8 transition-colors duration-300" style={{ color: "var(--color-primary)" }} />
             </div>
-            <h3 className="text-xl font-semibold text-[#E6EDF3] mb-2">
+            <h3 className="text-xl font-semibold mb-2 transition-colors duration-300" style={{ color: "var(--color-text)" }}>
               Nenhum container encontrado
             </h3>
-            <p className="text-[#9FB0C7]">
+            <p className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
               Crie seu primeiro container para começar a gerenciar suas aplicações Docker.
             </p>
           </div>
@@ -276,22 +377,52 @@ export default function Containers() {
       />
 
       <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <AlertDialogContent className="bg-[#0B1E36] border-[#1C2A3F]">
+        <AlertDialogContent 
+          className="transition-colors duration-300"
+          style={{
+            backgroundColor: "var(--color-card)",
+            borderColor: "var(--color-border)",
+          }}
+        >
           <AlertDialogHeader>
-            <AlertDialogTitle className="text-[#E6EDF3]">
+            <AlertDialogTitle className="transition-colors duration-300" style={{ color: "var(--color-text)" }}>
               Remover Container
             </AlertDialogTitle>
-            <AlertDialogDescription className="text-[#9FB0C7]">
+            <AlertDialogDescription className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
               Tem certeza que deseja remover o container "{containerToDelete?.name}"? Esta ação não pode ser desfeita.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="border-[#1C2A3F] text-[#9FB0C7] hover:text-[#E6EDF3] hover:bg-[#1C2A3F]">
+            <AlertDialogCancel 
+              className="transition-colors duration-300"
+              style={{
+                borderColor: "var(--color-border)",
+                color: "var(--color-text-secondary)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "var(--color-text)";
+                e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "var(--color-text-secondary)";
+                e.currentTarget.style.backgroundColor = "transparent";
+              }}
+            >
               Cancelar
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteConfirm}
-              className="bg-[#F26D6D] text-white hover:bg-[#F26D6D]/90"
+              className="transition-colors duration-300"
+              style={{
+                backgroundColor: "var(--color-error)",
+                color: "var(--color-error-foreground)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--color-error)90";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--color-error)";
+              }}
             >
               Remover
             </AlertDialogAction>

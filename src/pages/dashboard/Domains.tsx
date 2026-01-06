@@ -71,7 +71,7 @@ export default function Domains() {
         transition={{ duration: 0.4 }}
         className="flex flex-col items-center justify-center min-h-[400px] space-y-4"
       >
-        <h2 className="text-2xl font-bold text-[#E6EDF3]">
+        <h2 className="text-2xl font-bold transition-colors duration-300" style={{ color: "var(--color-text)" }}>
           Selecione um workspace para gerenciar domínios
         </h2>
       </motion.div>
@@ -93,16 +93,26 @@ export default function Domains() {
         className="flex items-center justify-between"
       >
         <div>
-          <h1 className="text-3xl font-bold text-[#E6EDF3] mb-2">
+          <h1 className="text-3xl font-bold mb-2 transition-colors duration-300" style={{ color: "var(--color-text)" }}>
             {t("dashboard.domains.title", language)}
           </h1>
-          <p className="text-[#9FB0C7]">
+          <p className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
             {t("dashboard.domains.subtitle", language)}
           </p>
         </div>
         <Button
           onClick={() => setIsCreateModalOpen(true)}
-          className="bg-gradient-to-r from-[#2EE6D6] to-[#1CB8A8] text-[#060B14] hover:shadow-[0_0_20px_rgba(46,230,214,0.4)] transition-all duration-300 font-semibold"
+          className="transition-all duration-300 font-semibold"
+          style={{
+            background: `linear-gradient(135deg, var(--color-primary), var(--color-accent))`,
+            color: "var(--color-primary-foreground)",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.boxShadow = `0 0 20px var(--color-primary)50`;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.boxShadow = "none";
+          }}
         >
           <Plus className="w-4 h-4 mr-2" />
           {t("dashboard.domains.add", language)}
@@ -123,45 +133,95 @@ export default function Domains() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + index * 0.1, duration: 0.3 }}
-              className="rounded-xl border border-[#1C2A3F] bg-gradient-to-b from-[#0E1625] to-[#142B4F] p-6 hover:border-[#2EE6D6]/30 hover:shadow-[0_0_20px_rgba(46,230,214,0.1)] transition-all duration-300 group relative"
+              className="rounded-xl border p-6 transition-all duration-300 group relative"
+              style={{
+                borderColor: "var(--color-border)",
+                background: `linear-gradient(to bottom, var(--color-input-bg), var(--color-card))`,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "var(--color-primary)50";
+                e.currentTarget.style.boxShadow = `0 0 20px var(--color-primary)20`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "var(--color-border)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#2EE6D6]/20 to-[#1CB8A8]/10 flex items-center justify-center border border-[#2EE6D6]/20">
-                    <Globe className="w-6 h-6 text-[#2EE6D6]" />
+                  <div 
+                    className="w-12 h-12 rounded-lg flex items-center justify-center border transition-colors duration-300"
+                    style={{
+                      background: `linear-gradient(135deg, var(--color-primary)20, var(--color-accent)10)`,
+                      borderColor: "var(--color-primary)30",
+                    }}
+                  >
+                    <Globe className="w-6 h-6 transition-colors duration-300" style={{ color: "var(--color-primary)" }} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-[#E6EDF3] group-hover:text-[#2EE6D6] transition-colors">
+                    <h3 
+                      className="text-lg font-semibold transition-colors duration-300"
+                      style={{ color: "var(--color-text)" }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = "var(--color-primary)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = "var(--color-text)";
+                      }}
+                    >
                       {domain.domain}
                     </h3>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  {domain.sslStatus === "active" ? (
-                    <Lock className="w-5 h-5 text-[#3EF3A4]" />
-                  ) : domain.sslStatus === "pending" ? (
-                    <Lock className="w-5 h-5 text-[#F5C77A]" />
-                  ) : (
-                    <Lock className="w-5 h-5 text-[#F26D6D]" />
-                  )}
+                  <Lock 
+                    className="w-5 h-5 transition-colors duration-300"
+                    style={{
+                      color: domain.sslStatus === "active" ? "var(--color-success)" :
+                             domain.sslStatus === "pending" ? "var(--color-warning)" :
+                             "var(--color-error)"
+                    }}
+                  />
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button
                         variant="ghost"
-                        className="h-8 w-8 p-0 text-[#9FB0C7] hover:text-[#E6EDF3] hover:bg-[#142B4F]/50"
+                        className="h-8 w-8 p-0 transition-colors duration-300"
+                        style={{
+                          color: "var(--color-text-secondary)",
+                        }}
                         onClick={(e) => e.stopPropagation()}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "var(--color-text)";
+                          e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "var(--color-text-secondary)";
+                          e.currentTarget.style.backgroundColor = "transparent";
+                        }}
                       >
                         <MoreVertical className="h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
                       align="end"
-                      className="bg-[#142B4F] border-[#1C2A3F] w-48"
+                      className="w-48 transition-colors duration-300"
+                      style={{
+                        backgroundColor: "var(--color-card)",
+                        borderColor: "var(--color-border)",
+                      }}
                     >
                       {(domain.sslStatus === "expired" || domain.sslStatus === "pending") && (
                         <DropdownMenuItem 
                           onClick={() => handleRenewSSL(domain)}
-                          className="text-[#E6EDF3] hover:bg-[#0E1625] cursor-pointer"
+                          className="cursor-pointer transition-colors duration-300"
+                          style={{ color: "var(--color-text)" }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = "transparent";
+                          }}
                         >
                           <RefreshCw className="mr-2 h-4 w-4" />
                           Renovar SSL
@@ -169,7 +229,14 @@ export default function Domains() {
                       )}
                       <DropdownMenuItem 
                         onClick={() => handleDeleteClick(domain)}
-                        className="text-[#F26D6D] hover:bg-[#0E1625] cursor-pointer"
+                        className="cursor-pointer transition-colors duration-300"
+                        style={{ color: "var(--color-error)" }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = "var(--color-error)10";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = "transparent";
+                        }}
                       >
                         <Trash2 className="mr-2 h-4 w-4" />
                         Remover
@@ -180,16 +247,24 @@ export default function Domains() {
               </div>
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-[#9FB0C7]">SSL Status:</span>
+                  <span className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
+                    SSL Status:
+                  </span>
                   <span
-                    className={cn(
-                      "px-2 py-1 rounded-md text-xs font-medium backdrop-blur-sm",
-                      domain.sslStatus === "active"
-                        ? "bg-[#3EF3A4]/20 text-[#3EF3A4] border border-[#3EF3A4]/30"
-                        : domain.sslStatus === "pending"
-                        ? "bg-[#F5C77A]/20 text-[#F5C77A] border border-[#F5C77A]/30"
-                        : "bg-[#F26D6D]/20 text-[#F26D6D] border border-[#F26D6D]/30"
-                    )}
+                    className="px-2 py-1 rounded-md text-xs font-medium backdrop-blur-sm border transition-colors duration-300"
+                    style={domain.sslStatus === "active" ? {
+                      backgroundColor: "var(--color-success)20",
+                      color: "var(--color-success)",
+                      borderColor: "var(--color-success)30",
+                    } : domain.sslStatus === "pending" ? {
+                      backgroundColor: "var(--color-warning)20",
+                      color: "var(--color-warning)",
+                      borderColor: "var(--color-warning)30",
+                    } : {
+                      backgroundColor: "var(--color-error)20",
+                      color: "var(--color-error)",
+                      borderColor: "var(--color-error)30",
+                    }}
                   >
                     {domain.sslStatus === "active"
                       ? "Active"
@@ -199,15 +274,21 @@ export default function Domains() {
                   </span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-[#9FB0C7] flex items-center gap-1">
+                  <span className="flex items-center gap-1 transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
                     <Link2 className="w-4 h-4" />
                     Container:
                   </span>
-                  <span className="text-[#E6EDF3]">{domain.containerName}</span>
+                  <span className="transition-colors duration-300" style={{ color: "var(--color-text)" }}>
+                    {domain.containerName}
+                  </span>
                 </div>
                 <div className="text-sm">
-                  <span className="text-[#9FB0C7]">DNS: </span>
-                  <span className="text-[#E6EDF3] font-mono text-xs">{getDnsDisplay(domain)}</span>
+                  <span className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
+                    DNS: 
+                  </span>
+                  <span className="font-mono text-xs transition-colors duration-300" style={{ color: "var(--color-text)" }}>
+                    {getDnsDisplay(domain)}
+                  </span>
                 </div>
               </div>
             </motion.div>
@@ -218,21 +299,41 @@ export default function Domains() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.4 }}
-          className="rounded-xl border border-[#1C2A3F] bg-gradient-to-b from-[#0E1625] to-[#142B4F] p-12 text-center"
+          className="rounded-xl border p-12 text-center transition-colors duration-300"
+          style={{
+            borderColor: "var(--color-border)",
+            background: `linear-gradient(to bottom, var(--color-input-bg), var(--color-card))`,
+          }}
         >
           <div className="max-w-md mx-auto">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#2EE6D6]/20 to-[#1CB8A8]/10 flex items-center justify-center mx-auto mb-4 border border-[#2EE6D6]/20">
-              <Globe className="w-8 h-8 text-[#2EE6D6]" />
+            <div 
+              className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border transition-colors duration-300"
+              style={{
+                background: `linear-gradient(135deg, var(--color-primary)20, var(--color-accent)10)`,
+                borderColor: "var(--color-primary)30",
+              }}
+            >
+              <Globe className="w-8 h-8 transition-colors duration-300" style={{ color: "var(--color-primary)" }} />
             </div>
-            <h3 className="text-xl font-semibold text-[#E6EDF3] mb-2">
+            <h3 className="text-xl font-semibold mb-2 transition-colors duration-300" style={{ color: "var(--color-text)" }}>
               Nenhum domínio encontrado
             </h3>
-            <p className="text-[#9FB0C7] mb-6">
+            <p className="mb-6 transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
               Adicione seu primeiro domínio para começar a gerenciar SSL e DNS.
             </p>
             <Button
               onClick={() => setIsCreateModalOpen(true)}
-              className="bg-gradient-to-r from-[#2EE6D6] to-[#1CB8A8] text-[#060B14] hover:shadow-[0_0_20px_rgba(46,230,214,0.4)] transition-all duration-300 font-semibold"
+              className="transition-all duration-300 font-semibold"
+              style={{
+                background: `linear-gradient(135deg, var(--color-primary), var(--color-accent))`,
+                color: "var(--color-primary-foreground)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = `0 0 20px var(--color-primary)50`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = "none";
+              }}
             >
               <Plus className="w-4 h-4 mr-2" />
               Adicionar Domínio
@@ -248,22 +349,52 @@ export default function Domains() {
       />
 
       <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <AlertDialogContent className="bg-[#0B1E36] border-[#1C2A3F]">
+        <AlertDialogContent 
+          className="transition-colors duration-300"
+          style={{
+            backgroundColor: "var(--color-card)",
+            borderColor: "var(--color-border)",
+          }}
+        >
           <AlertDialogHeader>
-            <AlertDialogTitle className="text-[#E6EDF3]">
+            <AlertDialogTitle className="transition-colors duration-300" style={{ color: "var(--color-text)" }}>
               Remover Domínio
             </AlertDialogTitle>
-            <AlertDialogDescription className="text-[#9FB0C7]">
+            <AlertDialogDescription className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
               Tem certeza que deseja remover o domínio "{domainToDelete?.domain}"? Esta ação não pode ser desfeita.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="border-[#1C2A3F] text-[#9FB0C7] hover:text-[#E6EDF3] hover:bg-[#1C2A3F]">
+            <AlertDialogCancel 
+              className="transition-colors duration-300"
+              style={{
+                borderColor: "var(--color-border)",
+                color: "var(--color-text-secondary)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "var(--color-text)";
+                e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "var(--color-text-secondary)";
+                e.currentTarget.style.backgroundColor = "transparent";
+              }}
+            >
               Cancelar
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteConfirm}
-              className="bg-[#F26D6D] text-white hover:bg-[#F26D6D]/90"
+              className="transition-colors duration-300"
+              style={{
+                backgroundColor: "var(--color-error)",
+                color: "var(--color-error-foreground)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--color-error)90";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--color-error)";
+              }}
             >
               Remover
             </AlertDialogAction>

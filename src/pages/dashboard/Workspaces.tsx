@@ -30,16 +30,26 @@ export default function Workspaces() {
         className="flex items-center justify-between"
       >
         <div>
-          <h1 className="text-3xl font-bold text-[#E6EDF3] mb-2">
+          <h1 className="text-3xl font-bold mb-2 transition-colors duration-300" style={{ color: "var(--color-text)" }}>
             {t("dashboard.workspaces.title", language)}
           </h1>
-          <p className="text-[#9FB0C7]">
+          <p className="transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
             {t("dashboard.workspaces.subtitle", language)}
           </p>
         </div>
         <Button
           onClick={() => setIsModalOpen(true)}
-          className="bg-gradient-to-r from-[#2EE6D6] to-[#1CB8A8] text-[#060B14] hover:shadow-[0_0_20px_rgba(46,230,214,0.4)] transition-all duration-300 font-semibold"
+          className="transition-all duration-300 font-semibold"
+          style={{
+            background: `linear-gradient(135deg, var(--color-primary), var(--color-accent))`,
+            color: "var(--color-primary-foreground)",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.boxShadow = `0 0 20px var(--color-primary)50`;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.boxShadow = "none";
+          }}
         >
           <Plus className="w-4 h-4 mr-2" />
           {t("dashboard.workspaces.create", language)}
@@ -65,21 +75,41 @@ export default function Workspaces() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.4 }}
-          className="rounded-xl border border-[#1C2A3F] bg-gradient-to-b from-[#0E1625] to-[#142B4F] p-12 text-center"
+          className="rounded-xl border p-12 text-center transition-colors duration-300"
+          style={{
+            borderColor: "var(--color-border)",
+            background: `linear-gradient(to bottom, var(--color-input-bg), var(--color-card))`,
+          }}
         >
           <div className="max-w-md mx-auto">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#2EE6D6]/20 to-[#1CB8A8]/10 flex items-center justify-center mx-auto mb-4 border border-[#2EE6D6]/20">
-              <Plus className="w-8 h-8 text-[#2EE6D6]" />
+            <div 
+              className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border transition-colors duration-300"
+              style={{
+                background: `linear-gradient(135deg, var(--color-primary)20, var(--color-accent)10)`,
+                borderColor: "var(--color-primary)30",
+              }}
+            >
+              <Plus className="w-8 h-8 transition-colors duration-300" style={{ color: "var(--color-primary)" }} />
             </div>
-            <h3 className="text-xl font-semibold text-[#E6EDF3] mb-2">
+            <h3 className="text-xl font-semibold mb-2 transition-colors duration-300" style={{ color: "var(--color-text)" }}>
               {t("dashboard.workspaces.emptyTitle", language)}
             </h3>
-            <p className="text-[#9FB0C7] mb-6">
+            <p className="mb-6 transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
               {t("dashboard.workspaces.emptyDesc", language)}
             </p>
             <Button
               onClick={() => setIsModalOpen(true)}
-              className="bg-gradient-to-r from-[#2EE6D6] to-[#1CB8A8] text-[#060B14] hover:shadow-[0_0_20px_rgba(46,230,214,0.4)] transition-all duration-300 font-semibold"
+              className="transition-all duration-300 font-semibold"
+              style={{
+                background: `linear-gradient(135deg, var(--color-primary), var(--color-accent))`,
+                color: "var(--color-primary-foreground)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = `0 0 20px var(--color-primary)50`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = "none";
+              }}
             >
               <Plus className="w-4 h-4 mr-2" />
               {t("dashboard.workspaces.create", language)}
