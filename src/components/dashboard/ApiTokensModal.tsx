@@ -144,18 +144,48 @@ export function ApiTokensModal({ isOpen, onClose }: ApiTokensModalProps) {
               animate="visible"
               exit="exit"
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-2xl bg-[#0B1E36] border border-[#1C2A3F] rounded-xl shadow-2xl pointer-events-auto max-h-[90vh] overflow-y-auto"
+              className="w-full max-w-2xl rounded-xl shadow-2xl pointer-events-auto max-h-[90vh] overflow-y-auto transition-colors duration-300"
+              style={{
+                backgroundColor: "var(--color-card)",
+                borderColor: "var(--color-border)",
+                borderWidth: "1px",
+              }}
             >
-              <div className="flex items-center justify-between p-6 border-b border-[#1C2A3F] sticky top-0 bg-[#0B1E36] z-10">
+              <div 
+                className="flex items-center justify-between p-6 border-b sticky top-0 z-10 transition-colors duration-300"
+                style={{
+                  borderColor: "var(--color-border)",
+                  backgroundColor: "var(--color-card)",
+                }}
+              >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#2EE6D6]/20 to-[#1CB8A8]/10 flex items-center justify-center border border-[#2EE6D6]/20">
-                    <Key className="w-5 h-5 text-[#2EE6D6]" />
+                  <div 
+                    className="w-10 h-10 rounded-lg flex items-center justify-center border transition-colors duration-300"
+                    style={{
+                      background: `linear-gradient(135deg, var(--color-primary)20, var(--color-accent)10)`,
+                      borderColor: "var(--color-primary)30",
+                    }}
+                  >
+                    <Key className="w-5 h-5 transition-colors duration-300" style={{ color: "var(--color-primary)" }} />
                   </div>
-                  <h2 className="text-xl font-semibold text-[#E6EDF3]">API Tokens</h2>
+                  <h2 className="text-xl font-semibold transition-colors duration-300" style={{ color: "var(--color-text)" }}>
+                    API Tokens
+                  </h2>
                 </div>
                 <button
                   onClick={onClose}
-                  className="p-2 rounded-lg text-[#9FB0C7] hover:text-[#E6EDF3] hover:bg-[#142B4F]/30 transition-colors"
+                  className="p-2 rounded-lg transition-colors duration-300"
+                  style={{
+                    color: "var(--color-text-secondary)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "var(--color-text)";
+                    e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "var(--color-text-secondary)";
+                    e.currentTarget.style.backgroundColor = "transparent";
+                  }}
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -164,9 +194,16 @@ export function ApiTokensModal({ isOpen, onClose }: ApiTokensModalProps) {
               <div className="p-6 space-y-6">
                 {/* New Token Form */}
                 {isCreating ? (
-                  <form onSubmit={handleCreateToken} className="rounded-lg border border-[#1C2A3F] bg-[#0E1625] p-4 space-y-4">
+                  <form 
+                    onSubmit={handleCreateToken} 
+                    className="rounded-lg border p-4 space-y-4 transition-colors duration-300"
+                    style={{
+                      borderColor: "var(--color-border)",
+                      backgroundColor: "var(--color-input-bg)",
+                    }}
+                  >
                     <div className="space-y-2">
-                      <Label htmlFor="token-name" className="text-sm font-medium text-[#C4B5FD]">
+                      <Label htmlFor="token-name" className="text-sm font-medium transition-colors duration-300" style={{ color: "var(--color-text)" }}>
                         Nome do Token
                       </Label>
                       <Input
@@ -175,7 +212,7 @@ export function ApiTokensModal({ isOpen, onClose }: ApiTokensModalProps) {
                         value={tokenName}
                         onChange={(e) => setTokenName(e.target.value)}
                         placeholder="Ex: Production API"
-                        className="h-11 bg-[#0E1625] border-[#1C2A3F] text-[#E6EDF3] placeholder:text-[#9FB0C7] focus:border-[#2EE6D6] hover:border-[#1C2A3F]/50"
+                        className="h-11 transition-colors duration-300"
                         autoFocus
                       />
                     </div>
@@ -187,13 +224,35 @@ export function ApiTokensModal({ isOpen, onClose }: ApiTokensModalProps) {
                           setTokenName("");
                         }}
                         variant="outline"
-                        className="flex-1 border-[#1C2A3F] text-[#9FB0C7] hover:text-[#E6EDF3] hover:bg-[#142B4F]/50"
+                        className="flex-1 transition-colors duration-300"
+                        style={{
+                          borderColor: "var(--color-border)",
+                          color: "var(--color-text-secondary)",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "var(--color-text)";
+                          e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "var(--color-text-secondary)";
+                          e.currentTarget.style.backgroundColor = "transparent";
+                        }}
                       >
                         Cancelar
                       </Button>
                       <Button
                         type="submit"
-                        className="flex-1 bg-gradient-to-r from-[#2EE6D6] to-[#1CB8A8] text-[#060B14] hover:shadow-[0_0_20px_rgba(46,230,214,0.4)] transition-all duration-300 font-semibold"
+                        className="flex-1 transition-all duration-300 font-semibold"
+                        style={{
+                          background: `linear-gradient(135deg, var(--color-primary), var(--color-accent))`,
+                          color: "var(--color-primary-foreground)",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.boxShadow = `0 0 20px var(--color-primary)40`;
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.boxShadow = "none";
+                        }}
                       >
                         Criar Token
                       </Button>
@@ -202,7 +261,17 @@ export function ApiTokensModal({ isOpen, onClose }: ApiTokensModalProps) {
                 ) : (
                   <Button
                     onClick={() => setIsCreating(true)}
-                    className="w-full bg-gradient-to-r from-[#2EE6D6] to-[#1CB8A8] text-[#060B14] hover:shadow-[0_0_20px_rgba(46,230,214,0.4)] transition-all duration-300 font-semibold"
+                    className="w-full transition-all duration-300 font-semibold"
+                    style={{
+                      background: `linear-gradient(135deg, var(--color-primary), var(--color-accent))`,
+                      color: "var(--color-primary-foreground)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.boxShadow = `0 0 20px var(--color-primary)40`;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.boxShadow = "none";
+                    }}
                   >
                     <Plus className="w-4 h-4 mr-2" />
                     Criar Novo Token
@@ -263,31 +332,65 @@ export function ApiTokensModal({ isOpen, onClose }: ApiTokensModalProps) {
                     {tokens.map((token) => (
                       <div
                         key={token.id}
-                        className="rounded-lg border border-[#1C2A3F] bg-[#0E1625] p-4"
+                        className="rounded-lg border p-4 transition-colors duration-300"
+                        style={{
+                          borderColor: "var(--color-border)",
+                          backgroundColor: "var(--color-input-bg)",
+                        }}
                       >
                         <div className="flex items-center justify-between mb-3">
                           <div>
-                            <h4 className="text-sm font-semibold text-[#E6EDF3]">{token.name}</h4>
-                            <p className="text-xs text-[#9FB0C7]">
+                            <h4 className="text-sm font-semibold transition-colors duration-300" style={{ color: "var(--color-text)" }}>
+                              {token.name}
+                            </h4>
+                            <p className="text-xs transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
                               Criado em {new Date(token.createdAt).toLocaleDateString()}
                             </p>
                           </div>
                           <Button
                             onClick={() => handleDeleteToken(token.id)}
                             variant="ghost"
-                            className="h-8 w-8 p-0 text-[#F26D6D] hover:text-[#F26D6D] hover:bg-[#F26D6D]/10"
+                            className="h-8 w-8 p-0 transition-colors duration-300"
+                            style={{
+                              color: "var(--color-error)",
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor = "var(--color-error)10";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.backgroundColor = "transparent";
+                            }}
                           >
                             <Trash2 className="w-4 h-4" />
                           </Button>
                         </div>
                         <div className="flex items-center gap-2">
-                          <code className="flex-1 px-3 py-2 bg-[#060B14] border border-[#1C2A3F] rounded text-sm text-[#E6EDF3] font-mono">
+                          <code 
+                            className="flex-1 px-3 py-2 border rounded text-sm font-mono transition-colors duration-300"
+                            style={{
+                              backgroundColor: "var(--color-bg)",
+                              borderColor: "var(--color-border)",
+                              color: "var(--color-text)",
+                            }}
+                          >
                             {visibleTokens.has(token.id) ? token.token : maskToken(token.token)}
                           </code>
                           <Button
                             onClick={() => toggleTokenVisibility(token.id)}
                             variant="outline"
-                            className="border-[#1C2A3F] text-[#9FB0C7] hover:text-[#E6EDF3] hover:bg-[#142B4F]/50"
+                            className="transition-colors duration-300"
+                            style={{
+                              borderColor: "var(--color-border)",
+                              color: "var(--color-text-secondary)",
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.color = "var(--color-text)";
+                              e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.color = "var(--color-text-secondary)";
+                              e.currentTarget.style.backgroundColor = "transparent";
+                            }}
                           >
                             {visibleTokens.has(token.id) ? (
                               <EyeOff className="w-4 h-4" />
@@ -298,7 +401,19 @@ export function ApiTokensModal({ isOpen, onClose }: ApiTokensModalProps) {
                           <Button
                             onClick={() => handleCopyToken(token.token)}
                             variant="outline"
-                            className="border-[#1C2A3F] text-[#9FB0C7] hover:text-[#E6EDF3] hover:bg-[#142B4F]/50"
+                            className="transition-colors duration-300"
+                            style={{
+                              borderColor: "var(--color-border)",
+                              color: "var(--color-text-secondary)",
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.color = "var(--color-text)";
+                              e.currentTarget.style.backgroundColor = "var(--color-sidebar-hover)";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.color = "var(--color-text-secondary)";
+                              e.currentTarget.style.backgroundColor = "transparent";
+                            }}
                           >
                             <Copy className="w-4 h-4" />
                           </Button>
@@ -307,7 +422,7 @@ export function ApiTokensModal({ isOpen, onClose }: ApiTokensModalProps) {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-8 text-[#9FB0C7]">
+                  <div className="text-center py-8 transition-colors duration-300" style={{ color: "var(--color-text-secondary)" }}>
                     <p>Nenhum token criado ainda</p>
                   </div>
                 )}
